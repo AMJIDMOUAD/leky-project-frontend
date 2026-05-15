@@ -482,13 +482,13 @@ footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
     </button>
 
     <!-- LOGO — hauteur fixe, pas de compression -->
-    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+    <a href="index.html" class="logo-wrap" style="flex-shrink:0">
       <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
     </a>
 
     <!-- MENU PRINCIPAL -->
                 <ul class="nav-menu" id="nav-menu">
-      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="index.html" onclick="closeNav()">Accueil</a></li>
       <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
       <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
             <li class="has-drop">
@@ -589,7 +589,7 @@ footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
   <div class="sp-hero-overlay"></div>
   <div class="sp-hero-content">
     <div class="breadcrumb">
-      <a  href="CO.deleky-home.html">Accueil</a>
+      <a  href="index.html">Accueil</a>
       <span style="color:rgba(255,255,255,.3)">›</span>
       <a href="CO.deleky-creation-entreprise.html">Création d'Entreprise</a>
       <span style="color:rgba(255,255,255,.3)">›</span>
@@ -1032,7 +1032,7 @@ footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
 function toggleNav(){document.getElementById('nav-menu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
 function closeNav(){document.getElementById('nav-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
 function switchLang(l,b){document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
-function navigate(p){const routes={home:'CO.deleky-home.html',cabinet:'CO_deleky-cabinet-v2.html',missions:'CO.deleky-missions.html',ressources:'CO.deleky-ressources.html',blog:'CO.deleky-publications.html',publications:'CO.deleky-publications.html',joinus:'CO.deleky-joinus.html',login:'CO.deleky-login (7).html',contact:'CO.deleky-contact.html','simulateur-paie':'CO.deleky-simulateur-paie.html'};window.location.href=routes[p]||routes.home;}
+function navigate(p){const routes={home:'index.html',cabinet:'CO_deleky-cabinet-v2.html',missions:'CO.deleky-missions.html',ressources:'CO.deleky-ressources.html',blog:'CO.deleky-publications.html',publications:'CO.deleky-publications.html',joinus:'CO.deleky-joinus.html',login:'CO.deleky-login (7).html',contact:'CO.deleky-contact.html','simulateur-paie':'CO.deleky-simulateur-paie.html'};window.location.href=routes[p]||routes.home;}
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.ticker-track').forEach(t=>{
     if(!t.dataset.dup){t.innerHTML+=t.innerHTML;t.dataset.dup='1'}
