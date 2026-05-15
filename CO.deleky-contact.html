@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Deleky's SARL</title>
+<style>
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Maiandra GD',Georgia,serif;background:#fff;color:#111827;
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%} a{text-decoration:none;color:inherit}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+:root{
+  --blue:#1A9EF0;
+  --blue-dark:#1480CC;
+  --blue-pale:#EBF6FE;
+  --navy:#0F3460;
+  --white:#FFFFFF;
+  --gray-50:#F9FAFB;
+  --gray-100:#F3F4F6;
+  --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;
+  --gray-600:#4B5563;
+  --gray-800:#1F2937;
+  --black:#111827;
+  --green:#22C55E;
+  --green-pale:#F0FDF4;
+  --orange:#F97316;
+  --orange-pale:#FFF7ED;
+  --r:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--white);color:var(--black);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--gray-100);
+  border-radius:8px;padding:3px;flex-shrink:0}
+.lang-btn{font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;
+  border:none;background:transparent;cursor:pointer;color:var(--gray-400);
+  font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.lang-btn:hover:not(.active){color:var(--gray-600)}
+
+.ticker-badge{background:#E53E3E;color:#fff;font-size:11px;font-weight:800;
+  padding:0 18px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  min-width:90px;z-index:1}
+.ticker-content{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 16px}
+
+/* ── PROMO BANNER ──────────────────────────────────────── */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;
+  font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.promo a{color:var(--blue);font-weight:700;text-decoration:underline}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav{background:var(--white);border-bottom:1px solid var(--gray-200);
+  position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.logo-wrap img{height:52px;width:auto;display:block}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;flex-shrink:0}
+.nav-menu a{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 9px;border-radius:8px;transition:all .2s;display:block;white-space:nowrap;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.nav-menu a:hover{color:var(--black);background:var(--gray-100)}
+.nav-menu .has-drop{position:relative}
+.nav-menu .has-drop>a::after{content:'▾';font-size:10px;margin-left:4px;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100%+4px);left:0;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);
+  padding:8px;min-width:220px;box-shadow:var(--shadow-lg);z-index:100}
+.has-drop:hover .drop{display:block}
+.drop a{font-size:13px;color:var(--gray-600);padding:10px 14px;border-radius:8px;
+  display:flex;align-items:center;gap:10px;transition:all .2s}
+.drop a:hover{background:var(--gray-50);color:var(--black)}
+.drop-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drop-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.nav-tel{font-size:13px;font-weight:600;color:var(--gray-600);white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 12px;border-radius:8px;border:1px solid var(--gray-200);transition:all .2s;white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login:hover{border-color:var(--blue);color:var(--blue)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:8px;border:none;background:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s}
+
+/* ── TICKER ────────────────────────────────────────────── */
+.ticker{background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:stretch;overflow:hidden;height:40px;position:sticky;top:72px;z-index:190}
+.ticker-track{display:flex;gap:64px;animation:tick 45s linear infinite;white-space:nowrap;align-items:center}
+.t-item{font-size:13px;color:var(--gray-600);flex-shrink:0}
+.t-item strong{color:var(--blue);font-weight:700}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{background:var(--white);padding:72px 32px 80px}
+.hero-inner{max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-pale);color:var(--blue);
+  font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;
+  letter-spacing:.04em;margin-bottom:20px}
+.hero-eyebrow svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2}
+h1.hero-title{font-size:clamp(36px,4.5vw,56px);font-weight:800;line-height:1.1;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:20px}
+h1.hero-title span{color:var(--blue)}
+.hero-desc{font-size:17px;color:var(--gray-600);line-height:1.75;
+  max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.btn-primary{background:var(--blue);color:#fff;font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;border:2px solid var(--blue);
+  display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-primary svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.btn-secondary{background:var(--white);color:var(--black);font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;
+  border:2px solid var(--gray-200);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-trust-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.stars{color:#F59E0B;font-size:16px;letter-spacing:1px}
+.hero-trust-sep{color:var(--gray-200);font-size:20px}
+.hero-trust-clients{font-size:13px;color:var(--gray-400)}
+.hero-trust-clients strong{color:var(--gray-600);font-weight:700}
+
+/* Hero visual */
+.hero-visual{position:relative;padding:0 0 20px 24px}
+.hero-card-main{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-lg)}
+.hero-card-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--gray-400);margin-bottom:12px}
+.hero-card-title{font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.hero-card-val{font-size:38px;font-weight:800;color:var(--blue);line-height:1;margin-bottom:4px}
+.hero-card-sub{font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+.hero-card-sub svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+.hero-mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.hero-mini{background:var(--gray-50);border-radius:var(--r);padding:16px}
+.hero-mini-n{font-size:24px;font-weight:800;color:var(--black)}
+.hero-mini-l{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hero-badge{position:absolute;top:-16px;right:-16px;background:var(--blue);
+  color:#fff;border-radius:var(--r-lg);padding:14px 18px;text-align:center;
+  box-shadow:var(--shadow-md)}
+.hero-badge-n{font-size:28px;font-weight:800;line-height:1}
+.hero-badge-l{font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.8;margin-top:2px}
+
+/* ── SOCIAL PROOF BAR ──────────────────────────────────── */
+.proof-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);padding:20px 32px}
+.proof-bar-inner{max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600)}
+.proof-item svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+.proof-item strong{color:var(--black);font-weight:700}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+section{padding:80px 32px}
+.container{max-width:1200px;margin:auto}
+.section-tag{font-size:13px;font-weight:700;color:var(--blue);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--black);
+  line-height:1.2;letter-spacing:-.02em}
+.section-title span{color:var(--blue)}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.75;
+  max-width:560px;margin-top:12px}
+.section-header{margin-bottom:52px}
+.sh-center{text-align:center}
+.sh-center .section-desc{margin:12px auto 0}
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how{background:var(--white)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.how-card{background:var(--gray-50);border-radius:var(--r-lg);padding:36px 28px;
+  position:relative;overflow:hidden;transition:all .3s}
+.how-card:hover{background:var(--blue-pale);transform:translateY(-4px)}
+.how-num{font-size:56px;font-weight:900;color:var(--gray-200);line-height:1;
+  margin-bottom:20px;letter-spacing:-.04em;transition:color .3s}
+.how-card:hover .how-num{color:rgba(26,158,240,.2)}
+.how-icon{width:48px;height:48px;background:var(--blue);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.how-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2}
+.how-title{font-size:17px;font-weight:800;color:var(--black);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.svc-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:32px;transition:all .3s;cursor:pointer}
+.svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-card.featured{border-color:var(--blue);background:var(--blue-pale)}
+.svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc-icon{width:52px;height:52px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center}
+.svc-card.featured .svc-icon{background:var(--blue)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.svc-card.featured .svc-icon svg{stroke:#fff}
+.svc-badge{font-size:11px;font-weight:700;background:var(--blue);color:#fff;
+  padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.svc-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.svc-features li{font-size:13px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:3}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-size:13px;font-weight:700;margin-top:20px;text-transform:uppercase;letter-spacing:.04em}
+.svc-link svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.stats{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--r-lg);overflow:hidden}
+.stat-item{background:var(--navy);padding:40px 32px;text-align:center}
+.stat-n{font-size:48px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.stat-n span{color:var(--blue)}
+.stat-l{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WHO WE SERVE ──────────────────────────────────────── */
+.serve{background:var(--white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.serve-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--gray-200);
+  transition:all .3s;cursor:pointer}
+.serve-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.serve-img{height:200px;overflow:hidden;position:relative}
+.serve-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.serve-card:hover .serve-img img{transform:scale(1.05)}
+.serve-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,52,96,.7))}
+.serve-body{padding:24px}
+.serve-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.serve-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+.serve-tag{display:inline-block;font-size:11px;font-weight:700;
+  background:var(--blue-pale);color:var(--blue);padding:4px 10px;border-radius:100px;
+  margin-right:4px;margin-bottom:4px}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testimonials{background:var(--gray-50)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:28px;transition:box-shadow .3s}
+.testi-card:hover{box-shadow:var(--shadow-md)}
+.testi-stars{color:#F59E0B;font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;
+  margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--black)}
+.testi-role{font-size:12px;color:var(--gray-400)}
+
+/* ── CTA BAND ──────────────────────────────────────────── */
+.cta-band{background:var(--blue);padding:72px 32px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;
+  margin-bottom:12px;letter-spacing:-.02em}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--blue);font-size:15px;font-weight:800;
+  padding:14px 32px;border-radius:var(--r);display:inline-block;transition:all .25s}
+.btn-white:hover{background:var(--gray-50);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);border:2px solid rgba(255,255,255,.4);
+  display:inline-block;transition:all .25s;margin-left:12px}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── QUOTE FORM ─────────────────────────────────────────── */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.quote-left-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--black);
+  margin-bottom:12px;letter-spacing:-.02em}
+.quote-left-desc{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+.trust-list{display:flex;flex-direction:column;gap:12px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-icon{width:22px;height:22px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.trust-icon svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.trust-text{font-size:14px;color:var(--gray-600)}
+.trust-text strong{color:var(--black);font-weight:700}
+.form-box{background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px}
+.form-box-title{font-size:20px;font-weight:800;color:var(--black);margin-bottom:4px}
+.form-box-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.f-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:var(--ff);color:var(--black);background:#fff;
+  outline:none;transition:border-color .2s;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);cursor:pointer;
+  transition:background .2s;margin-top:4px}
+.f-btn:hover{background:var(--blue-dark)}
+
+/* ── NEWSLETTER ─────────────────────────────────────────── */
+.newsletter{background:var(--navy);padding:64px 32px;text-align:center}
+.newsletter h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-.02em}
+.newsletter p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:28px}
+.nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.nl-input{flex:1;padding:13px 18px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-family:var(--ff);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 24px;font-size:14px;font-weight:700;font-family:var(--ff);
+  cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--blue-dark)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
+.footer-top{max-width:1200px;margin:auto;padding:64px 32px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{height:40px;margin-bottom:14px}
+.footer-tagline{font-size:13px;line-height:1.7;margin-bottom:20px;color:rgba(255,255,255,.45)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.footer-col-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.9);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.8)}
+
+/* ── FLOATING BUTTONS ───────────────────────────────────── */
+.float-wrap{position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.float-btn{width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:var(--blue)}
+.float-ph{background:var(--navy)}
+.float-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── PRODUCTS ──────────────────────────────────────────── */
+.products{background:var(--gray-50)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prod-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;transition:all .3s}
+.prod-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.prod-top{padding:32px 32px 24px;display:flex;align-items:flex-start;gap:16px}
+.prod-icon{width:56px;height:56px;border-radius:var(--r);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.prod-name{font-size:19px;font-weight:800;color:var(--black);margin-bottom:6px}
+.prod-sub{font-size:13px;color:var(--blue);font-weight:600}
+.prod-body{padding:0 32px 32px}
+.prod-desc{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prod-features li{font-size:13px;color:var(--gray-600);
+  display:flex;align-items:center;gap:8px}
+.prod-btn{display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 20px;border-radius:var(--r);transition:background .2s;border:none;cursor:pointer;font-family:var(--ff)}
+.prod-btn:hover{background:var(--blue)}
+.prod-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:40px}
+  
+  .prod-grid{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .nav-menu.open{display:flex;flex-direction:column;position:absolute;
+    top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);
+    padding:12px 16px;box-shadow:var(--shadow-md)}
+  .nav-menu.open .drop{display:none}
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  section{padding:56px 20px}
+  .hero{padding:48px 20px 56px}
+  .hero-inner{gap:32px}
+  h1.hero-title{font-size:32px}
+  .how-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  .proof-bar-inner{gap:20px}
+  .nl-form{flex-direction:column}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  .hero-badge{display:none}
+  .form-row{grid-template-columns:1fr}
+  .cta-band .btn-outline-white{margin-left:0;margin-top:10px;display:block}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .serve-grid,.prod-grid{grid-template-columns:1fr}
+}
+
+/* ── CONTACT PAGE ─────────────────────────── */
+
+/* Hero */
+.con-hero{background:var(--navy);padding:60px 32px 68px;position:relative;overflow:hidden}
+.con-hero-geo{position:absolute;inset:0;opacity:.04;pointer-events:none}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:12px;
+  color:rgba(255,255,255,.45);margin-bottom:16px}
+.breadcrumb a{color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s}
+.breadcrumb a:hover{color:#fff}
+
+/* Main grid */
+.con-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:start}
+
+/* Form card */
+.con-form-card{background:#fff;border:1.5px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px 40px;position:relative;overflow:hidden}
+.con-form-card::before{content:'';position:absolute;top:0;left:0;
+  width:100%;height:4px;background:linear-gradient(90deg,var(--blue),#45B8F5)}
+
+/* Form inputs */
+.f-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f-group{display:flex;flex-direction:column;gap:5px}
+.f-label{font-size:11.5px;font-weight:700;color:var(--gray-600);
+  text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:inherit;color:var(--black);outline:none;
+  transition:border-color .2s,box-shadow .2s;background:#fff;width:100%}
+.f-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,158,240,.1)}
+.f-input::placeholder{color:var(--gray-300)}
+.f-select{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:inherit;color:var(--black);outline:none;
+  background:#fff;cursor:pointer;width:100%;
+  transition:border-color .2s;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%239CA3AF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:18px}
+.f-select:focus{border-color:var(--blue)}
+.f-textarea{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:inherit;color:var(--black);outline:none;
+  transition:border-color .2s,box-shadow .2s;background:#fff;width:100%;
+  resize:vertical;min-height:110px;line-height:1.6}
+.f-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,158,240,.1)}
+.f-submit{width:100%;background:var(--blue);color:#fff;border:none;
+  border-radius:var(--r);padding:14px;font-size:15px;font-weight:700;
+  font-family:inherit;cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 4px 14px rgba(26,158,240,.35)}
+.f-submit:hover{background:var(--navy);box-shadow:0 4px 18px rgba(15,52,96,.4);transform:translateY(-1px)}
+.f-submit:active{transform:translateY(0)}
+
+/* Sidebar carte + infos */
+.con-sidebar{display:flex;flex-direction:column;gap:20px}
+
+/* MAP CARD */
+.map-card{background:#fff;border:1.5px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;box-shadow:0 4px 24px rgba(14,30,53,.07)}
+.map-wrapper{position:relative;height:280px;background:#E8EFF6;overflow:hidden}
+.map-frame{width:100%;height:100%;border:none;display:block}
+.map-overlay-btn{position:absolute;bottom:14px;right:14px;z-index:5;
+  background:#fff;border:none;border-radius:var(--r);padding:9px 14px;
+  font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+  display:flex;align-items:center;gap:7px;color:var(--blue);
+  box-shadow:0 4px 12px rgba(0,0,0,.15);transition:all .2s}
+.map-overlay-btn:hover{background:var(--blue);color:#fff;transform:translateY(-1px)}
+.map-overlay-btn:hover svg{stroke:#fff}
+.map-overlay-btn svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2;transition:stroke .2s}
+
+/* Pulse marker style */
+.map-pulse-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
+  pointer-events:none;z-index:4}
+.map-pulse{width:16px;height:16px;border-radius:50%;background:var(--blue);
+  position:relative}
+.map-pulse::before,.map-pulse::after{content:'';position:absolute;
+  inset:-4px;border-radius:50%;border:2px solid var(--blue);
+  animation:mapPulse 2s ease-out infinite}
+.map-pulse::after{animation-delay:.7s}
+@keyframes mapPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.5);opacity:0}}
+
+.map-address-bar{padding:16px 20px;background:#fff;border-top:1px solid var(--gray-100);
+  display:flex;align-items:center;gap:12px}
+.map-address-bar svg{flex-shrink:0}
+.map-address-label{font-size:13px;font-weight:700;color:var(--black);margin-bottom:1px}
+.map-address-sub{font-size:12px;color:var(--gray-400)}
+
+/* Géolocalisation panel */
+.geo-panel{background:var(--blue-pale);border:1.5px solid rgba(26,158,240,.2);
+  border-radius:var(--r-lg);padding:16px 18px;display:flex;
+  align-items:center;gap:14px;cursor:pointer;transition:all .25s}
+.geo-panel:hover{border-color:var(--blue);background:rgba(26,158,240,.12);transform:translateY(-1px)}
+.geo-panel.loading{animation:geoPulse 1.5s ease-in-out infinite}
+@keyframes geoPulse{0%,100%{opacity:1}50%{opacity:.6}}
+.geo-icon{width:40px;height:40px;background:var(--blue);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:transform .3s}
+.geo-panel:hover .geo-icon{transform:rotate(-10deg) scale(1.05)}
+.geo-panel.located .geo-icon{background:#22C55E}
+.geo-text-title{font-size:13.5px;font-weight:700;color:var(--black);margin-bottom:2px}
+.geo-text-sub{font-size:12px;color:var(--gray-500)}
+.geo-result{background:#fff;border:1.5px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:14px 16px;display:none}
+.geo-result.visible{display:flex;align-items:flex-start;gap:12px}
+.geo-route-card{background:var(--navy);border-radius:var(--r-lg);
+  padding:16px 18px;display:none}
+.geo-route-card.visible{display:block}
+
+/* Info cards */
+.info-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);
+  padding:24px;transition:all .25s}
+.info-card:hover{border-color:var(--blue);box-shadow:var(--shadow-sm)}
+.info-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.info-row:last-child{margin-bottom:0}
+.info-icon{width:38px;height:38px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:2}
+.info-label{font-size:11px;font-weight:700;color:var(--gray-400);
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.info-value{font-size:14px;font-weight:700;color:var(--black)}
+.info-sub{font-size:12px;color:var(--gray-500);margin-top:1px}
+
+/* Horaires */
+.horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.horaire-item{display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;padding:6px 10px;border-radius:6px;background:var(--gray-50)}
+.horaire-day{color:var(--gray-600);font-weight:600}
+.horaire-time{color:var(--black);font-weight:700}
+.horaire-item.today{background:var(--blue-pale);border:1px solid rgba(26,158,240,.2)}
+.horaire-item.today .horaire-day{color:var(--blue);font-weight:700}
+.horaire-item.closed .horaire-time{color:var(--gray-300)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden}
+.faq-q{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;font-size:14px;font-weight:700;color:var(--black);transition:color .2s;gap:12px}
+.faq-q:hover{color:var(--blue)}
+.faq-chevron{transition:transform .25s;flex-shrink:0}
+.faq-chevron svg{width:16px;height:16px;stroke:var(--gray-400);fill:none;stroke-width:2}
+.faq-a{display:none!important;padding:0 20px 16px;font-size:13.5px;color:var(--gray-600);line-height:1.75}
+.faq-a.open{display:block!important;animation:faqIn .2s ease}
+@keyframes faqIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Success state */
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success.visible{display:block;animation:pgIn .4s ease}
+
+/* Responsive */
+@media(max-width:1024px){
+  .con-grid{grid-template-columns:1fr}
+  .con-sidebar{order:-1}
+  .map-wrapper{height:240px}
+  .f-grid-2{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .con-hero{padding:44px 20px 52px}
+  .con-form-card{padding:24px 20px}
+  section{padding:48px 20px}
+  .horaires-grid{grid-template-columns:1fr}
+}
+
+/* ── FAQ REBUILT ── */
+.faq2-item{border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+  overflow:hidden;margin-bottom:10px;background:#fff}
+.faq2-item input[type=checkbox]{display:none!important;visibility:hidden}
+.faq2-label{display:flex!important;align-items:center;justify-content:space-between;
+  padding:16px 20px;cursor:pointer;font-size:14px;font-weight:700;
+  color:var(--black);gap:12px;user-select:none;-webkit-user-select:none}
+.faq2-label:hover{color:var(--blue)}
+.faq2-arrow{display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:transform .25s;width:24px;height:24px}
+.faq2-arrow svg{stroke:var(--gray-400);width:16px;height:16px;
+  fill:none;stroke-width:2}
+.faq2-body{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+  padding:0 20px;font-size:13.5px;color:var(--gray-600);line-height:1.75}
+.faq2-item input:checked ~ .faq2-label .faq2-arrow{transform:rotate(180deg)}
+.faq2-item input:checked ~ .faq2-body{max-height:300px;padding:0 20px 16px}
+.faq2-item input:checked ~ .faq2-label{color:var(--blue)}
+
+/* ════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+   Inclusion : ajouter ce bloc dans <head>
+   Déclenchement : window.delekyPopup.show()
+════════════════════════════════════════════════ */
+
+/* Overlay */
+#dlk-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: dlkOverlayIn .3s ease;
+}
+#dlk-popup-overlay.open { display: flex; }
+@keyframes dlkOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Modal */
+#dlk-popup-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.12);
+  animation: dlkModalIn .35s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+@keyframes dlkModalIn {
+  from { opacity: 0; transform: scale(.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── GAUCHE : IMAGE / PUB ── */
+#dlk-popup-left {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  background: var(--navy, #0F3460);
+  /* ► L'image de fond est contrôlée via JS / admin */
+  background-size: cover;
+  background-position: center;
+}
+#dlk-popup-left-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+#dlk-popup-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(15,52,96,.4) 0%,
+    rgba(15,52,96,.75) 100%
+  );
+  z-index: 1;
+}
+#dlk-popup-left-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Badge réponse */
+#dlk-popup-badge {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  z-index: 3;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 100px 0 0 100px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.4);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#dlk-popup-badge svg { flex-shrink: 0; }
+
+/* Headline sur image */
+#dlk-popup-headline {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+#dlk-popup-headline span { color: #45B8F5; }
+#dlk-popup-subline {
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* Proof bar */
+#dlk-popup-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+  font-weight: 600;
+}
+#dlk-popup-proof svg { flex-shrink: 0; }
+
+/* ── DROITE : FORMULAIRE ── */
+#dlk-popup-right {
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Bouton fermer */
+#dlk-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: all .2s;
+}
+#dlk-popup-close:hover { background: #fff; transform: scale(1.1); }
+#dlk-popup-close svg { stroke: #374151; fill: none; stroke-width: 2.5; }
+
+/* Logo popup */
+#dlk-popup-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+#dlk-popup-logo img { height: 30px; width: auto; }
+#dlk-popup-logo-name {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--navy, #0F3460);
+  letter-spacing: -.01em;
+}
+
+/* Titre / sous-titre formulaire */
+#dlk-popup-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+#dlk-popup-subtitle {
+  font-size: 13.5px;
+  color: #6B7280;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+/* Inputs */
+.dlk-f-group { margin-bottom: 13px; }
+.dlk-f-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4B5563;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+}
+.dlk-f-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fff;
+}
+.dlk-f-input:hover  { border-color: #D1D5DB; }
+.dlk-f-input:focus  { border-color: var(--blue,#1A9EF0); box-shadow: 0 0 0 3px rgba(26,158,240,.1); }
+.dlk-f-input.error  { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,.08); }
+.dlk-f-select { appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%239CA3AF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;
+}
+
+/* Téléphone avec indicatif */
+.dlk-phone-wrap { display: flex; gap: 8px; }
+.dlk-phone-code {
+  display: flex; align-items: center; gap: 6px;
+  padding: 11px 12px; border: 1.5px solid #E5E7EB; border-radius: 10px;
+  background: #F9FAFB; font-size: 14px; font-weight: 700; color: #374151;
+  white-space: nowrap; flex-shrink: 0; min-width: 76px;
+}
+.dlk-phone-code img { width: 18px; height: 13px; object-fit: cover; border-radius: 2px; }
+
+/* Bouton CTA */
+#dlk-popup-cta {
+  width: 100%;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.35);
+  margin-top: 4px;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+#dlk-popup-cta:hover { background: var(--navy,#0F3460); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(15,52,96,.35); }
+#dlk-popup-cta:active { transform: translateY(0); }
+
+/* Réassurance sous CTA */
+#dlk-popup-reassure {
+  text-align: center;
+  font-size: 12px;
+  color: #9CA3AF;
+}
+#dlk-popup-reassure strong { color: var(--blue, #1A9EF0); }
+
+/* État succès */
+#dlk-popup-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+  animation: dlkFadeUp .35s ease;
+}
+@keyframes dlkFadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* Privacy */
+.dlk-privacy {
+  font-size: 11px; color: #9CA3AF; text-align: center;
+  margin-top: 8px; line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  #dlk-popup-modal {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    border-radius: 16px;
+  }
+  #dlk-popup-left { display: none; }
+  #dlk-popup-right { padding: 28px 24px; }
+  #dlk-popup-close { top: 12px; right: 12px; }
+}
+
+/* Anti-scroll quand popup ouvert */
+body.dlk-popup-open { overflow: hidden; }
+
+/* Nav responsive — hide phone on medium screens so Connexion is always visible */
+@media(max-width:1100px){.nav-tel{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- LOGO — hauteur fixe, pas de compression -->
+    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+      <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
+    </a>
+
+    <!-- MENU PRINCIPAL -->
+                <ul class="nav-menu" id="nav-menu">
+      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
+      <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
+            <li class="has-drop">
+        <a href="#">Nos Produits</a>
+        <div class="drop">
+          <a href="CO.deleky-simulateur-paie-v2.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">CI Payroll Simulation</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-simulateur-immo.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Home Loan Calculator</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-plan-amortissement.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Amortization Plan</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+        </div>
+      </li>
+<li class="has-drop">
+        <a href="CO.deleky-ressources.html#res-docs">Ressources</a>
+        <div class="drop">
+          <a href="CO.deleky-ressources.html#res-docs" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            Documents Utiles
+          </a>
+          <a href="CO.deleky-ressources.html#res-calc" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></div>
+            Calculateurs
+          </a>
+
+          <a href="CO.deleky-ressources.html#res-part" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Partenariat
+          </a>
+        </div>
+      </li>
+      <li class="has-drop">
+        <a href="CO.deleky-publications.html">Publications</a>
+        <div class="drop">
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg></div>
+            Blog & Articles
+          </a>
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+            Événements
+          </a>
+        </div>
+      </li>
+      <li><a href="CO.deleky-joinus.html" onclick="closeNav()">Nous Rejoindre</a></li>
+      <li><a href="CO.deleky-contact.html" onclick="closeNav()">Contact</a></li>
+    </ul>
+
+    <!-- DROITE : TEL + LANG + LOGIN + CTA -->
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+
+      <a href="tel:+22507000588" class="nav-tel">+225&nbsp;07&nbsp;00&nbsp;05&nbsp;88</a>
+
+      <!-- Switcher FR / EN -->
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('fr',this)">FR</button>
+        <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+      </div>
+
+      <a href="CO.deleky-login (7).html" class="nav-login">Connexion</a>
+
+    </div>
+  </div>
+</nav>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-badge">NEWS</div>
+  <div class="ticker-content">
+    <div class="ticker-track">
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="con-hero">
+  <svg class="con-hero-geo" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+    <circle cx="1300" cy="-50" r="300" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="100" cy="400" r="200" fill="none" stroke="white" stroke-width="1"/>
+  </svg>
+  <div style="max-width:1200px;margin:auto;position:relative;z-index:1">
+    <div class="breadcrumb">
+      <a href="CO.deleky-home.html">Accueil</a>
+      <span style="color:rgba(255,255,255,.3)">›</span>
+      <span>Contact</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;flex-wrap:wrap">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:7px;
+          background:rgba(26,158,240,.2);border:1px solid rgba(26,158,240,.3);
+          border-radius:100px;padding:5px 14px;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span style="font-size:11px;font-weight:700;color:#45B8F5;
+            text-transform:uppercase;letter-spacing:.08em">Parlons de Votre Entreprise</span>
+        </div>
+        <h1 style="font-size:clamp(26px,3.8vw,46px);font-weight:800;color:#fff;
+          letter-spacing:-.02em;line-height:1.1;margin-bottom:10px">
+          Décrivez Votre Besoin —<br>
+          <span style="color:#45B8F5">Nous Analysons Votre Situation</span>
+        </h1>
+        <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.8;max-width:500px">
+          Comptabilité, fiscalité, audit, conseil ou conformité — décrivez votre besoin et notre équipe vous accompagne dans la structuration et le pilotage de votre activité. Premier échange offert, sans engagement.
+        </p>
+      </div>
+      <!-- Quick contact chips -->
+      <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0">
+        <a href="tel:+22507000588" style="display:flex;align-items:center;gap:12px;
+          background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+          border-radius:var(--r-lg);padding:12px 18px;color:#fff;text-decoration:none;
+          font-size:13px;font-weight:600;transition:all .2s;white-space:nowrap"
+          onmouseover="this.style.background='rgba(26,158,240,.3)';this.style.borderColor='rgba(26,158,240,.5)'"
+          onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.borderColor='rgba(255,255,255,.15)'">
+          <div style="width:32px;height:32px;background:rgba(26,158,240,.3);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:600;
+              text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px">Appel Direct</div>
+            <span>+225 07 00 05 88</span>
+          </div>
+        </a><a href="tel:+22527000588" style="display:flex;align-items:center;gap:12px;
+          background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+          border-radius:var(--r-lg);padding:12px 18px;color:#fff;text-decoration:none;
+          font-size:13px;font-weight:600;transition:all .2s;white-space:nowrap"
+          onmouseover="this.style.background='rgba(26,158,240,.3)';this.style.borderColor='rgba(26,158,240,.5)'"
+          onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.borderColor='rgba(255,255,255,.15)'">
+          <div style="width:32px;height:32px;background:rgba(26,158,240,.3);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:600;
+              text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px">Ligne Fixe</div>
+            <span>+225 27 00 05 88</span>
+          </div>
+        </a><a href="mailto:contact@delekys.ci" style="display:flex;align-items:center;gap:12px;
+          background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+          border-radius:var(--r-lg);padding:12px 18px;color:#fff;text-decoration:none;
+          font-size:13px;font-weight:600;transition:all .2s;white-space:nowrap"
+          onmouseover="this.style.background='rgba(26,158,240,.3)';this.style.borderColor='rgba(26,158,240,.5)'"
+          onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.borderColor='rgba(255,255,255,.15)'">
+          <div style="width:32px;height:32px;background:rgba(26,158,240,.3);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:600;
+              text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px">Email Professionnel</div>
+            <span>contact@delekys.ci</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section style="background:var(--gray-50)">
+  <div class="container">
+    <div class="con-grid">
+
+      <!-- ── FORMULAIRE ─────────────────────────────── -->
+      <div>
+        <div class="con-form-card">
+          <div style="margin-bottom:24px">
+            <h2 style="font-size:22px;font-weight:800;color:var(--black);
+              margin-bottom:6px;letter-spacing:-.02em">Demander un Diagnostic</h2>
+            <p style="font-size:13.5px;color:var(--gray-500)">
+              Vous avez un besoin en comptabilité, fiscalité, audit ou structuration ? Donnez-nous quelques éléments pour analyser votre situation et vous orienter vers la solution la plus adaptée.
+            </p>
+          </div>
+
+          <!-- Form -->
+          <div id="contact-form">
+            <div class="f-grid-2">
+              <div class="f-group">
+                <label class="f-label">Prénom <span style="color:#EF4444">*</span></label>
+                <input class="f-input" id="f-prenom" placeholder="Jean">
+              </div>
+              <div class="f-group">
+                <label class="f-label">Nom <span style="color:#EF4444">*</span></label>
+                <input class="f-input" id="f-nom" placeholder="Kouamé">
+              </div>
+              <div class="f-group">
+                <label class="f-label">Email professionnel <span style="color:#EF4444">*</span></label>
+                <input class="f-input" id="f-email" type="email" placeholder="jean@masociete.ci — adresse professionnelle">
+              </div>
+              <div class="f-group">
+                <label class="f-label">Téléphone</label>
+                <input class="f-input" id="f-tel" type="tel" placeholder="+225 07 00 00 00">
+              </div>
+              <div class="f-group">
+                <label class="f-label">Société / Structure (SARL, SA, SAS...)</label>
+                <input class="f-input" id="f-societe" placeholder="Ex : Ma Société SARL, Abidjan">
+              </div>
+              <div class="f-group">
+                <label class="f-label">Problématique principale <span style="color:#EF4444">*</span></label>
+                <select class="f-select" id="f-objet">
+                  <option value="">— Quelle est votre problématique ? —</option>
+                  <option>Comptabilité & États Financiers</option>
+                  <option>Fiscalité & Déclarations</option>
+                  <option>Optimisation Fiscale — Réduire ma charge fiscale</option>
+                  <option>Audit & Contrôle Interne</option>
+                  <option>Paie &amp; RH — Externaliser ma gestion sociale</option>
+                  <option>Création d'Entreprise — Structurer mon projet</option>
+                  <option>Conformité BCEAO / AML — Licences &amp; Réglementation</option>
+                  <option>Conseil & Structuration</option>
+                  <option>Devis & Tarification</option>
+                  <option>Partenariat</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="f-group" style="margin-bottom:14px">
+              <label class="f-label">Décrivez votre besoin <span style="color:#EF4444">*</span></label>
+              <textarea class="f-textarea" id="f-message"
+                placeholder="Ex : "Je suis dirigeant d'une SARL depuis 2 ans, ma comptabilité est en retard, je cherche un cabinet pour régulariser et prendre en charge mes déclarations fiscales mensuelles...""></textarea>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:20px">
+              <input type="checkbox" id="f-consent" style="margin-top:3px;accent-color:var(--blue);flex-shrink:0">
+              <label for="f-consent" style="font-size:12px;color:var(--gray-500);line-height:1.6;cursor:pointer">
+                J'autorise Deleky's SARL à utiliser ces informations uniquement pour analyser ma demande et me contacter. Confidentialité garantie — aucun partage à des tiers.
+              </label>
+            </div>
+            <button class="f-submit" onclick="submitContact(this)">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              Demander mon Diagnostic Gratuit
+            </button>
+            <p style="font-size:11.5px;color:var(--gray-400);text-align:center;margin-top:10px">
+              Analyse de votre situation sous 24h · Diagnostic initial offert · Aucun engagement
+            </p>
+          </div>
+
+          <!-- Success state -->
+          <div class="form-success" id="form-success">
+            <div style="width:64px;height:64px;background:var(--green-pale);border-radius:50%;
+              display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 style="font-size:20px;font-weight:800;color:var(--black);margin-bottom:8px">
+              Demande Reçue — Analyse en Cours
+            </h3>
+            <p style="font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px">
+              Votre demande a bien été transmise à notre équipe. Un expert analyse votre situation et vous contacte sous <strong>24 heures ouvrables</strong> pour un premier échange structuré.
+            </p>
+            <button onclick="resetForm()"
+              style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+              padding:11px 22px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">
+              Envoyer un autre message
+            </button>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-top:28px">
+          <!-- Badges réassurance -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px">
+            <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid var(--blue);
+              border-radius:var(--r-lg);padding:14px 16px;text-align:center">
+              <div style="font-size:20px;font-weight:900;color:var(--blue);line-height:1">24h</div>
+              <div style="font-size:11px;font-weight:600;color:var(--gray-500);margin-top:4px;line-height:1.4">Réponse<br>garantie</div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid #059669;
+              border-radius:var(--r-lg);padding:14px 16px;text-align:center">
+              <div style="font-size:20px;font-weight:900;color:#059669;line-height:1">100%</div>
+              <div style="font-size:11px;font-weight:600;color:var(--gray-500);margin-top:4px;line-height:1.4">Confidentialité<br>garantie</div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid var(--navy);
+              border-radius:var(--r-lg);padding:14px 16px;text-align:center">
+              <div style="font-size:16px;font-weight:900;color:var(--navy);line-height:1">Offert</div>
+              <div style="font-size:11px;font-weight:600;color:var(--gray-500);margin-top:4px;line-height:1.4">1er diagnostic<br>sans engagement</div>
+            </div>
+          </div>
+          <h3 style="font-size:17px;font-weight:800;color:var(--black);
+            margin-bottom:18px;letter-spacing:-.01em">
+            Vos Questions avant de Nous Contacter
+          </h3>
+          <div class="faq-list">
+  <div class="faq2-item">
+    <input type="checkbox" id="faq2-0">
+    <label class="faq2-label" for="faq2-0">
+      <span>Quel est le délai pour obtenir une réponse après ma demande ?</span>
+      <span class="faq2-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </label>
+    <div class="faq2-body">Toutes les demandes reçoivent une réponse sous 24 heures ouvrables. Pour les urgences — contrôle DGI, clôture en retard, redressement — vous pouvez nous appeler directement. Nous intervenons rapidement.</div>
+  </div>
+  <div class="faq2-item">
+    <input type="checkbox" id="faq2-1">
+    <label class="faq2-label" for="faq2-1">
+      <span>Combien coûtent vos services ? Y a-t-il un engagement minimal ?</span>
+      <span class="faq2-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </label>
+    <div class="faq2-body">Nos tarifs sont établis sur mesure après analyse de votre situation et de vos besoins réels. Nous proposons systématiquement un premier échange de 30 minutes offert, sans engagement, avant toute proposition commerciale. Aucune surprise.</div>
+  </div>
+  <div class="faq2-item">
+    <input type="checkbox" id="faq2-2">
+    <label class="faq2-label" for="faq2-2">
+      <span>Travaillez-vous avec des PME, startups ou entreprises en création ?</span>
+      <span class="faq2-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </label>
+    <div class="faq2-body">Oui. Une grande partie de notre portefeuille est composée de PME, startups, entrepreneurs individuels et entreprises en phase de création. Nous avons des formules adaptées à chaque stade de développement — de la première comptabilité à la structuration avancée.</div>
+  </div>
+  <div class="faq2-item">
+    <input type="checkbox" id="faq2-3">
+    <label class="faq2-label" for="faq2-3">
+      <span>Proposez-vous un accompagnement sur mesure ou des forfaits fixes ?</span>
+      <span class="faq2-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </label>
+    <div class="faq2-body">Nous ne proposons pas de forfaits standardisés. Chaque mission est construite sur la base d'un diagnostic initial : nous analysons votre situation, définissons les périmètres d'intervention et vous proposons une lettre de mission claire avec les délais, les livrables et le budget. Aucune surprise.</div>
+  </div>
+  <div class="faq2-item">
+    <input type="checkbox" id="faq2-4">
+    <label class="faq2-label" for="faq2-4">
+      <span>Intervenez-vous pour des entreprises hors de Côte d'Ivoire ?</span>
+      <span class="faq2-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </label>
+    <div class="faq2-body">Oui. Nous accompagnons des entreprises dans plusieurs pays de la sous-région UEMOA/CEDEAO — Sénégal, Mali, Burkina Faso, Togo, Bénin — en fiscalité, audit et conformité réglementaire. Nos experts maîtrisent le cadre juridique et fiscal de la zone.</div>
+  </div>
+</div>
+        </div>
+      </div>
+
+      <!-- ── SIDEBAR : CARTE + INFOS ─────────────────── -->
+      <div class="con-sidebar">
+
+        <!-- CARTE INTERACTIVE -->
+        <div class="map-card">
+          <div class="map-wrapper">
+            <!-- OpenStreetMap embed -->
+            <iframe
+              id="map-frame"
+              class="map-frame"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-4.0265%2C5.3105%2C-4.0065%2C5.3305&layer=mapnik&marker=5.3205%2C-4.0165"
+              title="Localisation Deleky's SARL — Abidjan Plateau"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin">
+            </iframe>
+            <!-- Pulse marker overlay (visible when geolocalising) -->
+            <div class="map-pulse-wrap" id="map-pulse" style="display:none">
+              <div class="map-pulse"></div>
+            </div>
+            <!-- Bouton ouvrir dans maps -->
+            <button class="map-overlay-btn" onclick="openInMaps()">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Ouvrir dans Maps
+            </button>
+          </div>
+          <div class="map-address-bar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="map-address-label">Deleky's SARL — Venez nous Rencontrer</div>
+              <div class="map-address-sub">Plateau, Abidjan · Rendez-vous disponibles du lundi au samedi</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GÉO-LOCALISATION -->
+        <div class="geo-panel" id="geo-panel" onclick="geoLocate()">
+          <div class="geo-icon" id="geo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div style="flex:1">
+            <div class="geo-text-title" id="geo-title">Trouver le Cabinet — Me Géolocaliser</div>
+            <div class="geo-text-sub" id="geo-sub">Cliquez pour détecter votre position et afficher la route</div>
+          </div>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <!-- Résultat géolocalisation -->
+        <div class="geo-result" id="geo-result">
+          <div style="width:38px;height:38px;background:var(--green-pale);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:2px">
+              Position détectée
+            </div>
+            <div style="font-size:12.5px;color:var(--gray-600)" id="geo-distance-text">
+              Calcul en cours...
+            </div>
+            <a id="geo-route-link" href="#" target="_blank"
+              style="display:inline-flex;align-items:center;gap:5px;font-size:12.5px;
+              font-weight:700;color:var(--blue);margin-top:6px;text-decoration:none">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Voir l'itinéraire complet
+            </a>
+          </div>
+        </div>
+
+        <!-- INFORMATIONS CABINET -->
+        <div class="info-card">
+          <h4 style="font-size:14px;font-weight:800;color:var(--black);
+            margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            Informations
+          </h4>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div>
+              <div class="info-label">Appel Direct</div>
+              <div class="info-value"><a href="tel:+22507000588" style="color:inherit">+225 07 00 05 88</a></div>
+              <div class="info-sub"><a href="tel:+22527000588" style="color:var(--gray-500)">+225 27 00 05 88 — Ligne Fixe</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value"><a href="mailto:contact@delekys.ci" style="color:inherit">contact@delekys.ci</a></div>
+              <div class="info-sub"><a href="mailto:info@delekys.ci" style="color:var(--gray-500)">info@delekys.ci</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="info-label">Adresse</div>
+              <div class="info-value">Plateau, Abidjan</div>
+              <div class="info-sub">Côte d'Ivoire · Zone UEMOA</div>
+            </div>
+          </div>
+          <div class="info-row" style="margin-bottom:0">
+            <div class="info-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div style="flex:1">
+              <div class="info-label">Disponibilité &amp; Horaires</div>
+              <div class="horaires-grid" id="horaires-grid">
+                <div class="horaire-item" id="jour-0"><span class="horaire-day">Lundi</span><span class="horaire-time">08h00 – 18h00</span></div><div class="horaire-item" id="jour-1"><span class="horaire-day">Mardi</span><span class="horaire-time">08h00 – 18h00</span></div><div class="horaire-item" id="jour-2"><span class="horaire-day">Mercredi</span><span class="horaire-time">08h00 – 18h00</span></div><div class="horaire-item" id="jour-3"><span class="horaire-day">Jeudi</span><span class="horaire-time">08h00 – 18h00</span></div><div class="horaire-item" id="jour-4"><span class="horaire-day">Vendredi</span><span class="horaire-time">08h00 – 17h30</span></div><div class="horaire-item" id="jour-5"><span class="horaire-day">Samedi</span><span class="horaire-time">09h00 – 13h00</span></div><div class="horaire-item" id="jour-6"><span class="horaire-day">Dimanche</span><span class="horaire-time">Fermé</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Urgence -->
+        <div style="background:var(--navy);border-radius:var(--r-xl);padding:20px 22px;
+          display:flex;align-items:center;gap:14px">
+          <div style="width:40px;height:40px;background:rgba(239,68,68,.2);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FCA5A5" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px">
+              Situation urgente ? Nous intervenons rapidement.
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:8px">
+              Contrôle DGI, retard comptable, redressement fiscal, licence BCEAO — certaines situations ne peuvent pas attendre. Notre équipe analyse votre dossier en priorité.
+            </div>
+            <a href="tel:+22507000588"
+              style="display:inline-flex;align-items:center;gap:6px;
+              background:rgba(239,68,68,.3);color:#FCA5A5;font-size:12.5px;font-weight:700;
+              padding:6px 14px;border-radius:100px;text-decoration:none;
+              border:1px solid rgba(239,68,68,.4);transition:all .2s"
+              onmouseover="this.style.background='rgba(239,68,68,.5)'"
+              onmouseout="this.style.background='rgba(239,68,68,.3)'">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FCA5A5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+              Appel urgent : +225 07 00 05 88
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div>
+      <div style="display:inline-block;background:#ffffff;padding:10px 16px;border-radius:12px;margin-bottom:16px">
+        <img src="logo.jpg" style="height:38px;width:auto;display:block">
+      </div>
+      <p class="footer-tagline">Comptabilité · Fiscalité · Gestion d'Entreprise<br>Abidjan, Côte d'Ivoire</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white" stroke="none"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div>
+      <div class="footer-col-h">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-creation-entreprise.html">Création d'Entreprise</a></li>
+        <li><a href="CO.deleky-petites-entreprises.html">Petites Entreprises</a></li>
+        <li><a href="CO.deleky-entreprises (3).html">Entreprises</a></li>
+        <li><a href="CO.deleky-comptabilite-en-retard.html">Comptabilité en Retard</a></li>
+        <li><a href="CO.deleky-gestion-de-paie.html">Gestion de Paie</a></li>
+        <li><a href="CO.deleky-juridique-ag.html">Juridique &amp; AG</a></li>
+        <li><a href="CO.deleky-entreprises (3).html-plan" target="_blank">Business Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- Formes Juridiques -->
+    <div>
+      <div class="footer-col-h">Formes Juridiques</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-tableau-comparatif.html">Tableau Comparatif</a></li>
+        <li><a href="CO.deleky-creation-sarl.html">SARL</a></li>
+        <li><a href="CO.deleky-creation-sa.html">SA</a></li>
+        <li><a href="CO.deleky-creation-sas.html">SAS</a></li>
+        <li><a href="CO.deleky-creation-snc.html">SNC</a></li>
+        <li><a href="CO.deleky-creation-gie.html">GIE</a></li>
+        <li><a href="CO.deleky-creation-sci.html">SCI</a></li>
+      </ul>
+    </div>
+
+    <!-- Nos Produits -->
+    <div>
+      <div class="footer-col-h">Nos Produits</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-simulateur-paie-v2.html">CI Payroll Simulation</a></li>
+        <li><a href="CO.deleky-simulateur-immo.html">Home Loan Calculator</a></li>
+        <li><a href="CO.deleky-plan-amortissement.html">Amortization Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- À Propos -->
+    <div>
+      <div class="footer-col-h">À Propos</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Le Cabinet</a></li>
+        <li><a href="CO.deleky-publications.html">Blog &amp; Articles</a></li>
+        <li><a href="CO.deleky-publications.html">Événements</a></li>
+        <li><a href="CO.deleky-ressources.html">Témoignages</a></li>
+        <li><a href="CO.deleky-joinus.html">Nous Rejoindre</a></li>
+        <li><a href="CO.deleky-ressources.html">Partenariat</a></li>
+        <li><a href="CO.deleky-ressources.html">Simulateur Paie</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deleky's SARL — Tous droits réservés</span>
+    <div class="footer-bottom-links">
+      <a href="#">Conditions Générales</a>
+      <a href="#">Mentions Légales</a>
+      <a href="#">Protection des Données</a>
+      <a href="CO.deleky-contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<!-- FLOATING BUTTONS -->
+<div class="float-wrap">
+  <button class="float-btn float-ph" title="Appeler" onclick="window.location.href='tel:+22507000588'">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </button>
+  <button class="float-btn float-wa" title="WhatsApp" onclick="window.location.href='https://wa.me/2251111111119'">
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/lang.js"></script>
+<script>
+
+function toggleNav(){document.getElementById('nav-menu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
+function switchLang(l,b){document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+function navigate(p){const routes={home:'CO.deleky-home.html',cabinet:'CO_deleky-cabinet-v2.html',missions:'CO.deleky-missions.html',ressources:'CO.deleky-ressources.html',blog:'CO.deleky-publications.html',publications:'CO.deleky-publications.html',joinus:'CO.deleky-joinus.html',login:'CO.deleky-login (7).html',contact:'CO.deleky-contact.html','simulateur-paie':'CO.deleky-simulateur-paie.html'};window.location.href=routes[p]||routes.home;}
+
+/* ── FAQ ── */
+function toggleFAQ(i) {
+  const a    = document.getElementById('faq-a-'+i);
+  const chev = document.getElementById('fchev-'+i);
+  if(!a) return;
+
+  const isOpen = a.style.display === 'block';
+
+  // Close all
+  document.querySelectorAll('.faq-a').forEach(el => {
+    el.style.display = 'none';
+    el.classList.remove('open');
+  });
+  document.querySelectorAll('.faq-chevron').forEach(c => {
+    c.style.transform = '';
+  });
+
+  // Open clicked if was closed
+  if(!isOpen) {
+    a.style.display = 'block';
+    a.classList.add('open');
+    if(chev) chev.style.transform = 'rotate(180deg)';
+  }
+}
+
+/* ── FORM SUBMIT ── */
+function submitContact(btn) {
+  const required = ['f-prenom','f-nom','f-email','f-objet','f-message'];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if(!el || !el.value.trim()) {
+      el.style.borderColor = '#EF4444';
+      el.style.boxShadow   = '0 0 0 3px rgba(239,68,68,.1)';
+      valid = false;
+      setTimeout(()=>{el.style.borderColor='';el.style.boxShadow='';},2500);
+    }
+  });
+  if(!valid) return;
+  const consent = document.getElementById('f-consent');
+  if(consent && !consent.checked) {
+    consent.style.outline = '2px solid #EF4444';
+    setTimeout(()=>{consent.style.outline='';},2500);
+    return;
+  }
+
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg> Envoi en cours...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('contact-form').style.display = 'none';
+    const success = document.getElementById('form-success');
+    success.classList.add('visible');
+  }, 1200);
+}
+
+function resetForm() {
+  document.getElementById('contact-form').style.display = 'block';
+  document.getElementById('form-success').classList.remove('visible');
+  ['f-prenom','f-nom','f-email','f-tel','f-societe','f-objet','f-message'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  const btn = document.querySelector('.f-submit');
+  if(btn) {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg> Envoyer mon Message';
+    btn.disabled = false;
+  }
+}
+
+/* ── MAPS ── */
+function openInMaps() {
+  window.open('https://www.openstreetmap.org/?mlat=5.3205&mlon=-4.0165#map=16/5.3205/-4.0165','_blank');
+}
+
+/* ── GÉOLOCALISATION ── */
+function geoLocate() {
+  const panel    = document.getElementById('geo-panel');
+  const title    = document.getElementById('geo-title');
+  const sub      = document.getElementById('geo-sub');
+  const icon     = document.getElementById('geo-icon');
+  const result   = document.getElementById('geo-result');
+  const distText = document.getElementById('geo-distance-text');
+  const link     = document.getElementById('geo-route-link');
+
+  if(!navigator.geolocation) {
+    sub.textContent = 'Géolocalisation non disponible sur ce navigateur.';
+    return;
+  }
+
+  // Loading state
+  panel.classList.add('loading');
+  title.textContent = 'Localisation en cours...';
+  sub.textContent   = 'Accès à votre position GPS...';
+  icon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg>';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const lat  = pos.coords.latitude;
+      const lng  = pos.coords.longitude;
+
+      // Cabinet coords
+      const cabLat = 5.3205, cabLng = -4.0165;
+
+      // Haversine distance
+      const R    = 6371;
+      const dLat = (cabLat - lat) * Math.PI / 180;
+      const dLng = (cabLng - lng) * Math.PI / 180;
+      const a    = Math.sin(dLat/2)*Math.sin(dLat/2)
+                 + Math.cos(lat*Math.PI/180)*Math.cos(cabLat*Math.PI/180)
+                 * Math.sin(dLng/2)*Math.sin(dLng/2);
+      const dist = R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      const distStr = dist < 1
+        ? Math.round(dist*1000) + ' m de Deleky's SARL'
+        : dist.toFixed(1).replace('.',',') + ' km de Deleky's SARL';
+
+      // Update UI
+      panel.classList.remove('loading');
+      panel.classList.add('located');
+      panel.style.background      = 'rgba(34,197,94,.08)';
+      panel.style.borderColor     = 'rgba(34,197,94,.3)';
+      icon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+      icon.style.background = '#22C55E';
+      title.textContent    = 'Position détectée !';
+      sub.textContent      = distStr;
+
+      // Result card
+      result.classList.add('visible');
+      distText.textContent = distStr;
+
+      // Route link (OpenStreetMap directions)
+      const routeUrl = `https://www.openstreetmap.org/directions?from=${lat},${lng}&to=${cabLat},${cabLng}`;
+      link.href = routeUrl;
+
+      // Update map to show both points
+      const mapFrame = document.getElementById('map-frame');
+      if(mapFrame) {
+        const minLat = Math.min(lat, cabLat) - 0.01;
+        const maxLat = Math.max(lat, cabLat) + 0.01;
+        const minLng = Math.min(lng, cabLng) - 0.01;
+        const maxLng = Math.max(lng, cabLng) + 0.01;
+        mapFrame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${minLng},${minLat},${maxLng},${maxLat}&layer=mapnik&marker=${cabLat},${cabLng}`;
+      }
+
+      // Remove click behavior from panel
+      panel.onclick = null;
+      panel.style.cursor = 'default';
+    },
+    (err) => {
+      panel.classList.remove('loading');
+      title.textContent = 'Localisation refusée';
+      sub.textContent   = err.code === 1
+        ? 'Autorisation refusée. Ouvrez Maps directement ↓'
+        : 'Impossible de détecter votre position.';
+      icon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      panel.style.background  = 'rgba(239,68,68,.08)';
+      panel.style.borderColor = 'rgba(239,68,68,.3)';
+      icon.style.background   = '#DC2626';
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
+/* ── HIGHLIGHT TODAY'S HOURS ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const days = [6,0,1,2,3,4,5]; // Sun=0 → index
+  const today = new Date().getDay(); // 0=Sun,1=Mon...
+  const jourIdx = [6,0,1,2,3,4,5][today]; // map to our array (0=Mon)
+  const dayMap  = {0:0,1:1,2:2,3:3,4:4,5:5,6:6};
+  // Mon=1,Tue=2...Sat=6,Sun=0 → our order Mon=0...Sun=6
+  const idxMap  = {1:0,2:1,3:2,4:3,5:4,6:5,0:6};
+  const todayEl = document.getElementById('jour-'+idxMap[today]);
+  if(todayEl) todayEl.classList.add('today');
+  const sundayEl = document.getElementById('jour-6');
+  if(sundayEl) sundayEl.classList.add('closed');
+
+  // Ticker
+  document.querySelectorAll('.ticker-track').forEach(t=>{
+    if(!t.dataset.dup){t.innerHTML+=t.innerHTML;t.dataset.dup='1';}
+  });
+});
+
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     DELEKY'S POPUP
+     Contrôlé via window.delekyPopup.show(config)
+     Config admin via deleky-admin.html
+═══════════════════════════════════════════════════ -->
+<div id="dlk-popup-overlay" onclick="dlkCloseOnOverlay(event)">
+  <div id="dlk-popup-modal" role="dialog" aria-modal="true" aria-labelledby="dlk-popup-title">
+
+    <!-- ── GAUCHE : Image / Pub ── -->
+    <div id="dlk-popup-left">
+      <!-- ► src contrôlé via admin -->
+      <img id="dlk-popup-left-img"
+        src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80"
+        alt="Expert Deleky's SARL">
+      <div id="dlk-popup-left-overlay"></div>
+
+      <!-- Badge réponse rapide -->
+      <div id="dlk-popup-badge">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="dlk-popup-badge-text">Réponse en 5 min</span>
+      </div>
+
+      <!-- Contenu sur image -->
+      <div id="dlk-popup-left-content">
+        <div id="dlk-popup-headline">
+          Besoin d'un <span>Expert Comptable</span> ?
+        </div>
+        <div id="dlk-popup-subline">
+          Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d'entreprise.
+        </div>
+        <div id="dlk-popup-proof">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          250+ entreprises nous font confiance
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DROITE : Formulaire ── -->
+    <div id="dlk-popup-right">
+
+      <!-- Bouton fermer -->
+      <button id="dlk-popup-close" onclick="delekyPopup.hide()" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Formulaire principal -->
+      <div id="dlk-popup-form-area">
+        <!-- Logo -->
+        <div id="dlk-popup-logo">
+          <img src="logo.jpg" alt="Deleky's">
+          <div>
+            <div id="dlk-popup-logo-name">Deleky's SARL</div>
+            <div style="font-size:9px;color:#9CA3AF;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-top:1px">Cabinet Comptable & Conseil</div>
+          </div>
+        </div>
+
+        <!-- Titre -->
+        <div id="dlk-popup-title">Besoin d'aide ?</div>
+        <div id="dlk-popup-subtitle">
+          Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.
+        </div>
+
+        <!-- Champs dynamiques (remplis via JS) -->
+        <div id="dlk-popup-fields">
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Prénom &amp; Nom</label>
+            <input class="dlk-f-input" id="dlk-f-nom" placeholder="Jean Kouamé"
+              oninput="this.classList.remove('error')">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Votre entreprise</label>
+            <input class="dlk-f-input" id="dlk-f-societe" placeholder="Ma Société SARL">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Numéro de téléphone <span style="color:#EF4444">*</span></label>
+            <div class="dlk-phone-wrap">
+              <div class="dlk-phone-code">
+                🇨🇮 +225
+              </div>
+              <input class="dlk-f-input" id="dlk-f-tel" type="tel"
+                placeholder="07 00 00 00 00" style="flex:1"
+                oninput="this.classList.remove('error')">
+            </div>
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Sujet</label>
+            <select class="dlk-f-input dlk-f-select" id="dlk-f-sujet">
+              <option value="">— Votre besoin —</option>
+              <option>Comptabilité & États Financiers</option>
+              <option>Fiscalité & Déclarations</option>
+              <option>Optimisation Fiscale</option>
+              <option>Audit & Contrôle Interne</option>
+              <option>Gestion de la Paie</option>
+              <option>Création d'Entreprise</option>
+              <option>Conformité BCEAO / AML</option>
+              <option>Autre question</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <button id="dlk-popup-cta" onclick="delekyPopup.submit()">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          <span id="dlk-popup-cta-text">Me faire rappeler</span>
+        </button>
+
+        <div id="dlk-popup-reassure">
+          Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles
+        </div>
+
+        <div class="dlk-privacy">
+          En soumettant ce formulaire, vous acceptez d'être contacté par Deleky's SARL. Aucun engagement.
+        </div>
+      </div>
+
+      <!-- État succès -->
+      <div id="dlk-popup-success">
+        <div style="width:60px;height:60px;background:#F0FDF4;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-size:20px;font-weight:800;color:#111827;margin-bottom:8px">
+          Demande reçue !
+        </div>
+        <div style="font-size:14px;color:#6B7280;line-height:1.75;margin-bottom:20px">
+          Un expert Deleky's vous rappelle<br><strong style="color:#1A9EF0">dans les 5 minutes</strong>.
+        </div>
+        <div style="background:#F9FAFB;border-radius:12px;padding:14px 16px;
+          font-size:13px;color:#4B5563;margin-bottom:16px;text-align:left">
+          <div style="font-weight:700;margin-bottom:4px">En attendant :</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-contact.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Envoyer un message détaillé
+              </a>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-ressources.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Explorer nos ressources gratuites
+              </a>
+            </div>
+          </div>
+        </div>
+        <button onclick="delekyPopup.hide()"
+          style="background:none;border:1.5px solid #E5E7EB;color:#6B7280;
+          border-radius:10px;padding:10px 24px;font-size:14px;font-weight:600;
+          font-family:inherit;cursor:pointer;width:100%;transition:all .2s"
+          onmouseover="this.style.borderColor='#1A9EF0';this.style.color='#1A9EF0'"
+          onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#6B7280'">
+          Fermer
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ═══════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+═══════════════════════════════════════════════════ */
+window.delekyPopup = (function() {
+
+  /* Config par défaut (surchargeée via admin) */
+  let _cfg = {
+    // Déclenchement
+    trigger:      'delay',   // 'delay' | 'exit' | 'scroll' | 'manual'
+    delay:        5000,      // ms avant affichage auto
+    scrollPct:    50,        // % de scroll pour trigger 'scroll'
+    pages:        'all',     // 'all' | ['home','contact'] — pages ciblées
+    // Contenu
+    badge:        'Réponse en 5 min',
+    headline:     'Besoin d\'un Expert Comptable ?',
+    headlineSpan: 'Expert Comptable',
+    subline:      'Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d\'entreprise.',
+    proof:        '250+ entreprises nous font confiance',
+    imgUrl:       'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80',
+    showImg:      true,
+    title:        'Besoin d\'aide ?',
+    subtitle:     'Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.',
+    ctaText:      'Me faire rappeler',
+    reassure:     'Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles',
+    // Affichage
+    active:       true,
+    once:         true,      // afficher une seule fois par session
+    overlayClose: true,      // clic overlay = ferme
+  };
+
+  let _shown      = false;
+  let _triggerSet = false;
+  let _timer      = null;
+
+  /* ── Appliquer la config au DOM ── */
+  function _applyConfig(cfg) {
+    _cfg = Object.assign(_cfg, cfg);
+    const $ = id => document.getElementById(id);
+    // Image
+    const img = $('dlk-popup-left-img');
+    if(img) {
+      img.src = _cfg.imgUrl || '';
+      img.style.display = _cfg.showImg ? 'block' : 'none';
+    }
+    const left = $('dlk-popup-left');
+    if(left) left.style.display = _cfg.showImg ? '' : 'none';
+    // Badge
+    const badgeText = $('dlk-popup-badge-text');
+    if(badgeText) badgeText.textContent = _cfg.badge;
+    // Headline
+    const hl = $('dlk-popup-headline');
+    if(hl) {
+      const sp = _cfg.headlineSpan;
+      hl.innerHTML = _cfg.headline.replace(sp, `<span>${sp}</span>`);
+    }
+    // Subline
+    const sl = $('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline;
+    // Proof
+    const pf = $('dlk-popup-proof');
+    if(pf) { const span = pf.querySelector('span') || document.createElement('span'); span.textContent = _cfg.proof; }
+    // Titre / sous-titre form
+    const t  = $('dlk-popup-title');    if(t)  t.textContent = _cfg.title;
+    const st = $('dlk-popup-subtitle'); if(st) st.textContent = _cfg.subtitle;
+    // CTA
+    const cta = $('dlk-popup-cta-text'); if(cta) cta.textContent = _cfg.ctaText;
+    // Réassurance
+    const rs = $('dlk-popup-reassure'); if(rs) rs.innerHTML = _cfg.reassure;
+  }
+
+  /* ── Vérifier si déjà vu ── */
+  function _alreadySeen() {
+    if(!_cfg.once) return false;
+    try { return !!sessionStorage.getItem('dlk-popup-seen'); } catch(e) { return false; }
+  }
+  function _markSeen() {
+    try { sessionStorage.setItem('dlk-popup-seen', '1'); } catch(e) {}
+  }
+
+  /* ── Afficher ── */
+  function show(cfg) {
+    if(cfg) _applyConfig(cfg);
+    if(!_cfg.active) return;
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.classList.add('open');
+    document.body.classList.add('dlk-popup-open');
+    _shown = true;
+    _markSeen();
+    // Reset form
+    _resetForm();
+  }
+
+  /* ── Cacher ── */
+  function hide() {
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.style.animation = 'none';
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity .25s';
+    setTimeout(() => {
+      overlay.classList.remove('open');
+      overlay.style.opacity = '';
+      overlay.style.transition = '';
+      overlay.style.animation = '';
+      document.body.classList.remove('dlk-popup-open');
+    }, 250);
+  }
+
+  /* ── Soumettre ── */
+  function submit() {
+    const tel = document.getElementById('dlk-f-tel');
+    if(!tel?.value.trim()) {
+      tel.classList.add('error');
+      tel.focus();
+      return;
+    }
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn) {
+      btn._orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg> Envoi...';
+      btn.disabled = true;
+    }
+    setTimeout(() => {
+      document.getElementById('dlk-popup-form-area').style.display = 'none';
+      document.getElementById('dlk-popup-success').style.display   = 'block';
+      // Changer visuel gauche
+      const hl = document.getElementById('dlk-popup-headline');
+      if(hl) hl.innerHTML = 'Demande <span>envoyée !</span>';
+      const sl = document.getElementById('dlk-popup-subline');
+      if(sl) sl.textContent = 'Un expert vous rappelle dans les 5 minutes.';
+    }, 1200);
+  }
+
+  /* ── Reset form ── */
+  function _resetForm() {
+    ['dlk-f-nom','dlk-f-societe','dlk-f-tel'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.value = ''; el.classList.remove('error'); }
+    });
+    const sj = document.getElementById('dlk-f-sujet');
+    if(sj) sj.selectedIndex = 0;
+    document.getElementById('dlk-popup-form-area').style.display = '';
+    document.getElementById('dlk-popup-success').style.display   = 'none';
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn && btn._orig) { btn.innerHTML = btn._orig; btn.disabled = false; }
+    const hl = document.getElementById('dlk-popup-headline');
+    if(hl) hl.innerHTML = _cfg.headline?.replace(_cfg.headlineSpan,'<span>'+_cfg.headlineSpan+'</span>') || '';
+    const sl = document.getElementById('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline || '';
+  }
+
+  /* ── Setup triggers automatiques ── */
+  function _setupTrigger() {
+    if(_triggerSet || !_cfg.active) return;
+    _triggerSet = true;
+    if(_alreadySeen()) return;
+    switch(_cfg.trigger) {
+      case 'delay':
+        _timer = setTimeout(() => show(), _cfg.delay || 5000);
+        break;
+      case 'exit':
+        document.addEventListener('mouseleave', e => {
+          if(e.clientY < 0 && !_shown) show();
+        });
+        break;
+      case 'scroll':
+        window.addEventListener('scroll', function _sc() {
+          const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+          if(pct >= (_cfg.scrollPct||50) && !_shown) { show(); window.removeEventListener('scroll',_sc); }
+        });
+        break;
+      case 'manual':
+        break; // show() appelé manuellement
+    }
+  }
+
+  /* ── Init ── */
+  function init(cfg) {
+    if(cfg) _applyConfig(cfg);
+    // Charger config sauvegardée depuis admin
+    try {
+      const saved = localStorage.getItem('dlk-popup-cfg');
+      if(saved) _applyConfig(JSON.parse(saved));
+    } catch(e) {}
+    _setupTrigger();
+  }
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') hide();
+  });
+
+  return { show, hide, submit, init, config: c => _applyConfig(c) };
+})();
+
+/* Fermer sur clic overlay */
+function dlkCloseOnOverlay(e) {
+  if(e.target === document.getElementById('dlk-popup-overlay') && window.delekyPopup)
+    window.delekyPopup.hide();
+}
+
+/* Auto-init au chargement */
+document.addEventListener('DOMContentLoaded', () => {
+  window.delekyPopup.init();
+});
+
+// Auto-init
+document.addEventListener("DOMContentLoaded",()=>window.delekyPopup.init({trigger:"exit"}));
+</script>
+</body>
+</html>

@@ -1,0 +1,2750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Deleky's SARL</title>
+<style>
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Maiandra GD',Georgia,serif;background:#fff;color:#111827;
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%} a{text-decoration:none;color:inherit}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+:root{
+  --blue:#1A9EF0;
+  --blue-dark:#1480CC;
+  --blue-pale:#EBF6FE;
+  --navy:#0F3460;
+  --white:#FFFFFF;
+  --gray-50:#F9FAFB;
+  --gray-100:#F3F4F6;
+  --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;
+  --gray-600:#4B5563;
+  --gray-800:#1F2937;
+  --black:#111827;
+  --green:#22C55E;
+  --green-pale:#F0FDF4;
+  --orange:#F97316;
+  --orange-pale:#FFF7ED;
+  --r:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--white);color:var(--black);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--gray-100);
+  border-radius:8px;padding:3px;flex-shrink:0}
+.lang-btn{font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;
+  border:none;background:transparent;cursor:pointer;color:var(--gray-400);
+  font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.lang-btn:hover:not(.active){color:var(--gray-600)}
+
+.ticker-badge{background:#E53E3E;color:#fff;font-size:11px;font-weight:800;
+  padding:0 18px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  min-width:90px;z-index:1}
+.ticker-content{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 16px}
+
+/* ── PROMO BANNER ──────────────────────────────────────── */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;
+  font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.promo a{color:var(--blue);font-weight:700;text-decoration:underline}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav{background:var(--white);border-bottom:1px solid var(--gray-200);
+  position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.logo-wrap img{height:52px;width:auto;display:block}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;flex-shrink:0}
+.nav-menu a{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 9px;border-radius:8px;transition:all .2s;display:block;white-space:nowrap;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.nav-menu a:hover{color:var(--black);background:var(--gray-100)}
+.nav-menu .has-drop{position:relative}
+.nav-menu .has-drop>a::after{content:'▾';font-size:10px;margin-left:4px;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100%+4px);left:0;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);
+  padding:8px;min-width:220px;box-shadow:var(--shadow-lg);z-index:100}
+.has-drop:hover .drop{display:block}
+.drop a{font-size:13px;color:var(--gray-600);padding:10px 14px;border-radius:8px;
+  display:flex;align-items:center;gap:10px;transition:all .2s}
+.drop a:hover{background:var(--gray-50);color:var(--black)}
+.drop-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drop-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.nav-tel{font-size:13px;font-weight:600;color:var(--gray-600);white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 12px;border-radius:8px;border:1px solid var(--gray-200);transition:all .2s;white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login:hover{border-color:var(--blue);color:var(--blue)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:8px;border:none;background:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s}
+
+/* ── TICKER ────────────────────────────────────────────── */
+.ticker{background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:stretch;overflow:hidden;height:40px;position:sticky;top:72px;z-index:190}
+.ticker-track{display:flex;gap:64px;animation:tick 45s linear infinite;white-space:nowrap;align-items:center}
+.t-item{font-size:13px;color:var(--gray-600);flex-shrink:0}
+.t-item strong{color:var(--blue);font-weight:700}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{background:var(--white);padding:72px 32px 80px}
+.hero-inner{max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-pale);color:var(--blue);
+  font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;
+  letter-spacing:.04em;margin-bottom:20px}
+.hero-eyebrow svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2}
+h1.hero-title{font-size:clamp(36px,4.5vw,56px);font-weight:800;line-height:1.1;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:20px}
+h1.hero-title span{color:var(--blue)}
+.hero-desc{font-size:17px;color:var(--gray-600);line-height:1.75;
+  max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.btn-primary{background:var(--blue);color:#fff;font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;border:2px solid var(--blue);
+  display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-primary svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.btn-secondary{background:var(--white);color:var(--black);font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;
+  border:2px solid var(--gray-200);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-trust-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.stars{color:#F59E0B;font-size:16px;letter-spacing:1px}
+.hero-trust-sep{color:var(--gray-200);font-size:20px}
+.hero-trust-clients{font-size:13px;color:var(--gray-400)}
+.hero-trust-clients strong{color:var(--gray-600);font-weight:700}
+
+/* Hero visual */
+.hero-visual{position:relative;padding:0 0 20px 24px}
+.hero-card-main{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-lg)}
+.hero-card-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--gray-400);margin-bottom:12px}
+.hero-card-title{font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.hero-card-val{font-size:38px;font-weight:800;color:var(--blue);line-height:1;margin-bottom:4px}
+.hero-card-sub{font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+.hero-card-sub svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+.hero-mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.hero-mini{background:var(--gray-50);border-radius:var(--r);padding:16px}
+.hero-mini-n{font-size:24px;font-weight:800;color:var(--black)}
+.hero-mini-l{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hero-badge{position:absolute;top:-16px;right:-16px;background:var(--blue);
+  color:#fff;border-radius:var(--r-lg);padding:14px 18px;text-align:center;
+  box-shadow:var(--shadow-md)}
+.hero-badge-n{font-size:28px;font-weight:800;line-height:1}
+.hero-badge-l{font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.8;margin-top:2px}
+
+/* ── SOCIAL PROOF BAR ──────────────────────────────────── */
+.proof-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);padding:20px 32px}
+.proof-bar-inner{max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600)}
+.proof-item svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+.proof-item strong{color:var(--black);font-weight:700}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+section{padding:80px 32px}
+.container{max-width:1200px;margin:auto}
+.section-tag{font-size:13px;font-weight:700;color:var(--blue);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--black);
+  line-height:1.2;letter-spacing:-.02em}
+.section-title span{color:var(--blue)}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.75;
+  max-width:560px;margin-top:12px}
+.section-header{margin-bottom:52px}
+.sh-center{text-align:center}
+.sh-center .section-desc{margin:12px auto 0}
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how{background:var(--white)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.how-card{background:var(--gray-50);border-radius:var(--r-lg);padding:36px 28px;
+  position:relative;overflow:hidden;transition:all .3s}
+.how-card:hover{background:var(--blue-pale);transform:translateY(-4px)}
+.how-num{font-size:56px;font-weight:900;color:var(--gray-200);line-height:1;
+  margin-bottom:20px;letter-spacing:-.04em;transition:color .3s}
+.how-card:hover .how-num{color:rgba(26,158,240,.2)}
+.how-icon{width:48px;height:48px;background:var(--blue);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.how-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2}
+.how-title{font-size:17px;font-weight:800;color:var(--black);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.svc-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:32px;transition:all .3s;cursor:pointer}
+.svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-card.featured{border-color:var(--blue);background:var(--blue-pale)}
+.svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc-icon{width:52px;height:52px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center}
+.svc-card.featured .svc-icon{background:var(--blue)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.svc-card.featured .svc-icon svg{stroke:#fff}
+.svc-badge{font-size:11px;font-weight:700;background:var(--blue);color:#fff;
+  padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.svc-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.svc-features li{font-size:13px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:3}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-size:13px;font-weight:700;margin-top:20px;text-transform:uppercase;letter-spacing:.04em}
+.svc-link svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.stats{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--r-lg);overflow:hidden}
+.stat-item{background:var(--navy);padding:40px 32px;text-align:center}
+.stat-n{font-size:48px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.stat-n span{color:var(--blue)}
+.stat-l{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WHO WE SERVE ──────────────────────────────────────── */
+.serve{background:var(--white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.serve-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--gray-200);
+  transition:all .3s;cursor:pointer}
+.serve-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.serve-img{height:200px;overflow:hidden;position:relative}
+.serve-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.serve-card:hover .serve-img img{transform:scale(1.05)}
+.serve-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,52,96,.7))}
+.serve-body{padding:24px}
+.serve-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.serve-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+.serve-tag{display:inline-block;font-size:11px;font-weight:700;
+  background:var(--blue-pale);color:var(--blue);padding:4px 10px;border-radius:100px;
+  margin-right:4px;margin-bottom:4px}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testimonials{background:var(--gray-50)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:28px;transition:box-shadow .3s}
+.testi-card:hover{box-shadow:var(--shadow-md)}
+.testi-stars{color:#F59E0B;font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;
+  margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--black)}
+.testi-role{font-size:12px;color:var(--gray-400)}
+
+/* ── CTA BAND ──────────────────────────────────────────── */
+.cta-band{background:var(--blue);padding:72px 32px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;
+  margin-bottom:12px;letter-spacing:-.02em}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--blue);font-size:15px;font-weight:800;
+  padding:14px 32px;border-radius:var(--r);display:inline-block;transition:all .25s}
+.btn-white:hover{background:var(--gray-50);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);border:2px solid rgba(255,255,255,.4);
+  display:inline-block;transition:all .25s;margin-left:12px}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── QUOTE FORM ─────────────────────────────────────────── */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.quote-left-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--black);
+  margin-bottom:12px;letter-spacing:-.02em}
+.quote-left-desc{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+.trust-list{display:flex;flex-direction:column;gap:12px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-icon{width:22px;height:22px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.trust-icon svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.trust-text{font-size:14px;color:var(--gray-600)}
+.trust-text strong{color:var(--black);font-weight:700}
+.form-box{background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px}
+.form-box-title{font-size:20px;font-weight:800;color:var(--black);margin-bottom:4px}
+.form-box-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.f-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:var(--ff);color:var(--black);background:#fff;
+  outline:none;transition:border-color .2s;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);cursor:pointer;
+  transition:background .2s;margin-top:4px}
+.f-btn:hover{background:var(--blue-dark)}
+
+/* ── NEWSLETTER ─────────────────────────────────────────── */
+.newsletter{background:var(--navy);padding:64px 32px;text-align:center}
+.newsletter h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-.02em}
+.newsletter p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:28px}
+.nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.nl-input{flex:1;padding:13px 18px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-family:var(--ff);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 24px;font-size:14px;font-weight:700;font-family:var(--ff);
+  cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--blue-dark)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
+.footer-top{max-width:1200px;margin:auto;padding:64px 32px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{height:40px;margin-bottom:14px}
+.footer-tagline{font-size:13px;line-height:1.7;margin-bottom:20px;color:rgba(255,255,255,.45)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.footer-col-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.9);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.8)}
+
+/* ── FLOATING BUTTONS ───────────────────────────────────── */
+.float-wrap{position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.float-btn{width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:var(--blue)}
+.float-ph{background:var(--navy)}
+.float-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── PRODUCTS ──────────────────────────────────────────── */
+.products{background:var(--gray-50)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prod-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;transition:all .3s}
+.prod-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.prod-top{padding:32px 32px 24px;display:flex;align-items:flex-start;gap:16px}
+.prod-icon{width:56px;height:56px;border-radius:var(--r);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.prod-name{font-size:19px;font-weight:800;color:var(--black);margin-bottom:6px}
+.prod-sub{font-size:13px;color:var(--blue);font-weight:600}
+.prod-body{padding:0 32px 32px}
+.prod-desc{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prod-features li{font-size:13px;color:var(--gray-600);
+  display:flex;align-items:center;gap:8px}
+.prod-btn{display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 20px;border-radius:var(--r);transition:background .2s;border:none;cursor:pointer;font-family:var(--ff)}
+.prod-btn:hover{background:var(--blue)}
+.prod-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:40px}
+  
+  .prod-grid{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .nav-menu.open{display:flex;flex-direction:column;position:absolute;
+    top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);
+    padding:12px 16px;box-shadow:var(--shadow-md)}
+  .nav-menu.open .drop{display:none}
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  section{padding:56px 20px}
+  .hero{padding:48px 20px 56px}
+  .hero-inner{gap:32px}
+  h1.hero-title{font-size:32px}
+  .how-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  .proof-bar-inner{gap:20px}
+  .nl-form{flex-direction:column}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  .hero-badge{display:none}
+  .form-row{grid-template-columns:1fr}
+  .cta-band .btn-outline-white{margin-left:0;margin-top:10px;display:block}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .serve-grid,.prod-grid{grid-template-columns:1fr}
+}
+
+/* ── PUBLICATIONS PAGE ───────────────── */
+.pub-hero{background:#fff;padding:64px 32px 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--gray-200)}
+.pub-hero-geo{display:none}
+.pub-hero-inner{max-width:1200px;margin:auto;position:relative;z-index:1}
+.pub-hero-grid{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:16px}
+.breadcrumb a{color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb span{color:rgba(255,255,255,.7)}
+
+/* Sub-nav */
+.pub-subnav{background:#fff;border-bottom:2px solid var(--gray-200);
+  position:sticky;top:112px;z-index:180;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.pub-subnav-inner{max-width:1200px;margin:auto;padding:0 32px;display:flex;gap:0}
+.pub-tab{padding:16px 24px;font-size:13.5px;font-weight:600;cursor:pointer;
+  white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-2px;
+  transition:all .2s;color:var(--gray-500);display:flex;align-items:center;gap:9px}
+.pub-tab svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
+.pub-tab:hover{color:var(--black)}
+.pub-tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:700}
+
+/* Sections */
+.pub-section{display:none;animation:pubFade .3s ease}
+.pub-section.active{display:block}
+@keyframes pubFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ARTICLES ─── */
+.art-featured{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.art-feat-card{border-radius:var(--r-xl);overflow:hidden;position:relative;
+  height:360px;cursor:pointer;display:block;text-decoration:none}
+.art-feat-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.art-feat-card:hover img{transform:scale(1.04)}
+.art-feat-overlay{position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(10,22,40,.88))}
+.art-feat-body{position:absolute;bottom:0;left:0;right:0;padding:28px}
+.art-feat-cat{display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue);color:#fff;font-size:10px;font-weight:700;
+  padding:4px 11px;border-radius:100px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.art-feat-title{font-size:20px;font-weight:800;color:#fff;
+  line-height:1.3;margin-bottom:8px;letter-spacing:-.01em}
+.art-feat-meta{font-size:12px;color:rgba(255,255,255,.6);
+  display:flex;align-items:center;gap:12px}
+
+/* Article grid */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;min-width:0}
+.art-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden;transition:all .35s;cursor:pointer;display:flex;flex-direction:column;min-width:0}
+.art-card:hover{border-color:var(--blue);
+  box-shadow:0 12px 40px rgba(14,30,53,.1);transform:translateY(-4px)}
+.art-card-img{height:200px;overflow:hidden;position:relative;flex-shrink:0;background:var(--gray-100)}
+.art-card-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
+.art-card:hover .art-card-img img{transform:scale(1.05)}
+.art-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.art-card-cat{display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:8px;padding:3px 10px;
+  background:var(--blue-pale);border-radius:100px}
+.art-card-title{font-size:15px;font-weight:800;color:var(--black);
+  line-height:1.35;margin-bottom:8px;letter-spacing:-.01em;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-card-excerpt{font-size:12.5px;color:var(--gray-600);line-height:1.65;margin-bottom:14px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.art-card-meta{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--gray-100);margin-top:auto}
+.art-card-author{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-500)}
+.art-card-avatar{width:24px;height:24px;border-radius:50%;
+  background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.art-card-avatar svg{width:12px;height:12px;stroke:var(--blue);fill:none;stroke-width:2}
+.art-card-read{font-size:11px;font-weight:700;color:var(--blue);
+  text-transform:uppercase;letter-spacing:.05em}
+
+/* Filters bar */
+.art-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.art-filter{padding:7px 16px;border:1.5px solid var(--gray-200);border-radius:100px;
+  font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;
+  color:var(--gray-500);background:#fff;font-family:inherit}
+.art-filter.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.art-filter:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+
+/* Newsletter mini */
+.art-nl{background:var(--navy);border-radius:var(--r-xl);padding:32px 36px;
+  display:flex;align-items:center;gap:32px;margin-top:32px;flex-wrap:wrap}
+.art-nl-text h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:5px;
+  font-family:'Maiandra GD',Georgia,serif}
+.art-nl-text p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
+.art-nl-form{display:flex;gap:8px;flex:1;min-width:280px}
+.art-nl-input{flex:1;padding:11px 16px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:13.5px;font-family:inherit;outline:none;transition:border-color .2s}
+.art-nl-input::placeholder{color:rgba(255,255,255,.35)}
+.art-nl-input:focus{border-color:rgba(255,255,255,.4)}
+.art-nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:11px 20px;font-size:13.5px;font-weight:700;font-family:inherit;
+  cursor:pointer;white-space:nowrap;transition:background .2s}
+.art-nl-btn:hover{background:#1480CC}
+
+/* ── ÉVÉNEMENTS ─── */
+.evt-hero-card{background:#fff;border-radius:var(--r-xl);
+  overflow:hidden;border:1.5px solid var(--gray-200)}
+.evt-hero-img{height:200px;overflow:hidden}
+.evt-hero-img img{width:100%;height:100%;object-fit:cover}
+.evt-hero-body{padding:20px}
+.evt-date-badge{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.evt-date-box{background:var(--blue);color:#fff;border-radius:var(--r);
+  padding:8px 12px;text-align:center;flex-shrink:0;min-width:52px}
+.evt-date-day{font-size:22px;font-weight:900;line-height:1}
+.evt-date-month{font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;margin-top:2px;opacity:.85}
+.evt-type{display:inline-flex;align-items:center;gap:5px;font-size:10px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  padding:3px 10px;border-radius:100px}
+.evt-type.conference{background:#FEF3C7;color:#D97706}
+.evt-type.webinar{background:var(--blue-pale);color:var(--blue)}
+.evt-type.formation{background:#D1FAE5;color:#059669}
+.evt-type.atelier{background:#EDE9FE;color:#7C3AED}
+.evt-title{font-size:15px;font-weight:800;color:var(--black);
+  margin-bottom:6px;line-height:1.3;letter-spacing:-.01em}
+.evt-info{font-size:12.5px;color:var(--gray-600);
+  display:flex;flex-direction:column;gap:4px;margin-bottom:14px}
+.evt-info-row{display:flex;align-items:center;gap:7px}
+.evt-info-row svg{width:13px;height:13px;stroke:var(--gray-400);
+  fill:none;stroke-width:2;flex-shrink:0}
+.evt-register{display:flex;align-items:center;justify-content:space-between;
+  padding-top:12px;border-top:1px solid var(--gray-100)}
+.evt-places{font-size:11px;font-weight:600;color:var(--gray-400)}
+.evt-places span{color:var(--blue);font-weight:700}
+.evt-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:8px 16px;font-size:12.5px;font-weight:700;font-family:inherit;
+  cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:6px}
+.evt-btn:hover{background:var(--navy)}
+.evt-btn svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2}
+
+/* Timeline events */
+.evt-timeline{display:flex;flex-direction:column;gap:0}
+.evt-tl-month{font-size:11px;font-weight:700;color:var(--blue);
+  text-transform:uppercase;letter-spacing:.1em;padding:20px 0 12px;
+  border-bottom:1px solid var(--gray-200);margin-bottom:0}
+.evt-tl-item{display:grid;grid-template-columns:80px 1fr;gap:20px;
+  padding:18px 0;border-bottom:1px solid var(--gray-100);align-items:start}
+.evt-tl-date{text-align:center}
+.evt-tl-day{font-size:28px;font-weight:900;color:var(--navy);line-height:1}
+.evt-tl-dow{font-size:10px;font-weight:700;color:var(--gray-400);
+  text-transform:uppercase;letter-spacing:.07em}
+.evt-tl-body{flex:1}
+.evt-tl-title{font-size:14px;font-weight:800;color:var(--black);
+  margin-bottom:4px;line-height:1.3}
+.evt-tl-meta{font-size:12px;color:var(--gray-500);
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.evt-tl-meta svg{width:12px;height:12px;stroke:currentColor;
+  fill:none;stroke-width:2;flex-shrink:0}
+.evt-tl-meta span{display:flex;align-items:center;gap:5px}
+.evt-tl-desc{font-size:12.5px;color:var(--gray-600);line-height:1.6;margin-bottom:10px}
+.evt-past{opacity:.55}
+.evt-past .evt-tl-day{color:var(--gray-300)}
+
+/* Inscription CTA */
+.evt-register-cta{background:var(--gray-50);border:1.5px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px 36px;margin-top:32px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap}
+.evt-register-cta h3{font-size:19px;font-weight:800;color:var(--black);
+  margin-bottom:5px;letter-spacing:-.02em;font-family:'Maiandra GD',Georgia,serif}
+.evt-register-cta p{font-size:13px;color:var(--gray-600)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .pub-hero-grid{grid-template-columns:1fr;gap:40px}
+  .art-featured{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:1fr 1fr}
+  .art-nl{flex-direction:column;gap:20px}
+  .evt-tl-item{grid-template-columns:60px 1fr;gap:12px}
+  .pub-subnav-inner{padding:0 16px}
+}
+@media(max-width:768px){
+  .pub-hero{padding:48px 20px 56px}
+  .art-grid{grid-template-columns:1fr}
+  .art-featured{grid-template-columns:1fr}
+  .evt-register-cta{flex-direction:column;text-align:center}
+  section{padding:48px 20px}
+  .pub-subnav{top:108px}
+}
+
+/* ════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+   Inclusion : ajouter ce bloc dans <head>
+   Déclenchement : window.delekyPopup.show()
+════════════════════════════════════════════════ */
+
+/* Overlay */
+#dlk-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: dlkOverlayIn .3s ease;
+}
+#dlk-popup-overlay.open { display: flex; }
+@keyframes dlkOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Modal */
+#dlk-popup-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.12);
+  animation: dlkModalIn .35s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+@keyframes dlkModalIn {
+  from { opacity: 0; transform: scale(.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── GAUCHE : IMAGE / PUB ── */
+#dlk-popup-left {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  background: var(--navy, #0F3460);
+  /* ► L'image de fond est contrôlée via JS / admin */
+  background-size: cover;
+  background-position: center;
+}
+#dlk-popup-left-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+#dlk-popup-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(15,52,96,.4) 0%,
+    rgba(15,52,96,.75) 100%
+  );
+  z-index: 1;
+}
+#dlk-popup-left-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Badge réponse */
+#dlk-popup-badge {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  z-index: 3;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 100px 0 0 100px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.4);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#dlk-popup-badge svg { flex-shrink: 0; }
+
+/* Headline sur image */
+#dlk-popup-headline {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+#dlk-popup-headline span { color: #45B8F5; }
+#dlk-popup-subline {
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* Proof bar */
+#dlk-popup-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+  font-weight: 600;
+}
+#dlk-popup-proof svg { flex-shrink: 0; }
+
+/* ── DROITE : FORMULAIRE ── */
+#dlk-popup-right {
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Bouton fermer */
+#dlk-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: all .2s;
+}
+#dlk-popup-close:hover { background: #fff; transform: scale(1.1); }
+#dlk-popup-close svg { stroke: #374151; fill: none; stroke-width: 2.5; }
+
+/* Logo popup */
+#dlk-popup-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+#dlk-popup-logo img { height: 30px; width: auto; }
+#dlk-popup-logo-name {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--navy, #0F3460);
+  letter-spacing: -.01em;
+}
+
+/* Titre / sous-titre formulaire */
+#dlk-popup-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+#dlk-popup-subtitle {
+  font-size: 13.5px;
+  color: #6B7280;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+/* Inputs */
+.dlk-f-group { margin-bottom: 13px; }
+.dlk-f-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4B5563;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+}
+.dlk-f-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fff;
+}
+.dlk-f-input:hover  { border-color: #D1D5DB; }
+.dlk-f-input:focus  { border-color: var(--blue,#1A9EF0); box-shadow: 0 0 0 3px rgba(26,158,240,.1); }
+.dlk-f-input.error  { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,.08); }
+.dlk-f-select { appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%239CA3AF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;
+}
+
+/* Téléphone avec indicatif */
+.dlk-phone-wrap { display: flex; gap: 8px; }
+.dlk-phone-code {
+  display: flex; align-items: center; gap: 6px;
+  padding: 11px 12px; border: 1.5px solid #E5E7EB; border-radius: 10px;
+  background: #F9FAFB; font-size: 14px; font-weight: 700; color: #374151;
+  white-space: nowrap; flex-shrink: 0; min-width: 76px;
+}
+.dlk-phone-code img { width: 18px; height: 13px; object-fit: cover; border-radius: 2px; }
+
+/* Bouton CTA */
+#dlk-popup-cta {
+  width: 100%;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.35);
+  margin-top: 4px;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+#dlk-popup-cta:hover { background: var(--navy,#0F3460); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(15,52,96,.35); }
+#dlk-popup-cta:active { transform: translateY(0); }
+
+/* Réassurance sous CTA */
+#dlk-popup-reassure {
+  text-align: center;
+  font-size: 12px;
+  color: #9CA3AF;
+}
+#dlk-popup-reassure strong { color: var(--blue, #1A9EF0); }
+
+/* État succès */
+#dlk-popup-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+  animation: dlkFadeUp .35s ease;
+}
+@keyframes dlkFadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* Privacy */
+.dlk-privacy {
+  font-size: 11px; color: #9CA3AF; text-align: center;
+  margin-top: 8px; line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  #dlk-popup-modal {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    border-radius: 16px;
+  }
+  #dlk-popup-left { display: none; }
+  #dlk-popup-right { padding: 28px 24px; }
+  #dlk-popup-close { top: 12px; right: 12px; }
+}
+
+/* Anti-scroll quand popup ouvert */
+body.dlk-popup-open { overflow: hidden; }
+
+/* Nav responsive — hide phone on medium screens so Connexion is always visible */
+@media(max-width:1100px){.nav-tel{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- LOGO — hauteur fixe, pas de compression -->
+    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+      <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
+    </a>
+
+    <!-- MENU PRINCIPAL -->
+                <ul class="nav-menu" id="nav-menu">
+      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
+      <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
+            <li class="has-drop">
+        <a href="#">Nos Produits</a>
+        <div class="drop">
+          <a href="CO.deleky-simulateur-paie-v2.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">CI Payroll Simulation</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-simulateur-immo.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Home Loan Calculator</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-plan-amortissement.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Amortization Plan</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+        </div>
+      </li>
+<li class="has-drop">
+        <a href="CO.deleky-ressources.html#res-docs">Ressources</a>
+        <div class="drop">
+          <a href="CO.deleky-ressources.html#res-docs" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            Documents Utiles
+          </a>
+          <a href="CO.deleky-ressources.html#res-calc" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></div>
+            Calculateurs
+          </a>
+
+          <a href="CO.deleky-ressources.html#res-part" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Partenariat
+          </a>
+        </div>
+      </li>
+      <li class="has-drop">
+        <a href="CO.deleky-publications.html">Publications</a>
+        <div class="drop">
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg></div>
+            Blog & Articles
+          </a>
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+            Événements
+          </a>
+        </div>
+      </li>
+      <li><a href="CO.deleky-joinus.html" onclick="closeNav()">Nous Rejoindre</a></li>
+      <li><a href="CO.deleky-contact.html" onclick="closeNav()">Contact</a></li>
+    </ul>
+
+    <!-- DROITE : TEL + LANG + LOGIN + CTA -->
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+
+      <a href="tel:+22507000588" class="nav-tel">+225&nbsp;07&nbsp;00&nbsp;05&nbsp;88</a>
+
+      <!-- Switcher FR / EN -->
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('fr',this)">FR</button>
+        <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+      </div>
+
+      <a href="CO.deleky-login (7).html" class="nav-login">Connexion</a>
+
+    </div>
+  </div>
+</nav>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-badge">NEWS</div>
+  <div class="ticker-content">
+    <div class="ticker-track">
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="pub-hero">
+  <svg class="pub-hero-geo" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice">
+    <circle cx="1300" cy="-50" r="400" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="100" cy="500" r="300" fill="none" stroke="white" stroke-width="1"/>
+  </svg>
+  <div class="pub-hero-inner">
+    <div class="breadcrumb">
+      <a href="CO.deleky-home.html">Accueil</a>
+      <span style="color:rgba(255,255,255,.3)">›</span>
+      <span>Publications</span>
+    </div>
+    <div class="pub-hero-grid">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:7px;
+          background:rgba(26,158,240,.2);border:1px solid rgba(26,158,240,.3);
+          border-radius:100px;padding:5px 14px;margin-bottom:16px">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg>
+          <span style="font-size:11px;font-weight:700;color:#45B8F5;
+            text-transform:uppercase;letter-spacing:.08em">Analyses · Insights · Expertise Terrain</span>
+        </div>
+        <h1 style="font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--navy);
+          letter-spacing:-.02em;line-height:1.1;margin-bottom:14px">
+          Insights, analyses et décryptages<br>pour <span style="color:#45B8F5">structurer et sécuriser votre entreprise</span>
+        </h1>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.8;
+          max-width:520px;margin-bottom:28px">
+          Nos publications traduisent notre expertise en audit, comptabilité, fiscalité, conformité et analyse des données. Elles vous permettent de mieux comprendre votre environnement réglementaire et de prendre des décisions de gestion éclairées.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onclick="showPubTab('articles',document.querySelector('.pub-tab'))"
+            style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);
+            color:#fff;font-size:14px;font-weight:700;padding:12px 22px;border-radius:10px;
+            border:none;cursor:pointer;font-family:inherit;transition:background .2s"
+            onmouseover="this.style.background='#1480CC'"
+            onmouseout="this.style.background='var(--blue)'">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg>
+            Explorer nos Analyses
+          </button>
+          <button onclick="showPubTab('evenements',document.querySelectorAll('.pub-tab')[1])"
+            style="display:inline-flex;align-items:center;gap:8px;background:#fff;
+            color:var(--blue);font-size:14px;font-weight:600;padding:12px 20px;border-radius:10px;
+            border:1.5px solid var(--blue);cursor:pointer;font-family:inherit;
+            transition:all .2s"
+            onmouseover="this.style.background='var(--blue)';this.style.color='#fff'"
+            onmouseout="this.style.background='#fff';this.style.color='var(--blue)'">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Formations &amp; Événements
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#fff;border:1.5px solid var(--gray-200);
+          border-radius:var(--r-lg);padding:16px 20px;display:flex;
+          align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+          <div style="width:40px;height:40px;background:var(--blue-pale);border-radius:var(--r);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--blue);line-height:1">20</div>
+            <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Articles & Analyses</div>
+          </div>
+        </div><div style="background:#fff;border:1.5px solid var(--gray-200);
+          border-radius:var(--r-lg);padding:16px 20px;display:flex;
+          align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+          <div style="width:40px;height:40px;background:var(--blue-pale);border-radius:var(--r);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#45B8F5" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--blue);line-height:1">5</div>
+            <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Événements à venir</div>
+          </div>
+        </div><div style="background:#fff;border:1.5px solid var(--gray-200);
+          border-radius:var(--r-lg);padding:16px 20px;display:flex;
+          align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+          <div style="width:40px;height:40px;background:var(--blue-pale);border-radius:var(--r);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--blue);line-height:1">6</div>
+            <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Thématiques couvertes</div>
+          </div>
+        </div><div style="background:#fff;border:1.5px solid var(--gray-200);
+          border-radius:var(--r-lg);padding:16px 20px;display:flex;
+          align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+          <div style="width:40px;height:40px;background:var(--blue-pale);border-radius:var(--r);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:900;color:var(--blue);line-height:1">Accès Libre</div>
+            <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Accès libre à toutes nos publications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUB-NAV -->
+<div class="pub-subnav">
+  <div class="pub-subnav-inner">
+    <div class="pub-tab active" onclick="showPubTab('articles',this)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg>
+      Analyses &amp; Insights
+    </div>
+    <div class="pub-tab" onclick="showPubTab('evenements',this)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Événements & Formations
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ONGLET 1 — BLOG & ARTICLES
+══════════════════════════════════════════════ -->
+<div class="pub-section active" id="pub-articles">
+  <section style="background:var(--gray-50)">
+    <div class="container">
+
+      <!-- Articles à la Une -->
+      <div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--blue);
+          text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">
+          À la Une
+        </div>
+        <div class="art-featured">
+          <a class="art-feat-card" href="CO.deleky-article.html?id=100">
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&h=450&fit=crop&q=80" alt="Article à la une" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="art-feat-overlay"></div>
+      <div class="art-feat-body">
+        <div class="art-feat-cat"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2"><path d='M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2'/></svg> Fiscalité</div>
+        <div class="art-feat-title">Analyse : Réforme ITS 2024 — Ce que Chaque Employeur Doit Appliquer Dès Maintenant</div>
+        <div class="art-feat-meta">
+          <span>15 Jan 2024</span>
+          <span>·</span>
+          <span>8 min de lecture</span>
+          <span>·</span>
+          <span>Equipe Deleky's</span>
+        </div>
+      </div>
+    </a>
+          <a class="art-feat-card" href="CO.deleky-article.html?id=101">
+      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&h=450&fit=crop&q=80" alt="Article à la une" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="art-feat-overlay"></div>
+      <div class="art-feat-body">
+        <div class="art-feat-cat"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2"><path d='M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2'/></svg> Conformité</div>
+        <div class="art-feat-title">Décryptage : Licences Fintech BCEAO en CI — Étapes, Exigences et Délais Réels</div>
+        <div class="art-feat-meta">
+          <span>28 Fév 2024</span>
+          <span>·</span>
+          <span>12 min de lecture</span>
+          <span>·</span>
+          <span>Dpt Advisory</span>
+        </div>
+      </div>
+    </a>
+        </div>
+      </div>
+
+      <!-- Filtres -->
+      <div style="display:flex;align-items:center;justify-content:space-between;
+        flex-wrap:wrap;gap:12px;margin-bottom:20px">
+        <div class="art-filters">
+          <button class="art-filter active" onclick="filterArt('all',this)">Tous</button>
+          <button class="art-filter" onclick="filterArt('Comptabilité',this)">Comptabilité</button>
+          <button class="art-filter" onclick="filterArt('Fiscalité',this)">Fiscalité</button>
+          <button class="art-filter" onclick="filterArt('Paie & RH',this)">Paie & RH</button>
+          <button class="art-filter" onclick="filterArt('Audit',this)">Audit</button>
+          <button class="art-filter" onclick="filterArt('Conformité',this)">Conformité</button>
+          <button class="art-filter" onclick="filterArt('Juridique',this)">Juridique</button>
+          <button class="art-filter" onclick="filterArt('Gestion',this)">Gestion</button>
+        </div>
+        <div style="font-size:12px;color:var(--gray-400)" id="art-count">
+          9 articles sur 20
+        </div>
+      </div>
+
+<!-- CTA Stratégique -->
+<div style="background:var(--blue-pale);border:1.5px solid rgba(26,158,240,.2);
+  border-radius:var(--r-xl);padding:20px 28px;margin-bottom:28px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+  <div>
+    <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px">
+      Un sujet vous concerne directement ?
+    </div>
+    <div style="font-size:13px;color:var(--gray-600)">
+      Nos experts analysent votre situation et vous proposent un plan d'action concret.
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button onclick="navigate('contact')"
+      style="display:inline-flex;align-items:center;gap:7px;background:var(--blue);
+      color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:var(--r);
+      border:none;cursor:pointer;font-family:inherit;transition:all .2s;
+      box-shadow:0 3px 10px rgba(26,158,240,.3)"
+      onmouseover="this.style.background='var(--navy)'"
+      onmouseout="this.style.background='var(--blue)'">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/>
+      </svg>
+      Demander un diagnostic
+    </button>
+    <button onclick="navigate('contact')"
+      style="display:inline-flex;align-items:center;gap:7px;background:#fff;
+      color:var(--blue);font-size:13px;font-weight:700;padding:10px 18px;border-radius:var(--r);
+      border:1.5px solid var(--blue);cursor:pointer;font-family:inherit;transition:all .2s"
+      onmouseover="this.style.background='var(--blue)';this.style.color='#fff'"
+      onmouseout="this.style.background='#fff';this.style.color='var(--blue)'">
+      Échanger avec un expert
+    </button>
+  </div>
+</div>
+<!-- Grille articles -->
+      <div class="art-grid" id="art-grid">
+        <div class="art-card" onclick="openReader(0)" data-cat="Fiscalité">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Fiscalité</div>
+        <div class="art-card-title">Analyse : Optimisation Fiscale en CI — 6 Leviers Légaux Souvent Inexploités</div>
+        <div class="art-card-excerpt">Une PME ivoirienne bien conseillée peut réduire légalement sa charge fiscale de 15 à 30%. Cet article analyse les 6 leviers les plus efficaces et les conditions pour les activer dans le strict respect de la réglementation.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Fiscal · 22 Jan 2024</span>
+          </div>
+          <span class="art-card-read">10 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(1)" data-cat="Paie & RH">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1573167243872-43c6433b9d40?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Paie & RH</div>
+        <div class="art-card-title">Guide Pratique : CNPS 2024 — Taux, Plafonds et Obligations pour les Employeurs</div>
+        <div class="art-card-excerpt">Les taux CNPS 2024 ont évolué. Une erreur de calcul expose l'entreprise à des redressements. Ce guide pratique détaille les taux, les plafonds et les obligations déclaratives pour éviter toute sanction.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Paie · 5 Fév 2024</span>
+          </div>
+          <span class="art-card-read">7 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(2)" data-cat="Gestion">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Gestion</div>
+        <div class="art-card-title">Guide Pratique : Les 7 KPIs Financiers que Tout Dirigeant Doit Suivre Chaque Mois</div>
+        <div class="art-card-excerpt">Piloter sans indicateurs clairs, c'est décider sans visibilité. Ce guide présente les 7 KPIs financiers essentiels — avec leur mode de calcul et leur seuil d'alerte — pour prendre des décisions fondées sur des données fiables.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Conseil · 14 Fév 2024</span>
+          </div>
+          <span class="art-card-read">9 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(3)" data-cat="Audit">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Audit</div>
+        <div class="art-card-title">Décryptage : Contrôle Fiscal DGI — Comment s'y Préparer et Quoi Anticiper</div>
+        <div class="art-card-excerpt">Un contrôle fiscal mal anticipé peut coûter cher — redressements, pénalités, intérêts de retard. Ce décryptage, basé sur nos missions terrain, vous explique comment préparer votre dossier et défendre votre position face à la DGI.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Audit · 28 Fév 2024</span>
+          </div>
+          <span class="art-card-read">11 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(4)" data-cat="Conformité">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Conformité</div>
+        <div class="art-card-title">Analyse : AML/LCB-FT en Afrique de l'Ouest — Obligations et Bonnes Pratiques pour Fintechs</div>
+        <div class="art-card-excerpt">Les institutions financières et fintechs opérant en Afrique de l'Ouest font face à des exigences AML/LCB-FT croissantes. Cette analyse détaille les obligations réglementaires, les sanctions applicables et les dispositifs à mettre en place.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Dpt Advisory · 8 Mar 2024</span>
+          </div>
+          <span class="art-card-read">14 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(5)" data-cat="Juridique">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Juridique</div>
+        <div class="art-card-title">Décryptage : Évolutions OHADA 2024 — Ce qui Change pour les Entreprises de la Zone UEMOA</div>
+        <div class="art-card-excerpt">Les dernières évolutions du droit OHADA impactent directement la gouvernance et la structuration des entreprises en zone UEMOA. Ce décryptage identifie les changements concrets et les ajustements à opérer dans votre organisation.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Juridique · 20 Mar 2024</span>
+          </div>
+          <span class="art-card-read">8 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(6)" data-cat="Gestion">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Gestion</div>
+        <div class="art-card-title">Guide Pratique : Créer sa SARL en CI — Étapes, Coûts Réels et Délais à Anticiper</div>
+        <div class="art-card-excerpt">Créer une SARL sans accompagnement expose à des erreurs coûteuses — statuts inadaptés, régime fiscal sous-optimal, délais imprévus. Ce guide basé sur nos missions présente les étapes réelles, les coûts à anticiper et les pièges à éviter.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Deleky's · 5 Avr 2024</span>
+          </div>
+          <span class="art-card-read">10 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(7)" data-cat="Fiscalité">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Fiscalité</div>
+        <div class="art-card-title">Guide Pratique : TVA en CI 2024 — Régime, Taux et Obligations Déclaratives</div>
+        <div class="art-card-excerpt">Tout ce que vous devez savoir sur la TVA en CI — qui est assujetti, comment déclarer, les exonérations et les erreurs à éviter absolument.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Fiscal · 18 Avr 2024</span>
+          </div>
+          <span class="art-card-read">9 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(8)" data-cat="Comptabilité" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Comptabilité</div>
+        <div class="art-card-title">Guide Pratique : Clôture Comptable Annuelle — Les 12 Points Critiques à Vérifier</div>
+        <div class="art-card-excerpt">La clôture comptable annuelle est une étape critique. Une erreur ou un oubli peut entraîner des retraitements coûteux, voire des sanctions fiscales. Cette checklist en 12 points permet de sécuriser votre exercice et produire des états financiers fiables.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Compta · 25 Avr 2024</span>
+          </div>
+          <span class="art-card-read">8 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(9)" data-cat="Audit" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Audit</div>
+        <div class="art-card-title">Analyse : Due Diligence Financière — 8 Points Critiques Avant Toute Acquisition</div>
+        <div class="art-card-excerpt">Toute acquisition sans due diligence structurée expose l'acheteur à des passifs cachés — fiscaux, sociaux, juridiques. Cette analyse présente les 8 axes critiques que nos équipes vérifient systématiquement avant toute recommandation.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Audit · 3 Mai 2024</span>
+          </div>
+          <span class="art-card-read">12 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(10)" data-cat="Paie & RH" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Paie & RH</div>
+        <div class="art-card-title">Guide Pratique : ITS 2024 — Nouveau Barème et Impact Concret sur vos Bulletins de Salaire</div>
+        <div class="art-card-excerpt">Le nouveau barème ITS 2024 modifie le calcul pour plusieurs tranches de salaires. Ce guide pratique présente les nouvelles tables de calcul, des cas concrets de simulation et les ajustements à opérer sur vos bulletins de paie.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Paie · 10 Mai 2024</span>
+          </div>
+          <span class="art-card-read">7 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(11)" data-cat="Gestion" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Gestion</div>
+        <div class="art-card-title">Décryptage : Business Plan Bankable — Les 5 Erreurs qui Font Refuser un Dossier de Financement</div>
+        <div class="art-card-excerpt">Un dossier de financement refusé coûte du temps et de la crédibilité. Ce décryptage, issu de nos accompagnements terrain, identifie les 5 erreurs qui font systématiquement rejeter un business plan et la façon de les corriger.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Conseil · 18 Mai 2024</span>
+          </div>
+          <span class="art-card-read">11 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(12)" data-cat="Conformité" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Conformité</div>
+        <div class="art-card-title">Guide Pratique : KYC/KYB — Comment Structurer un Processus d'Identification Conforme</div>
+        <div class="art-card-excerpt">Un processus KYC non structuré expose à des sanctions réglementaires et à des risques de blanchiment. Ce guide pratique présente les éléments d'un dispositif KYC/KYB conforme, basé sur les exigences BCEAO et les standards internationaux.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Dpt Advisory · 25 Mai 2024</span>
+          </div>
+          <span class="art-card-read">13 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(13)" data-cat="Fiscalité" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Fiscalité</div>
+        <div class="art-card-title">Analyse : Imposition des Dividendes en CI — IRVM, Calcul et Leviers d'Optimisation</div>
+        <div class="art-card-excerpt">L'IRVM sur dividendes est souvent mal calculé, exposant l'entreprise à des régularisations. Cette analyse explique le mécanisme de calcul, les cas d'exonération et les stratégies légales pour optimiser la rémunération du capital.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Fiscal · 2 Juin 2024</span>
+          </div>
+          <span class="art-card-read">8 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(14)" data-cat="Juridique" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Juridique</div>
+        <div class="art-card-title">Décryptage : Cession de Parts SARL — Procédure Légale, Agrément et Fiscalité</div>
+        <div class="art-card-excerpt">La cession de parts sociales sans accompagnement juridique expose à des vices de procédure et à une fiscalité mal anticipée. Ce décryptage clarifie la procédure légale, les clauses d'agrément et l'imposition de la plus-value.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Pôle Juridique · 10 Juin 2024</span>
+          </div>
+          <span class="art-card-read">9 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(15)" data-cat="Comptabilité" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Comptabilité</div>
+        <div class="art-card-title">Analyse : IFRS vs SYSCOHADA — Différences Clés dans le Traitement des Actifs</div>
+        <div class="art-card-excerpt">Les entreprises qui lèvent des fonds ou consolident des comptes à l'international doivent maîtriser les écarts entre SYSCOHADA et IFRS. Cette analyse comparative identifie les différences clés dans le traitement des actifs et leurs implications pratiques.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Compta · 18 Juin 2024</span>
+          </div>
+          <span class="art-card-read">10 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div><div class="art-card" onclick="openReader(16)" data-cat="Gestion" style="display:none">
+      <div class="art-card-img"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=380&fit=crop&q=80" alt="Article" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="art-card-body">
+        <div class="art-card-cat">Gestion</div>
+        <div class="art-card-title">Analyse : Gestion de Trésorerie — Les 4 Indicateurs qui Sauvent une PME</div>
+        <div class="art-card-excerpt">Une PME peut être rentable et faire faillite faute de trésorerie. Cette analyse présente les 4 indicateurs de pilotage de trésorerie que nos experts suivent pour leurs clients — avec les seuils d'alerte et les actions correctives à engager.</div>
+        <div class="art-card-meta">
+          <div class="art-card-author">
+            <div class="art-card-avatar"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2"><path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/><circle cx='12' cy='7' r='4'/></svg></div>
+            <span>Equipe Conseil · 25 Juin 2024</span>
+          </div>
+          <span class="art-card-read">8 min lecture →</span>
+        <div style="padding:8px 16px 14px;border-top:1px solid var(--gray-100);margin-top:auto">
+          <a  href="CO.deleky-contact.html" style="font-size:12px;font-weight:700;
+            color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:5px;
+            transition:opacity .2s" onmouseover="this.style.opacity='.7'"
+            onmouseout="this.style.opacity='1'">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--blue)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/>
+            </svg>
+            Besoin d'accompagnement sur ce sujet ?
+          </a>
+        </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+      <!-- Connect to services -->
+      <div style="background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);
+        border-radius:var(--r-lg);padding:18px 24px;margin-bottom:24px;
+        display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--black)">
+              Un sujet vous concerne directement ?
+            </div>
+            <div style="font-size:12.5px;color:var(--gray-600)">
+              Nos experts analysent votre situation et vous proposent des recommandations concrètes — basées sur votre réalité, pas sur des généralités.
+            </div>
+          </div>
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:10px 20px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:7px;
+          transition:background .2s"
+          onmouseover="this.style.background='var(--navy)'"
+          onmouseout="this.style.background='var(--blue)'">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Échanger avec un Expert
+        </button>
+      </div>
+
+      <!-- Compteur & Load more -->
+      <div style="text-align:center;margin-top:28px" id="load-more-wrap">
+        <div style="margin-bottom:14px">
+          <span id="art-shown-count"
+            style="font-size:13px;font-weight:600;color:var(--gray-500)">
+            8 articles affichés sur 19
+          </span>
+          <div style="background:var(--gray-200);border-radius:100px;height:4px;
+            width:200px;margin:10px auto 0">
+            <div id="art-progress"
+              style="background:var(--blue);height:4px;border-radius:100px;
+              width:45%;transition:width .4s ease"></div>
+          </div>
+        </div>
+        <button id="load-more-btn"
+          onclick="loadMoreArticles()"
+          style="display:inline-flex;align-items:center;gap:9px;
+          background:#fff;color:var(--blue);border:1.5px solid var(--gray-200);
+          border-radius:var(--r);padding:13px 28px;font-size:14px;font-weight:600;
+          font-family:inherit;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-pale)'"
+          onmouseout="this.style.borderColor='var(--gray-200)';this.style.background='#fff'">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+          Charger 11 analyses supplémentaires
+        </button>
+      </div>
+
+<!-- CTA Conversion -->
+<section style="background:var(--gray-50);padding:48px 32px">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);
+        padding:24px;text-align:center;transition:all .3s"
+        onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+        onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)'">
+        <div style="width:48px;height:48px;background:var(--blue-pale);border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--blue)" stroke-width="1.8">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:var(--black);margin-bottom:8px">
+          Demander un Diagnostic
+        </div>
+        <div style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:16px">
+          Analysez votre situation avec nos experts et identifiez vos axes d'amélioration.
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:10px 20px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;width:100%;transition:background .2s"
+          onmouseover="this.style.background='var(--navy)'"
+          onmouseout="this.style.background='var(--blue)'">
+          Demander un diagnostic →
+        </button>
+      </div>
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);
+        padding:24px;text-align:center;transition:all .3s"
+        onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+        onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)'">
+        <div style="width:48px;height:48px;background:#F0FDF4;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#059669" stroke-width="1.8">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:var(--black);margin-bottom:8px">
+          Échanger avec un Expert
+        </div>
+        <div style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:16px">
+          Une question sur un sujet traité ? Nos experts répondent et vous orientent.
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:#059669;color:#fff;border:none;border-radius:var(--r);
+          padding:10px 20px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;width:100%;transition:background .2s"
+          onmouseover="this.style.background='#047857'"
+          onmouseout="this.style.background='#059669'">
+          Contacter un expert →
+        </button>
+      </div>
+      <div style="background:var(--navy);border-radius:var(--r-xl);
+        padding:24px;text-align:center;transition:all .3s"
+        onmouseover="this.style.transform='translateY(-3px)'"
+        onmouseout="this.style.transform='translateY(0)'">
+        <div style="width:48px;height:48px;background:rgba(255,255,255,.1);border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#45B8F5" stroke-width="1.8">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:8px">
+          Structurer mon Entreprise
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:16px">
+          Passez de la lecture à l'action — nos experts structurent votre gestion et votre fiscalité.
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:10px 20px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;width:100%;transition:background .2s"
+          onmouseover="this.style.background='#1480CC'"
+          onmouseout="this.style.background='var(--blue)'">
+          Structurer mon entreprise →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Newsletter -->
+      <div class="art-nl">
+        <div class="art-nl-text">
+          <h3>Analyses Exclusives &amp; Insights pour Décideurs</h3>
+          <p>Chaque mois : analyses de fond, décryptages réglementaires et conseils terrain exclusifs pour mieux piloter votre entreprise et anticiper les évolutions qui vous impactent.</p>
+        </div>
+        <div class="art-nl-form">
+          <input class="art-nl-input" type="email" placeholder="votre.email@entreprise.ci">
+          <button class="art-nl-btn" onclick="this.textContent='✓ Inscrit !';this.style.background='#22C55E'">
+            Recevoir les Analyses
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ONGLET 2 — ÉVÉNEMENTS & FORMATIONS
+══════════════════════════════════════════════ -->
+<div class="pub-section" id="pub-evenements">
+  <section style="background:var(--gray-50)">
+    <div class="container">
+
+      <!-- Intro -->
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid var(--blue);
+        border-radius:var(--r);padding:16px 22px;margin-bottom:32px;
+        display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px">
+            Formez-vous et Prenez de Meilleures Décisions
+          </div>
+          <div style="font-size:13px;color:var(--gray-600)">
+            Sessions pratiques basées sur des cas réels — pour améliorer votre gestion, votre conformité et vos décisions stratégiques. Nos formations sont animées par des praticiens qui interviennent au quotidien auprès des entreprises.
+          </div>
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:10px 18px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:7px;
+          transition:background .2s"
+          onmouseover="this.style.background='var(--navy)'"
+          onmouseout="this.style.background='var(--blue)'">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Proposer un thème
+        </button>
+      </div>
+
+      <!-- Légende types -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+        <span style="font-size:12px;font-weight:600;color:var(--gray-500);margin-right:4px">Types :</span>
+        <span class="evt-type conference">Conférence</span>
+        <span class="evt-type webinar">Webinaire</span>
+        <span class="evt-type formation">Formation</span>
+        <span class="evt-type atelier">Atelier</span>
+      </div>
+
+      <!-- Timeline -->
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start">
+
+        <!-- Timeline principale -->
+        <div class="evt-timeline">
+          <div>
+      <div class="evt-tl-month">Juin 2024</div><div class="evt-tl-item">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">12</div>
+          <div class="evt-tl-dow">Mer</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type webinar">Webinaire</span>
+          </div>
+          <div class="evt-tl-title">Maîtriser la Paie Ivoirienne en 2024 — ITS, CNPS & DIPES</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10h00 – 12h00</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> En ligne (Zoom)</span>
+          </div>
+          <div class="evt-tl-desc">Formation basée sur des cas réels d'entreprises ivoiriennes. Vous repartez avec le barème ITS 2024 appliqué à votre structure, le calcul CNPS maîtrisé et vos obligations DIPES clarifiées. Applicable dès le lendemain.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span class="evt-places"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span>45</span> places disponibles</span>
+            <button class="evt-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          S'inscrire
+        </button>
+          </div>
+        </div>
+      </div><div class="evt-tl-item">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">25</div>
+          <div class="evt-tl-dow">Mar</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type conference">Conférence</span>
+          </div>
+          <div class="evt-tl-title">Conformité Fiscale & Contrôle DGI : Stratégies de Protection</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 09h00 – 13h00</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hôtel Ivoire, Abidjan</span>
+          </div>
+          <div class="evt-tl-desc">Basée sur nos expériences terrain d'assistance aux contrôles DGI. Vous apprenez à constituer un dossier solide, à répondre aux notifications et à négocier efficacement. Formation dispensée par un auditeur fiscal senior.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span class="evt-places"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span>80</span> places disponibles</span>
+            <button class="evt-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          S'inscrire
+        </button>
+          </div>
+        </div>
+      </div></div><div>
+      <div class="evt-tl-month">Juillet 2024</div><div class="evt-tl-item">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">10</div>
+          <div class="evt-tl-dow">Mer</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type formation">Formation</span>
+          </div>
+          <div class="evt-tl-title">SYSCOHADA Révisé : Application Pratique pour Comptables et DAF</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 08h30 – 17h30</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Siège Deleky's, Abidjan</span>
+          </div>
+          <div class="evt-tl-desc">Formation intensive avec ateliers pratiques sur le nouveau SYSCOHADA révisé. Chaque participant travaille sur des états financiers réels. Livret de référence remis à l'issue de la journée.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span class="evt-places"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span>20</span> places disponibles</span>
+            <button class="evt-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          S'inscrire
+        </button>
+          </div>
+        </div>
+      </div><div class="evt-tl-item">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">18</div>
+          <div class="evt-tl-dow">Jeu</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type webinar">Webinaire</span>
+          </div>
+          <div class="evt-tl-title">Création d'Entreprise en CI : Quelle Forme Juridique Choisir ?</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 15h00 – 16h30</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> En ligne (Zoom)</span>
+          </div>
+          <div class="evt-tl-desc">Webinaire interactif avec étude de cas par secteur d'activité. Vous repartez avec une recommandation personnalisée sur la forme juridique la mieux adaptée à votre projet, votre fiscalité et vos ambitions de gouvernance.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span class="evt-places"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span>120</span> places disponibles</span>
+            <button class="evt-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          S'inscrire
+        </button>
+          </div>
+        </div>
+      </div></div><div>
+      <div class="evt-tl-month">Août 2024</div><div class="evt-tl-item">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">06</div>
+          <div class="evt-tl-dow">Mar</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type atelier">Atelier</span>
+          </div>
+          <div class="evt-tl-title">AML/KYC pour Fintechs : Mettre en Place un Dispositif Conforme</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 09h00 – 12h00</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> En ligne (Teams)</span>
+          </div>
+          <div class="evt-tl-desc">Atelier dédié aux fintechs et institutions financières, animé par notre département Deleky's Advisory. Vous construisez votre politique AML, vos procédures KYC/KYB et votre dispositif de monitoring en temps réel.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span class="evt-places"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <span>30</span> places disponibles</span>
+            <button class="evt-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          S'inscrire
+        </button>
+          </div>
+        </div>
+      </div></div><div style="margin-top:40px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:0">
+        <div style="font-size:11px;font-weight:700;color:var(--gray-400);
+          text-transform:uppercase;letter-spacing:.1em;padding:20px 0 12px;
+          border-bottom:1px solid var(--gray-200);flex:1">Événements Passés</div>
+      </div><div class="evt-tl-item evt-past">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">15</div>
+          <div class="evt-tl-dow">Mar</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type conference">Conférence</span>
+          </div>
+          <div class="evt-tl-title">Fiscalité des PME en Côte d'Ivoire — Bilan 2023 & Perspectives</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 09h00 – 12h00</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Sofitel Abidjan</span>
+          </div>
+          <div class="evt-tl-desc">Retour sur les principales évolutions fiscales de 2023 et anticipations pour 2024 — avec plus de 120 participants.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span style="font-size:11px;font-weight:700;color:var(--gray-400)">Événement passé</span>
+            
+          </div>
+        </div>
+      </div><div class="evt-tl-item evt-past">
+        <div class="evt-tl-date">
+          <div class="evt-tl-day">28</div>
+          <div class="evt-tl-dow">Fév</div>
+        </div>
+        <div class="evt-tl-body">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span class="evt-type webinar">Webinaire</span>
+          </div>
+          <div class="evt-tl-title">Optimisation Fiscale Légale : Les Techniques Méconnues</div>
+          <div class="evt-tl-meta">
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 14h00 – 16h00</span>
+            <span><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> En ligne</span>
+          </div>
+          <div class="evt-tl-desc">Webinaire sur les leviers légaux d'optimisation fiscale pour les PME ivoiriennes — replay disponible.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span style="font-size:11px;font-weight:700;color:var(--gray-400)">Événement passé</span>
+            
+          </div>
+        </div>
+      </div></div>
+        </div>
+
+        <!-- Sidebar inscription -->
+        <div style="position:sticky;top:170px">
+          <div style="background:#fff;border:1.5px solid var(--gray-200);
+            border-radius:var(--r-xl);padding:24px;margin-bottom:16px">
+            <div style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:16px;
+              display:flex;align-items:center;gap:8px">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Prochain événement
+            </div>
+            <div class="evt-type webinar" style="margin-bottom:10px">Webinaire</div>
+            <div style="font-size:15px;font-weight:800;color:var(--black);
+              margin-bottom:8px;line-height:1.3">
+              Maîtriser la Paie Ivoirienne en 2024
+            </div>
+            <div style="font-size:12px;color:var(--gray-600);margin-bottom:4px;
+              display:flex;align-items:center;gap:6px">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--gray-400)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mercredi 12 Juin 2024 · 10h00
+            </div>
+            <div style="font-size:12px;color:var(--gray-600);margin-bottom:16px;
+              display:flex;align-items:center;gap:6px">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              En ligne (Zoom) · Gratuit
+            </div>
+            <div style="margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;
+                font-size:11px;color:var(--gray-400);margin-bottom:6px">
+                <span>Places disponibles</span><span style="font-weight:700;color:var(--blue)">45 places</span>
+              </div>
+              <div style="background:var(--gray-100);border-radius:100px;height:6px">
+                <div style="background:var(--blue);height:6px;border-radius:100px;width:35%"></div>
+              </div>
+            </div>
+            <button onclick="navigate('contact')"
+              style="width:100%;background:var(--blue);color:#fff;border:none;
+              border-radius:var(--r);padding:12px;font-size:14px;font-weight:700;
+              font-family:inherit;cursor:pointer;transition:background .2s;
+              display:flex;align-items:center;justify-content:center;gap:8px"
+              onmouseover="this.style.background='var(--navy)'"
+              onmouseout="this.style.background='var(--blue)'">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              S'inscrire Gratuitement
+            </button>
+          </div>
+
+          <!-- Notification -->
+          <div style="background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);
+            border-radius:var(--r-lg);padding:18px">
+            <div style="font-size:13px;font-weight:700;color:var(--black);
+              margin-bottom:6px;display:flex;align-items:center;gap:7px">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              Ne manquez aucun événement
+            </div>
+            <p style="font-size:12px;color:var(--gray-600);line-height:1.6;margin-bottom:12px">
+              Recevez en priorité nos invitations aux formations et webinaires — avec les supports pédagogiques avant chaque session.
+            </p>
+            <input type="email" placeholder="Votre email"
+              style="width:100%;padding:9px 12px;border:1.5px solid var(--gray-200);
+              border-radius:var(--r);font-size:13px;font-family:inherit;
+              margin-bottom:8px;outline:none;transition:border-color .2s"
+              onfocus="this.style.borderColor='var(--blue)'"
+              onblur="this.style.borderColor='var(--gray-200)'">
+            <button onclick="this.textContent='✓ Inscrit !';this.style.background='#22C55E'"
+              style="width:100%;background:var(--navy);color:#fff;border:none;
+              border-radius:var(--r);padding:9px;font-size:13px;font-weight:700;
+              font-family:inherit;cursor:pointer;transition:background .2s"
+              onmouseover="this.style.background='var(--blue)'"
+              onmouseout="this.style.background='var(--navy)'">
+              Recevoir les Invitations
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA inscription -->
+      <div class="evt-register-cta">
+        <div>
+          <h3>Vous souhaitez approfondir un sujet lors d'une session dédiée à votre équipe ?</h3>
+          <p>Nous organisons des formations sur mesure pour les équipes comptables, fiscales et financières — en présentiel ou à distance, calibrées sur votre réalité terrain.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button onclick="navigate('contact')"
+            style="display:inline-flex;align-items:center;gap:8px;
+            background:var(--blue);color:#fff;font-size:14px;font-weight:700;
+            padding:12px 22px;border-radius:10px;border:none;cursor:pointer;
+            font-family:inherit;transition:background .2s"
+            onmouseover="this.style.background='var(--navy)'"
+            onmouseout="this.style.background='var(--blue)'">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Demander une Formation sur Mesure
+          </button>
+          <button onclick="showPubTab('articles',document.querySelector('.pub-tab'))"
+            style="display:inline-flex;align-items:center;gap:8px;
+            background:#fff;color:var(--navy);font-size:14px;font-weight:600;
+            padding:12px 20px;border-radius:10px;border:1.5px solid var(--gray-200);
+            cursor:pointer;font-family:inherit;transition:all .2s"
+            onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'"
+            onmouseout="this.style.borderColor='var(--gray-200)';this.style.color='var(--navy)'">
+            Lire nos Articles →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div>
+      <div style="display:inline-block;background:#ffffff;padding:10px 16px;border-radius:12px;margin-bottom:16px">
+        <img src="logo.jpg" style="height:38px;width:auto;display:block">
+      </div>
+      <p class="footer-tagline">Comptabilité · Fiscalité · Gestion d'Entreprise<br>Abidjan, Côte d'Ivoire</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white" stroke="none"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div>
+      <div class="footer-col-h">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-creation-entreprise.html">Création d'Entreprise</a></li>
+        <li><a href="CO.deleky-petites-entreprises.html" target="_blank">Petites Entreprises</a></li>
+        <li><a href="CO.deleky-entreprises (3).html" target="_blank">Entreprises</a></li>
+        <li><a href="CO.deleky-comptabilite-en-retard.html" target="_blank">Comptabilité en Retard</a></li>
+        <li><a href="CO.deleky-gestion-de-paie.html" target="_blank">Gestion de Paie</a></li>
+        <li><a href="CO.deleky-juridique-ag.html" target="_blank">Juridique &amp; AG</a></li>
+        <li><a href="CO.deleky-entreprises (3).html-plan" target="_blank">Business Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- Formes Juridiques -->
+    <div>
+      <div class="footer-col-h">Formes Juridiques</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-tableau-comparatif.html">Tableau Comparatif</a></li>
+        <li><a href="CO.deleky-creation-sarl.html">SARL</a></li>
+        <li><a href="CO.deleky-creation-sa.html">SA</a></li>
+        <li><a href="CO.deleky-creation-sas.html">SAS</a></li>
+        <li><a href="CO.deleky-creation-snc.html">SNC</a></li>
+        <li><a href="CO.deleky-creation-gie.html">GIE</a></li>
+        <li><a href="CO.deleky-creation-sci.html">SCI</a></li>
+      </ul>
+    </div>
+
+    <!-- Nos Produits -->
+    <div>
+      <div class="footer-col-h">Nos Produits</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-simulateur-paie-v2.html">CI Payroll Simulation</a></li>
+        <li><a href="CO.deleky-simulateur-immo.html">Home Loan Calculator</a></li>
+        <li><a href="CO.deleky-plan-amortissement.html">Amortization Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- À Propos -->
+    <div>
+      <div class="footer-col-h">À Propos</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Le Cabinet</a></li>
+        <li><a href="CO.deleky-publications.html">Blog &amp; Articles</a></li>
+        <li><a href="CO.deleky-publications.html">Événements</a></li>
+        <li><a href="CO.deleky-ressources.html">Témoignages</a></li>
+        <li><a href="CO.deleky-joinus.html">Nous Rejoindre</a></li>
+        <li><a href="CO.deleky-ressources.html">Partenariat</a></li>
+        <li><a href="CO.deleky-ressources.html">Simulateur Paie</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deleky's SARL — Tous droits réservés</span>
+    <div class="footer-bottom-links">
+      <a href="#">Conditions Générales</a>
+      <a href="#">Mentions Légales</a>
+      <a href="#">Protection des Données</a>
+      <a href="CO.deleky-contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<!-- FLOATING BUTTONS -->
+<div class="float-wrap">
+  <button class="float-btn float-ph" title="Appeler" onclick="window.location.href='tel:+22507000588'">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </button>
+  <button class="float-btn float-wa" title="WhatsApp" onclick="window.location.href='https://wa.me/2251111111119'">
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/lang.js"></script>
+<script>
+/* ── NAV ── */
+function toggleNav(){document.getElementById('nav-menu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
+function switchLang(l,b){document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+function navigate(p){const routes={home:'CO.deleky-home.html',cabinet:'CO_deleky-cabinet-v2.html',missions:'CO.deleky-missions.html',ressources:'CO.deleky-ressources.html',blog:'CO.deleky-publications.html',publications:'CO.deleky-publications.html',joinus:'CO.deleky-joinus.html',login:'CO.deleky-login (7).html',contact:'CO.deleky-contact.html','simulateur-paie':'CO.deleky-simulateur-paie.html'};window.location.href=routes[p]||routes.home;}
+
+/* ── PUB TABS ── */
+function showPubTab(id, el) {
+  document.querySelectorAll('.pub-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.pub-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('pub-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  const sn = document.querySelector('.pub-subnav');
+  if(sn) window.scrollTo({top:sn.offsetTop-10,behavior:'smooth'});
+}
+
+/* ── ARTICLES PAGINATION ── */
+let _shownAll = false;
+const _PER_PAGE = 8;
+const _TOTAL = 19;
+
+function loadMoreArticles() {
+  const btn   = document.getElementById('load-more-btn');
+  const wrap  = document.getElementById('load-more-wrap');
+  const cards = document.querySelectorAll('.art-card');
+  const prog  = document.getElementById('art-progress');
+  const count = document.getElementById('art-shown-count');
+
+  // Show loading state
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg> Chargement...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    // Show all hidden cards
+    let shown = 0;
+    cards.forEach(c => {
+      if (c.style.display !== 'none' || c.dataset.hidden === 'filtered') return;
+      c.style.display = '';
+      // Animate in
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(12px)';
+      setTimeout(() => {
+        c.style.transition = 'opacity .4s ease, transform .4s ease';
+        c.style.opacity = '1';
+        c.style.transform = 'translateY(0)';
+      }, shown * 60);
+      shown++;
+    });
+
+    _shownAll = true;
+
+    // Update counter
+    if (count) count.textContent = _TOTAL + ' articles affichés sur ' + _TOTAL;
+    if (prog) prog.style.width = '100%';
+
+    // Replace button with "tout affiché"
+    if (wrap) {
+      wrap.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;
+          padding:16px 0;font-size:13px;color:var(--gray-400)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#22C55E" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span style="font-weight:600;color:var(--gray-600)">
+            Toutes les 19 analyses sont affichées
+          </span>
+        </div>`;
+    }
+  }, 600);
+}
+
+/* ── ARTICLE FILTER (compatible avec pagination) ── */
+const _ALLCATS = [
+  'Fiscalité','Paie & RH','Gestion','Audit','Conformité','Juridique','Gestion','Fiscalité',
+  'Comptabilité','Audit','Paie & RH','Gestion','Conformité','Fiscalité',
+  'Juridique','Comptabilité','Gestion'
+];
+
+function filterArt(cat, btn) {
+  document.querySelectorAll('.art-filter').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  const cards = document.querySelectorAll('.art-card');
+  let visible = 0;
+  let hidden9 = 0;
+
+  cards.forEach((c, i) => {
+    const match = cat === 'all' || _ALLCATS[i] === cat;
+
+    if (!match) {
+      c.style.display = 'none';
+      c.dataset.hidden = 'filtered';
+    } else {
+      // If not yet loaded (i >= 9) and not all shown, keep hidden but mark as "not filtered"
+      if (i >= 9 && !_shownAll) {
+        c.style.display = 'none';
+        c.dataset.hidden = '';
+        hidden9++;
+      } else {
+        c.style.display = '';
+        c.dataset.hidden = '';
+        visible++;
+      }
+    }
+  });
+
+  // Update counter
+  const total = cat === 'all' ? _TOTAL : _ALLCATS.filter(c => c === cat).length;
+  const shown = cat === 'all' ? (_shownAll ? _TOTAL : _PER_PAGE) : visible;
+
+  const el = document.getElementById('art-count');
+  if(el) el.textContent = shown + ' article' + (shown > 1 ? 's' : '') + (total > shown ? ' sur ' + total : '');
+
+  // Update progress bar
+  const prog = document.getElementById('art-progress');
+  if(prog) prog.style.width = Math.round((shown / total) * 100) + '%';
+
+  const count = document.getElementById('art-shown-count');
+  if(count && cat === 'all') count.textContent = shown + ' articles affichés sur ' + total;
+
+  // Show/hide load more
+  const wrap = document.getElementById('load-more-wrap');
+  if(wrap) wrap.style.display = (!_shownAll && cat === 'all') ? '' : 'none';
+}
+
+/* ══════════════════════════════════════════════════
+   ARTICLE READER
+══════════════════════════════════════════════════ */
+const _ARTS = [];
+let _currentArt = 0;
+let _artIds = [];
+
+function openReader(artId) {
+  window.location.href = 'CO.deleky-article.html?id=' + artId;
+}
+
+/* ── TICKER ── */
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.ticker-track').forEach(t=>{
+    if(!t.dataset.dup){t.innerHTML+=t.innerHTML;t.dataset.dup='1';}
+  });
+});
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     DELEKY'S POPUP
+     Contrôlé via window.delekyPopup.show(config)
+     Config admin via deleky-admin.html
+═══════════════════════════════════════════════════ -->
+<div id="dlk-popup-overlay" onclick="dlkCloseOnOverlay(event)">
+  <div id="dlk-popup-modal" role="dialog" aria-modal="true" aria-labelledby="dlk-popup-title">
+
+    <!-- ── GAUCHE : Image / Pub ── -->
+    <div id="dlk-popup-left">
+      <!-- ► src contrôlé via admin -->
+      <img id="dlk-popup-left-img"
+        src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80"
+        alt="Expert Deleky's SARL">
+      <div id="dlk-popup-left-overlay"></div>
+
+      <!-- Badge réponse rapide -->
+      <div id="dlk-popup-badge">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="dlk-popup-badge-text">Réponse en 5 min</span>
+      </div>
+
+      <!-- Contenu sur image -->
+      <div id="dlk-popup-left-content">
+        <div id="dlk-popup-headline">
+          Besoin d'un <span>Expert Comptable</span> ?
+        </div>
+        <div id="dlk-popup-subline">
+          Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d'entreprise.
+        </div>
+        <div id="dlk-popup-proof">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          250+ entreprises nous font confiance
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DROITE : Formulaire ── -->
+    <div id="dlk-popup-right">
+
+      <!-- Bouton fermer -->
+      <button id="dlk-popup-close" onclick="delekyPopup.hide()" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Formulaire principal -->
+      <div id="dlk-popup-form-area">
+        <!-- Logo -->
+        <div id="dlk-popup-logo">
+          <img src="logo.jpg" alt="Deleky's">
+          <div>
+            <div id="dlk-popup-logo-name">Deleky's SARL</div>
+            <div style="font-size:9px;color:#9CA3AF;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-top:1px">Cabinet Comptable & Conseil</div>
+          </div>
+        </div>
+
+        <!-- Titre -->
+        <div id="dlk-popup-title">Besoin d'aide ?</div>
+        <div id="dlk-popup-subtitle">
+          Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.
+        </div>
+
+        <!-- Champs dynamiques (remplis via JS) -->
+        <div id="dlk-popup-fields">
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Prénom &amp; Nom</label>
+            <input class="dlk-f-input" id="dlk-f-nom" placeholder="Jean Kouamé"
+              oninput="this.classList.remove('error')">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Votre entreprise</label>
+            <input class="dlk-f-input" id="dlk-f-societe" placeholder="Ma Société SARL">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Numéro de téléphone <span style="color:#EF4444">*</span></label>
+            <div class="dlk-phone-wrap">
+              <div class="dlk-phone-code">
+                🇨🇮 +225
+              </div>
+              <input class="dlk-f-input" id="dlk-f-tel" type="tel"
+                placeholder="07 00 00 00 00" style="flex:1"
+                oninput="this.classList.remove('error')">
+            </div>
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Sujet</label>
+            <select class="dlk-f-input dlk-f-select" id="dlk-f-sujet">
+              <option value="">— Votre besoin —</option>
+              <option>Comptabilité & États Financiers</option>
+              <option>Fiscalité & Déclarations</option>
+              <option>Optimisation Fiscale</option>
+              <option>Audit & Contrôle Interne</option>
+              <option>Gestion de la Paie</option>
+              <option>Création d'Entreprise</option>
+              <option>Conformité BCEAO / AML</option>
+              <option>Autre question</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <button id="dlk-popup-cta" onclick="delekyPopup.submit()">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          <span id="dlk-popup-cta-text">Me faire rappeler</span>
+        </button>
+
+        <div id="dlk-popup-reassure">
+          Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles
+        </div>
+
+        <div class="dlk-privacy">
+          En soumettant ce formulaire, vous acceptez d'être contacté par Deleky's SARL. Aucun engagement.
+        </div>
+      </div>
+
+      <!-- État succès -->
+      <div id="dlk-popup-success">
+        <div style="width:60px;height:60px;background:#F0FDF4;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-size:20px;font-weight:800;color:#111827;margin-bottom:8px">
+          Demande reçue !
+        </div>
+        <div style="font-size:14px;color:#6B7280;line-height:1.75;margin-bottom:20px">
+          Un expert Deleky's vous rappelle<br><strong style="color:#1A9EF0">dans les 5 minutes</strong>.
+        </div>
+        <div style="background:#F9FAFB;border-radius:12px;padding:14px 16px;
+          font-size:13px;color:#4B5563;margin-bottom:16px;text-align:left">
+          <div style="font-weight:700;margin-bottom:4px">En attendant :</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-contact.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Envoyer un message détaillé
+              </a>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-ressources.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Explorer nos ressources gratuites
+              </a>
+            </div>
+          </div>
+        </div>
+        <button onclick="delekyPopup.hide()"
+          style="background:none;border:1.5px solid #E5E7EB;color:#6B7280;
+          border-radius:10px;padding:10px 24px;font-size:14px;font-weight:600;
+          font-family:inherit;cursor:pointer;width:100%;transition:all .2s"
+          onmouseover="this.style.borderColor='#1A9EF0';this.style.color='#1A9EF0'"
+          onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#6B7280'">
+          Fermer
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ═══════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+═══════════════════════════════════════════════════ */
+window.delekyPopup = (function() {
+
+  /* Config par défaut (surchargeée via admin) */
+  let _cfg = {
+    // Déclenchement
+    trigger:      'delay',   // 'delay' | 'exit' | 'scroll' | 'manual'
+    delay:        5000,      // ms avant affichage auto
+    scrollPct:    50,        // % de scroll pour trigger 'scroll'
+    pages:        'all',     // 'all' | ['home','contact'] — pages ciblées
+    // Contenu
+    badge:        'Réponse en 5 min',
+    headline:     'Besoin d\'un Expert Comptable ?',
+    headlineSpan: 'Expert Comptable',
+    subline:      'Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d\'entreprise.',
+    proof:        '250+ entreprises nous font confiance',
+    imgUrl:       'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80',
+    showImg:      true,
+    title:        'Besoin d\'aide ?',
+    subtitle:     'Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.',
+    ctaText:      'Me faire rappeler',
+    reassure:     'Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles',
+    // Affichage
+    active:       true,
+    once:         true,      // afficher une seule fois par session
+    overlayClose: true,      // clic overlay = ferme
+  };
+
+  let _shown      = false;
+  let _triggerSet = false;
+  let _timer      = null;
+
+  /* ── Appliquer la config au DOM ── */
+  function _applyConfig(cfg) {
+    _cfg = Object.assign(_cfg, cfg);
+    const $ = id => document.getElementById(id);
+    // Image
+    const img = $('dlk-popup-left-img');
+    if(img) {
+      img.src = _cfg.imgUrl || '';
+      img.style.display = _cfg.showImg ? 'block' : 'none';
+    }
+    const left = $('dlk-popup-left');
+    if(left) left.style.display = _cfg.showImg ? '' : 'none';
+    // Badge
+    const badgeText = $('dlk-popup-badge-text');
+    if(badgeText) badgeText.textContent = _cfg.badge;
+    // Headline
+    const hl = $('dlk-popup-headline');
+    if(hl) {
+      const sp = _cfg.headlineSpan;
+      hl.innerHTML = _cfg.headline.replace(sp, `<span>${sp}</span>`);
+    }
+    // Subline
+    const sl = $('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline;
+    // Proof
+    const pf = $('dlk-popup-proof');
+    if(pf) { const span = pf.querySelector('span') || document.createElement('span'); span.textContent = _cfg.proof; }
+    // Titre / sous-titre form
+    const t  = $('dlk-popup-title');    if(t)  t.textContent = _cfg.title;
+    const st = $('dlk-popup-subtitle'); if(st) st.textContent = _cfg.subtitle;
+    // CTA
+    const cta = $('dlk-popup-cta-text'); if(cta) cta.textContent = _cfg.ctaText;
+    // Réassurance
+    const rs = $('dlk-popup-reassure'); if(rs) rs.innerHTML = _cfg.reassure;
+  }
+
+  /* ── Vérifier si déjà vu ── */
+  function _alreadySeen() {
+    if(!_cfg.once) return false;
+    try { return !!sessionStorage.getItem('dlk-popup-seen'); } catch(e) { return false; }
+  }
+  function _markSeen() {
+    try { sessionStorage.setItem('dlk-popup-seen', '1'); } catch(e) {}
+  }
+
+  /* ── Afficher ── */
+  function show(cfg) {
+    if(cfg) _applyConfig(cfg);
+    if(!_cfg.active) return;
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.classList.add('open');
+    document.body.classList.add('dlk-popup-open');
+    _shown = true;
+    _markSeen();
+    // Reset form
+    _resetForm();
+  }
+
+  /* ── Cacher ── */
+  function hide() {
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.style.animation = 'none';
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity .25s';
+    setTimeout(() => {
+      overlay.classList.remove('open');
+      overlay.style.opacity = '';
+      overlay.style.transition = '';
+      overlay.style.animation = '';
+      document.body.classList.remove('dlk-popup-open');
+    }, 250);
+  }
+
+  /* ── Soumettre ── */
+  function submit() {
+    const tel = document.getElementById('dlk-f-tel');
+    if(!tel?.value.trim()) {
+      tel.classList.add('error');
+      tel.focus();
+      return;
+    }
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn) {
+      btn._orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg> Envoi...';
+      btn.disabled = true;
+    }
+    setTimeout(() => {
+      document.getElementById('dlk-popup-form-area').style.display = 'none';
+      document.getElementById('dlk-popup-success').style.display   = 'block';
+      // Changer visuel gauche
+      const hl = document.getElementById('dlk-popup-headline');
+      if(hl) hl.innerHTML = 'Demande <span>envoyée !</span>';
+      const sl = document.getElementById('dlk-popup-subline');
+      if(sl) sl.textContent = 'Un expert vous rappelle dans les 5 minutes.';
+    }, 1200);
+  }
+
+  /* ── Reset form ── */
+  function _resetForm() {
+    ['dlk-f-nom','dlk-f-societe','dlk-f-tel'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.value = ''; el.classList.remove('error'); }
+    });
+    const sj = document.getElementById('dlk-f-sujet');
+    if(sj) sj.selectedIndex = 0;
+    document.getElementById('dlk-popup-form-area').style.display = '';
+    document.getElementById('dlk-popup-success').style.display   = 'none';
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn && btn._orig) { btn.innerHTML = btn._orig; btn.disabled = false; }
+    const hl = document.getElementById('dlk-popup-headline');
+    if(hl) hl.innerHTML = _cfg.headline?.replace(_cfg.headlineSpan,'<span>'+_cfg.headlineSpan+'</span>') || '';
+    const sl = document.getElementById('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline || '';
+  }
+
+  /* ── Setup triggers automatiques ── */
+  function _setupTrigger() {
+    if(_triggerSet || !_cfg.active) return;
+    _triggerSet = true;
+    if(_alreadySeen()) return;
+    switch(_cfg.trigger) {
+      case 'delay':
+        _timer = setTimeout(() => show(), _cfg.delay || 5000);
+        break;
+      case 'exit':
+        document.addEventListener('mouseleave', e => {
+          if(e.clientY < 0 && !_shown) show();
+        });
+        break;
+      case 'scroll':
+        window.addEventListener('scroll', function _sc() {
+          const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+          if(pct >= (_cfg.scrollPct||50) && !_shown) { show(); window.removeEventListener('scroll',_sc); }
+        });
+        break;
+      case 'manual':
+        break; // show() appelé manuellement
+    }
+  }
+
+  /* ── Init ── */
+  function init(cfg) {
+    if(cfg) _applyConfig(cfg);
+    // Charger config sauvegardée depuis admin
+    try {
+      const saved = localStorage.getItem('dlk-popup-cfg');
+      if(saved) _applyConfig(JSON.parse(saved));
+    } catch(e) {}
+    _setupTrigger();
+  }
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') hide();
+  });
+
+  return { show, hide, submit, init, config: c => _applyConfig(c) };
+})();
+
+/* Fermer sur clic overlay */
+function dlkCloseOnOverlay(e) {
+  if(e.target === document.getElementById('dlk-popup-overlay') && window.delekyPopup)
+    window.delekyPopup.hide();
+}
+
+/* Auto-init au chargement */
+document.addEventListener('DOMContentLoaded', () => {
+  window.delekyPopup.init();
+});
+
+// Auto-init
+document.addEventListener("DOMContentLoaded",()=>window.delekyPopup.init({trigger:"exit"}));
+</script>
+</body>
+</html>

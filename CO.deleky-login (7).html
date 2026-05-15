@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Client — Deleky's SARL</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD');}
+:root{
+  --blue:#1A9EF0;--blue-dark:#1480CC;--blue-pale:#EBF6FE;
+  --navy:#0F3460;--white:#fff;
+  --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;
+  --gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;
+  --gray-600:#4B5563;--black:#111827;
+  --green:#22C55E;--green-pale:#F0FDF4;
+  --r:10px;--r-lg:14px;
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html,body{height:100%;font-family:var(--ff);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--gray-50);color:var(--black);overflow-x:hidden}
+img{display:block} button{font-family:var(--ff);cursor:pointer} input{font-family:var(--ff)}
+
+/* LAYOUT */
+.lp-wrap{display:grid;grid-template-columns:1fr 480px;min-height:100vh}
+
+/* ── GAUCHE ── */
+.lp-left{
+  background:linear-gradient(160deg,var(--navy) 0%,#0D2D54 50%,#0A2140 100%);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:52px 56px;
+}
+.lp-geo{position:absolute;inset:0;pointer-events:none}
+.lp-logo{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.lp-logo-img{
+  border-radius:10px;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  padding:6px 10px;flex-shrink:0;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.lp-logo-img img{height:auto;width:auto;max-height:40px;max-width:160px}
+.lp-logo-name{font-size:18px;font-weight:900;color:#fff;letter-spacing:-.01em;line-height:1.1}
+.lp-logo-sub{font-size:9.5px;color:rgba(255,255,255,.45);font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-top:2px}
+
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.12);border-radius:999px;padding:4px;flex-shrink:0;margin-top:18px}
+.lang-btn{font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;border:none;background:transparent;cursor:pointer;color:rgba(255,255,255,.7);font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.lang-btn:hover:not(.active){color:#fff}
+
+.lp-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(26,158,240,.2);border:1px solid rgba(26,158,240,.35);
+  border-radius:100px;padding:5px 14px;
+  font-size:11px;font-weight:700;color:#45B8F5;
+  text-transform:uppercase;letter-spacing:.09em;margin-bottom:20px;width:fit-content;
+}
+.lp-title{
+  font-size:clamp(26px,2.6vw,38px);font-weight:800;color:#fff;
+  letter-spacing:-.025em;line-height:1.18;margin-bottom:12px;
+}
+.lp-title span{
+  background:linear-gradient(90deg,#45B8F5,#7DD3FA);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lp-subtitle{font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.8;max-width:400px;margin-bottom:32px}
+
+.lp-features{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.lp-feat{display:flex;align-items:center;gap:13px}
+.lp-feat-icon{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;
+}
+.lp-feat:hover .lp-feat-icon{background:rgba(26,158,240,.25);border-color:rgba(26,158,240,.4)}
+.lp-feat-icon svg{width:15px;height:15px;stroke:#45B8F5;fill:none;stroke-width:2}
+.lp-feat-text{font-size:13.5px;color:rgba(255,255,255,.8);font-weight:500}
+
+.lp-trust{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:16px 18px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-lg);
+}
+.lp-trust-item{display:flex;align-items:center;gap:7px;font-size:11.5px;color:rgba(255,255,255,.5);font-weight:600}
+.lp-trust-item svg{width:13px;height:13px;stroke:rgba(255,255,255,.3);fill:none;stroke-width:2}
+.lp-trust-sep{width:1px;height:16px;background:rgba(255,255,255,.1)}
+
+.lp-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.08);padding-top:22px;
+}
+.lp-stat{text-align:center;padding:0 8px}
+.lp-stat+.lp-stat{border-left:1px solid rgba(255,255,255,.08)}
+.lp-stat-n{font-size:20px;font-weight:900;color:#fff;line-height:1;margin-bottom:3px}
+.lp-stat-l{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+
+/* ── DROITE ── */
+.lp-right{
+  background:#fff;display:flex;flex-direction:column;justify-content:center;
+  padding:48px 52px;position:relative;
+  box-shadow:-4px 0 40px rgba(0,0,0,.06);overflow-y:auto;
+}
+.lp-back{
+  position:absolute;top:24px;left:28px;
+  display:flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;color:var(--gray-400);transition:color .2s;text-decoration:none;
+}
+.lp-back:hover{color:var(--blue)}
+.lp-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* Logo panel droit */
+.lp-right-logo{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+.lp-right-logo-img{
+  border-radius:8px;
+  background:var(--gray-100);display:flex;align-items:center;justify-content:center;
+  padding:6px 8px;flex-shrink:0;
+}
+.lp-right-logo-img img{height:auto;width:auto;max-height:34px;max-width:140px}
+.lp-right-logo-name{font-size:16px;font-weight:900;color:var(--navy);letter-spacing:-.01em;line-height:1.1}
+.lp-right-logo-sub{font-size:9.5px;color:var(--gray-400);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+.lp-secure{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gray-50);border:1px solid var(--gray-200);border-radius:100px;
+  padding:5px 13px;font-size:11px;font-weight:700;color:var(--gray-500);
+  margin-bottom:26px;width:fit-content;
+}
+.lp-secure svg{stroke:var(--green);width:12px;height:12px;fill:none;stroke-width:2.5}
+
+.lp-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--gray-200);margin-bottom:24px}
+.lp-tab{
+  padding:9px 0;margin-right:24px;font-size:13.5px;font-weight:600;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1.5px;
+  color:var(--gray-400);transition:all .2s;
+}
+.lp-tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:700}
+
+.f-group{margin-bottom:16px}
+.f-label{display:block;font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.f-hint{font-size:11.5px;color:var(--gray-400);margin-top:4px}
+.f-input-wrap{position:relative}
+.f-input{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14.5px;font-family:var(--ff);color:var(--black);
+  outline:none;background:#fff;transition:border-color .2s,box-shadow .2s;
+}
+.f-input:hover{border-color:var(--gray-300)}
+.f-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,158,240,.1)}
+.f-input.has-icon{padding-left:42px}
+.f-input.has-btn{padding-right:46px}
+.f-input.err{border-color:#EF4444;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
+.f-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none}
+.f-icon svg{width:16px;height:16px;stroke:var(--gray-400);fill:none;stroke-width:2;transition:stroke .2s}
+.f-input:focus ~ .f-icon svg,
+.f-icon.focused svg{stroke:var(--blue)}
+.f-eye{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:none;border:none;padding:4px;color:var(--gray-400);
+  transition:color .2s;display:flex;align-items:center;
+}
+.f-eye:hover{color:var(--blue)}
+.f-eye svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+.pwd-bars{display:flex;gap:3px;margin-top:6px}
+.pwd-bar{flex:1;height:3px;border-radius:100px;background:var(--gray-200);transition:background .3s}
+.pwd-bar.w{background:#EF4444}.pwd-bar.m{background:#F59E0B}.pwd-bar.s{background:#22C55E}
+.pwd-hint{font-size:11px;color:var(--gray-400);margin-top:4px}
+
+.f-options{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;font-size:13px}
+.f-remember{display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--gray-600)}
+.f-remember input{accent-color:var(--blue)}
+.f-link{color:var(--blue);font-weight:600;background:none;border:none;font-size:13px;font-family:var(--ff);padding:0;transition:color .2s}
+.f-link:hover{color:var(--navy)}
+
+.f-alert{
+  background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;
+  padding:10px 14px;font-size:13px;color:#DC2626;
+  display:none;align-items:center;gap:8px;margin-bottom:16px;
+}
+.f-alert.show{display:flex;animation:shake .4s ease}
+.f-alert svg{flex-shrink:0;stroke:#DC2626;fill:none;stroke-width:2;width:15px;height:15px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.btn-main{
+  width:100%;background:var(--blue);color:#fff;border:none;
+  border-radius:var(--r);padding:13.5px;font-size:15px;font-weight:700;
+  font-family:var(--ff);transition:all .25s;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 4px 12px rgba(26,158,240,.3);margin-bottom:12px;
+}
+.btn-main:hover{background:var(--navy);box-shadow:0 4px 18px rgba(15,52,96,.35);transform:translateY(-1px)}
+.btn-main:active{transform:translateY(0)}
+.btn-sec{
+  width:100%;background:#fff;color:var(--gray-600);border:1.5px solid var(--gray-200);
+  border-radius:var(--r);padding:12px;font-size:14px;font-weight:600;
+  font-family:var(--ff);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-sec:hover{border-color:var(--blue);color:var(--blue)}
+.f-div{display:flex;align-items:center;gap:12px;margin:14px 0;font-size:12px;color:var(--gray-400);font-weight:600}
+.f-div::before,.f-div::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+
+.f-reassure{
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--gray-100);
+}
+.f-reassure-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-400);font-weight:600}
+.f-reassure-item svg{stroke:var(--green);width:12px;height:12px;fill:none;stroke-width:2.5}
+
+.f-success{display:none;text-align:center;padding:20px 0}
+.f-success.show{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.f-success-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+
+.fp{display:none}.fp.show{display:block}
+.fp-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--blue);background:none;border:none;padding:0;margin-bottom:18px}
+.fp-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+.redir-bar-wrap{height:3px;background:var(--gray-100);border-radius:100px;overflow:hidden;margin-top:14px}
+.redir-bar{height:100%;background:var(--blue);width:0%;border-radius:100px;transition:width 2.5s linear}
+
+.lp-footer{position:absolute;bottom:20px;left:52px;right:52px;font-size:11px;color:var(--gray-400);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.lp-footer a{color:var(--gray-400);transition:color .2s;text-decoration:none}
+.lp-footer a:hover{color:var(--blue)}
+
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+@media(max-width:1024px){.lp-wrap{grid-template-columns:1fr 420px}.lp-left{padding:44px 40px}.lp-right{padding:44px 40px}.lp-footer{left:40px;right:40px}}
+@media(max-width:840px){
+  .lp-wrap{grid-template-columns:1fr}
+  .lp-left{padding:36px 28px}
+  .lp-value{padding:20px 0 16px}
+  .lp-features{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .lp-stats{display:none}
+  .lp-right{padding:36px 28px 80px}
+  .lp-footer{left:28px;right:28px}
+}
+@media(max-width:480px){
+  .lp-left{padding:28px 20px}.lp-right{padding:28px 20px 72px}
+  .lp-features{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .lp-footer{left:20px;right:20px}
+}
+</style>
+</head>
+<body>
+<div class="lp-wrap">
+
+  <!-- ════ GAUCHE ════ -->
+  <div class="lp-left">
+    <svg class="lp-geo" viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice">
+      <circle cx="620" cy="80"  r="260" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <circle cx="620" cy="80"  r="180" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <circle cx="80"  cy="820" r="200" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="0" y1="300" x2="700" y2="600" stroke="rgba(255,255,255,.025)" stroke-width="1"/>
+      <circle cx="580" cy="140" r="2" fill="rgba(69,184,245,.4)"/>
+      <circle cx="120" cy="760" r="2" fill="rgba(69,184,245,.3)"/>
+    </svg>
+
+    <!-- Logo gauche : icône dans carré blanc + texte blanc -->
+    <div class="lp-logo">
+      <div class="lp-logo-img">
+        <img src="logo.jpg" alt="Deleky's">
+      </div>
+      <div>
+        <div class="lp-logo-name">Deleky's SARL</div>
+        <div class="lp-logo-sub">Cabinet Comptable & Conseil</div>
+      </div>
+    </div>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="switchLang('fr', this)">FR</button>
+      <button class="lang-btn" onclick="switchLang('en', this)">EN</button>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:32px 0" class="lp-value">
+      <div class="lp-badge">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Espace Client Sécurisé
+      </div>
+      <h1 class="lp-title">Votre Espace Client<br><span>Deleky's SARL</span></h1>
+      <p class="lp-subtitle">Accédez à vos données, suivez vos missions et pilotez votre activité en toute simplicité.</p>
+
+      <div class="lp-features">
+        <div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="lp-feat-text">Suivi des missions en temps réel</span></div><div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><span class="lp-feat-text">Accès aux documents et livrables</span></div><div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><span class="lp-feat-text">Échanges directs avec votre expert</span></div><div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div><span class="lp-feat-text">Alertes et échéances importantes</span></div><div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><span class="lp-feat-text">Données financières structurées</span></div><div class="lp-feat"><div class="lp-feat-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#45B8F5" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><span class="lp-feat-text">Outils de gestion et d'analyse</span></div>
+      </div>
+
+      <div class="lp-trust">
+        <div class="lp-trust-item"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> SSL sécurisé</div>
+        <div class="lp-trust-sep"></div>
+        <div class="lp-trust-item"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Données chiffrées</div>
+        <div class="lp-trust-sep"></div>
+        <div class="lp-trust-item"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> Confidentialité</div>
+      </div>
+    </div>
+
+    <div class="lp-stats">
+      <div class="lp-stat"><div class="lp-stat-n">250+</div><div class="lp-stat-l">Clients actifs</div></div><div class="lp-stat"><div class="lp-stat-n">10 ans</div><div class="lp-stat-l">Expertise</div></div><div class="lp-stat"><div class="lp-stat-n">UEMOA</div><div class="lp-stat-l">Zone couverte</div></div>
+    </div>
+  </div>
+
+  <!-- ════ DROITE ════ -->
+  <div class="lp-right">
+    <a class="lp-back" href="#" onclick="goHome()">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour au site
+    </a>
+
+    <!-- Logo droit : icône dans carré bleu pâle + texte sombre -->
+    <div class="lp-right-logo">
+      <div class="lp-right-logo-img">
+        <img src="logo.jpg" alt="Deleky's">
+      </div>
+      <div>
+        <div class="lp-right-logo-name">Deleky's SARL</div>
+        <div class="lp-right-logo-sub">Espace Client</div>
+      </div>
+    </div>
+
+    <div class="lp-secure">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Espace sécurisé — Données protégées
+    </div>
+
+    <div class="lp-tabs">
+      <div class="lp-tab active">Connexion</div>
+    </div>
+
+    <!-- CONNEXION -->
+    <div id="panel-l">
+      <div style="font-size:24px;font-weight:800;color:var(--black);letter-spacing:-.02em;margin-bottom:6px">Accéder à mon espace</div>
+      <div style="font-size:14px;color:var(--gray-500);line-height:1.65;margin-bottom:24px">Connectez-vous pour accéder à vos informations, vos missions et vos outils de gestion.</div>
+
+      <div class="f-alert" id="al-l">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="al-l-msg">Email ou mot de passe incorrect.</span>
+      </div>
+
+      <div class="f-group">
+        <label class="f-label">Email professionnel</label>
+        <div class="f-input-wrap">
+          <span class="f-icon" id="icon-email"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+          <input class="f-input has-icon" id="l-email" type="email" placeholder="jean@masociete.ci"
+            oninput="clrAl('al-l')" onfocus="focusIcon('icon-email')" onblur="blurIcon('icon-email')"
+            onkeydown="if(event.key==='Enter')doLogin()">
+        </div>
+        <div class="f-hint">Utilisez votre email professionnel</div>
+      </div>
+
+      <div class="f-group">
+        <label class="f-label">Mot de passe</label>
+        <div class="f-input-wrap">
+          <span class="f-icon" id="icon-pwd"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+          <input class="f-input has-icon has-btn" id="l-pwd" type="password" placeholder="••••••••••"
+            oninput="clrAl('al-l')" onfocus="focusIcon('icon-pwd')" onblur="blurIcon('icon-pwd')"
+            onkeydown="if(event.key==='Enter')doLogin()">
+          <button class="f-eye" onclick="toggleEye('l-pwd',this)" tabindex="-1">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="f-hint">Mot de passe sécurisé</div>
+      </div>
+
+      <div class="f-options">
+        <label class="f-remember"><input type="checkbox" id="rem"> Se souvenir de moi</label>
+        <button class="f-link" onclick="showFP()">Mot de passe oublié ?</button>
+      </div>
+
+      <button class="btn-main" onclick="doLogin()" id="btn-l">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+        Accéder à mon espace
+      </button>
+      <div class="f-reassure">
+        <div class="f-reassure-item"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SSL sécurisé</div>
+        <div class="f-reassure-item"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Données confidentielles</div>
+        <div class="f-reassure-item"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Suivi professionnel</div>
+      </div>
+    </div>
+
+    <!-- MOT DE PASSE OUBLIÉ -->
+    <div class="fp" id="fp">
+      <button class="fp-back" onclick="hideFP()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Retour à la connexion
+      </button>
+      <div style="font-size:21px;font-weight:800;color:var(--black);letter-spacing:-.02em;margin-bottom:6px">Réinitialiser mon mot de passe</div>
+      <div style="font-size:13.5px;color:var(--gray-500);line-height:1.7;margin-bottom:22px">Entrez votre email — nous vous envoyons un lien si votre compte existe.</div>
+      <div class="f-group">
+        <label class="f-label">Email professionnel</label>
+        <div class="f-input-wrap">
+          <span class="f-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+          <input class="f-input has-icon" id="fp-em" type="email" placeholder="jean@masociete.ci">
+        </div>
+      </div>
+      <button class="btn-main" onclick="doFP()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Envoyer le lien
+      </button>
+      <div class="f-success" id="ok-fp" style="margin-top:16px;padding:12px 0">
+        <div style="font-size:13.5px;color:var(--gray-500)">✓ Email envoyé — vérifiez votre boîte de réception.</div>
+      </div>
+    </div>
+
+    <div class="lp-footer">
+      <span>© 2024 Deleky's SARL</span>
+      <div style="display:flex;gap:14px">
+        <a href="#" onclick="goHome()">Accueil</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Assistance</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/lang.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const show = (id, v) => {if($(id)) $(id).style.display = v?'block':'none';};
+function goHome(){window.location.href='CO.deleky-home.html'}
+
+function switchLang(lang, btn){
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function focusIcon(id){const el=$(id);if(el)el.querySelector('svg').style.stroke='#1A9EF0';}
+function blurIcon(id){const el=$(id);if(el)el.querySelector('svg').style.stroke='';}
+
+function toggleEye(id,btn){
+  const inp=$(id),show=inp.type==='password';inp.type=show?'text':'password';
+  btn.innerHTML=show
+    ?`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
+    :`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+}
+
+/* ── DUMMY AUTH ─────────────────────────────────── */
+const DUMMY_EMAIL = 'admin@deleky.ci';
+const DUMMY_PASS = 'admin123';
+
+function showAl(id,msg){const el=$(id);if(!el)return;el.querySelector('span').textContent=msg||'';el.classList.add('show');}
+function clrAl(id){$(id)?.classList.remove('show');}
+
+function doLogin(){
+  const em=$('l-email')?.value.trim(),pw=$('l-pwd')?.value.trim();
+  if(!em||!pw){showAl('al-l','Veuillez renseigner votre email et mot de passe.');return;}
+  if(!em.includes('@')){showAl('al-l','Email invalide.');return;}
+  if(em!==DUMMY_EMAIL||pw!==DUMMY_PASS){showAl('al-l','Email ou mot de passe incorrect.');return;}
+  window.location.href='deleky-admin.html';
+}
+
+function showFP(){show('panel-l',false);$('fp')?.classList.add('show');}
+function hideFP(){$('fp')?.classList.remove('show');show('panel-l',true);}
+function doFP(){
+  const em=$('fp-em')?.value.trim();
+  if(!em||!em.includes('@')){$('fp-em')?.classList.add('err');setTimeout(()=>$('fp-em')?.classList.remove('err'),2500);return;}
+  $('ok-fp')?.classList.add('show');
+}
+</script>
+</body>
+</html>

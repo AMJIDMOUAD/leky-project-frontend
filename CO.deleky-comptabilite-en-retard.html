@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comptabilité en Retard — Régularisation Fiscale — Deleky's SARL</title>
+<meta name="description" content="Votre comptabilité est en retard ? Deleky's SARL régularise vos exercices manquants, dépose vos déclarations et négocie les pénalités avec l'administration fiscale. Zone UEMOA.">
+<style>
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD');}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Maiandra GD',Georgia,serif;background:#fff;color:#111827;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%} a{text-decoration:none;color:inherit}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+:root{
+  --blue:#1A9EF0;
+  --blue-dark:#1480CC;
+  --blue-pale:#EBF6FE;
+  --navy:#0F3460;
+  --white:#FFFFFF;
+  --gray-50:#F9FAFB;
+  --gray-100:#F3F4F6;
+  --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;
+  --gray-600:#4B5563;
+  --gray-800:#1F2937;
+  --black:#111827;
+  --green:#22C55E;
+  --green-pale:#F0FDF4;
+  --orange:#F97316;
+  --orange-pale:#FFF7ED;
+  --r:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--white);color:var(--black);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--gray-100);
+  border-radius:8px;padding:3px;flex-shrink:0}
+.lang-btn{font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;
+  border:none;background:transparent;cursor:pointer;color:var(--gray-400);
+  font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.lang-btn:hover:not(.active){color:var(--gray-600)}
+
+.ticker-badge{background:#E53E3E;color:#fff;font-size:11px;font-weight:800;
+  padding:0 18px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  min-width:90px;z-index:1}
+.ticker-content{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 16px}
+
+/* ── PROMO BANNER ──────────────────────────────────────── */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;
+  font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.promo a{color:var(--blue);font-weight:700;text-decoration:underline}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav{background:var(--white);border-bottom:1px solid var(--gray-200);
+  position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.logo-wrap img{height:52px;width:auto;display:block}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;flex-shrink:0}
+.nav-menu a{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 9px;border-radius:8px;transition:all .2s;display:block;white-space:nowrap;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.nav-menu a:hover{color:var(--black);background:var(--gray-100)}
+.nav-menu .has-drop{position:relative}
+.nav-menu .has-drop>a::after{content:'▾';font-size:10px;margin-left:4px;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100%+4px);left:0;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);
+  padding:8px;min-width:220px;box-shadow:var(--shadow-lg);z-index:100}
+.has-drop:hover .drop{display:block}
+.drop a{font-size:13px;color:var(--gray-600);padding:10px 14px;border-radius:8px;
+  display:flex;align-items:center;gap:10px;transition:all .2s}
+.drop a:hover{background:var(--gray-50);color:var(--black)}
+.drop-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drop-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.nav-tel{font-size:13px;font-weight:600;color:var(--gray-600);white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 12px;border-radius:8px;border:1px solid var(--gray-200);transition:all .2s;white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login:hover{border-color:var(--blue);color:var(--blue)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:8px;border:none;background:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s}
+
+/* ── TICKER ────────────────────────────────────────────── */
+.ticker{background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:stretch;overflow:hidden;height:40px;position:sticky;top:72px;z-index:190}
+.ticker-track{display:flex;gap:64px;animation:tick 45s linear infinite;white-space:nowrap;align-items:center}
+.t-item{font-size:13px;color:var(--gray-600);flex-shrink:0}
+.t-item strong{color:var(--blue);font-weight:700}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{background:var(--white);padding:72px 32px 80px}
+.hero-inner{max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-pale);color:var(--blue);
+  font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;
+  letter-spacing:.04em;margin-bottom:20px}
+.hero-eyebrow svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2}
+h1.hero-title{font-size:clamp(36px,4.5vw,56px);font-weight:800;line-height:1.1;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:20px}
+h1.hero-title span{color:var(--blue)}
+.hero-desc{font-size:17px;color:var(--gray-600);line-height:1.75;
+  max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.btn-primary{background:var(--blue);color:#fff;font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;border:2px solid var(--blue);
+  display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-primary svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.btn-secondary{background:var(--white);color:var(--black);font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;
+  border:2px solid var(--gray-200);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-trust-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.stars{color:#F59E0B;font-size:16px;letter-spacing:1px}
+.hero-trust-sep{color:var(--gray-200);font-size:20px}
+.hero-trust-clients{font-size:13px;color:var(--gray-400)}
+.hero-trust-clients strong{color:var(--gray-600);font-weight:700}
+
+/* Hero visual */
+.hero-visual{position:relative;padding:0 0 20px 24px}
+.hero-card-main{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-lg)}
+.hero-card-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--gray-400);margin-bottom:12px}
+.hero-card-title{font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.hero-card-val{font-size:38px;font-weight:800;color:var(--blue);line-height:1;margin-bottom:4px}
+.hero-card-sub{font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+.hero-card-sub svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+.hero-mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.hero-mini{background:var(--gray-50);border-radius:var(--r);padding:16px}
+.hero-mini-n{font-size:24px;font-weight:800;color:var(--black)}
+.hero-mini-l{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hero-badge{position:absolute;top:-16px;right:-16px;background:var(--blue);
+  color:#fff;border-radius:var(--r-lg);padding:14px 18px;text-align:center;
+  box-shadow:var(--shadow-md)}
+.hero-badge-n{font-size:28px;font-weight:800;line-height:1}
+.hero-badge-l{font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.8;margin-top:2px}
+
+/* ── SOCIAL PROOF BAR ──────────────────────────────────── */
+.proof-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);padding:20px 32px}
+.proof-bar-inner{max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600)}
+.proof-item svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+.proof-item strong{color:var(--black);font-weight:700}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+section{padding:80px 32px}
+.container{max-width:1200px;margin:auto}
+.section-tag{font-size:13px;font-weight:700;color:var(--blue);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--black);
+  line-height:1.2;letter-spacing:-.02em}
+.section-title span{color:var(--blue)}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.75;
+  max-width:560px;margin-top:12px}
+.section-header{margin-bottom:52px}
+.sh-center{text-align:center}
+.sh-center .section-desc{margin:12px auto 0}
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how{background:var(--white)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.how-card{background:var(--gray-50);border-radius:var(--r-lg);padding:36px 28px;
+  position:relative;overflow:hidden;transition:all .3s}
+.how-card:hover{background:var(--blue-pale);transform:translateY(-4px)}
+.how-num{font-size:56px;font-weight:900;color:var(--gray-200);line-height:1;
+  margin-bottom:20px;letter-spacing:-.04em;transition:color .3s}
+.how-card:hover .how-num{color:rgba(26,158,240,.2)}
+.how-icon{width:48px;height:48px;background:var(--blue);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.how-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2}
+.how-title{font-size:17px;font-weight:800;color:var(--black);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.svc-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:32px;transition:all .3s;cursor:pointer}
+.svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-card.featured{border-color:var(--blue);background:var(--blue-pale)}
+.svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc-icon{width:52px;height:52px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center}
+.svc-card.featured .svc-icon{background:var(--blue)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.svc-card.featured .svc-icon svg{stroke:#fff}
+.svc-badge{font-size:11px;font-weight:700;background:var(--blue);color:#fff;
+  padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.svc-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.svc-features li{font-size:13px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:3}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-size:13px;font-weight:700;margin-top:20px;text-transform:uppercase;letter-spacing:.04em}
+.svc-link svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.stats{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--r-lg);overflow:hidden}
+.stat-item{background:var(--navy);padding:40px 32px;text-align:center}
+.stat-n{font-size:48px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.stat-n span{color:var(--blue)}
+.stat-l{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WHO WE SERVE ──────────────────────────────────────── */
+.serve{background:var(--white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.serve-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--gray-200);
+  transition:all .3s;cursor:pointer}
+.serve-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.serve-img{height:200px;overflow:hidden;position:relative}
+.serve-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.serve-card:hover .serve-img img{transform:scale(1.05)}
+.serve-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,52,96,.7))}
+.serve-body{padding:24px}
+.serve-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.serve-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+.serve-tag{display:inline-block;font-size:11px;font-weight:700;
+  background:var(--blue-pale);color:var(--blue);padding:4px 10px;border-radius:100px;
+  margin-right:4px;margin-bottom:4px}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testimonials{background:var(--gray-50)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:28px;transition:box-shadow .3s}
+.testi-card:hover{box-shadow:var(--shadow-md)}
+.testi-stars{color:#F59E0B;font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;
+  margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--black)}
+.testi-role{font-size:12px;color:var(--gray-400)}
+
+/* ── CTA BAND ──────────────────────────────────────────── */
+.cta-band{background:var(--blue);padding:72px 32px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;
+  margin-bottom:12px;letter-spacing:-.02em}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--blue);font-size:15px;font-weight:800;
+  padding:14px 32px;border-radius:var(--r);display:inline-block;transition:all .25s}
+.btn-white:hover{background:var(--gray-50);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);border:2px solid rgba(255,255,255,.4);
+  display:inline-block;transition:all .25s;margin-left:12px}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── QUOTE FORM ─────────────────────────────────────────── */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.quote-left-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--black);
+  margin-bottom:12px;letter-spacing:-.02em}
+.quote-left-desc{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+.trust-list{display:flex;flex-direction:column;gap:12px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-icon{width:22px;height:22px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.trust-icon svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.trust-text{font-size:14px;color:var(--gray-600)}
+.trust-text strong{color:var(--black);font-weight:700}
+.form-box{background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px}
+.form-box-title{font-size:20px;font-weight:800;color:var(--black);margin-bottom:4px}
+.form-box-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.f-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:var(--ff);color:var(--black);background:#fff;
+  outline:none;transition:border-color .2s;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);cursor:pointer;
+  transition:background .2s;margin-top:4px}
+.f-btn:hover{background:var(--blue-dark)}
+
+/* ── NEWSLETTER ─────────────────────────────────────────── */
+.newsletter{background:var(--navy);padding:64px 32px;text-align:center}
+.newsletter h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-.02em}
+.newsletter p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:28px}
+.nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.nl-input{flex:1;padding:13px 18px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-family:var(--ff);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 24px;font-size:14px;font-weight:700;font-family:var(--ff);
+  cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--blue-dark)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
+.footer-top{max-width:1200px;margin:auto;padding:64px 32px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{height:40px;margin-bottom:14px}
+.footer-tagline{font-size:13px;line-height:1.7;margin-bottom:20px;color:rgba(255,255,255,.45)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.footer-col-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.9);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.8)}
+
+/* ── FLOATING BUTTONS ───────────────────────────────────── */
+.float-wrap{position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.float-btn{width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:var(--blue)}
+.float-ph{background:var(--navy)}
+.float-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── PRODUCTS ──────────────────────────────────────────── */
+.products{background:var(--gray-50)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prod-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;transition:all .3s}
+.prod-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.prod-top{padding:32px 32px 24px;display:flex;align-items:flex-start;gap:16px}
+.prod-icon{width:56px;height:56px;border-radius:var(--r);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.prod-name{font-size:19px;font-weight:800;color:var(--black);margin-bottom:6px}
+.prod-sub{font-size:13px;color:var(--blue);font-weight:600}
+.prod-body{padding:0 32px 32px}
+.prod-desc{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prod-features li{font-size:13px;color:var(--gray-600);
+  display:flex;align-items:center;gap:8px}
+.prod-btn{display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 20px;border-radius:var(--r);transition:background .2s;border:none;cursor:pointer;font-family:var(--ff)}
+.prod-btn:hover{background:var(--blue)}
+.prod-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:40px}
+  
+  .prod-grid{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .nav-menu.open{display:flex;flex-direction:column;position:absolute;
+    top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);
+    padding:12px 16px;box-shadow:var(--shadow-md)}
+  .nav-menu.open .drop{display:none}
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  section{padding:56px 20px}
+  .hero{padding:48px 20px 56px}
+  .hero-inner{gap:32px}
+  h1.hero-title{font-size:32px}
+  .how-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  .proof-bar-inner{gap:20px}
+  .nl-form{flex-direction:column}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  .hero-badge{display:none}
+  .form-row{grid-template-columns:1fr}
+  .cta-band .btn-outline-white{margin-left:0;margin-top:10px;display:block}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .serve-grid,.prod-grid{grid-template-columns:1fr}
+}
+
+/* ── COMPTABILITÉ EN RETARD ───────────────────────────── */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.3)}50%{box-shadow:0 0 0 10px rgba(220,38,38,0)}}
+@keyframes glowBlue{0%,100%{box-shadow:0 0 0 0 rgba(26,158,240,.3)}50%{box-shadow:0 0 0 10px rgba(26,158,240,0)}}
+@keyframes glowGreen{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.25)}50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes slideRight{from{width:0}to{width:var(--pw)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.left{transform:translateX(-32px)}.reveal.right{transform:translateX(32px)}
+.reveal.visible{opacity:1;transform:translate(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+.la-hero{background:#fff;border-bottom:1px solid var(--gray-200);padding:72px 32px 80px;position:relative;overflow:hidden}
+.la-hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 460px;gap:64px;align-items:center}
+
+.la-feat{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding:76px 0}
+.la-feat+.la-feat{border-top:1px solid rgba(26,158,240,.07)}
+.la-vbox{background:linear-gradient(145deg,#FFF8F8,#FEF2F2);border:1px solid rgba(220,38,38,.1);border-radius:24px;padding:28px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center;justify-content:center}
+.la-vbox.blue{background:linear-gradient(145deg,#F8FBFF,#EFF6FF);border-color:rgba(26,158,240,.1)}
+.la-vbox.green{background:linear-gradient(145deg,#F0FDF8,#DCFCE7);border-color:rgba(34,197,94,.1)}
+
+.la-step{display:flex;gap:16px;align-items:flex-start;padding:20px;background:#fff;border-radius:16px;border:1px solid var(--gray-200);transition:all .35s;cursor:default}
+.la-step:hover{border-color:var(--blue);transform:translateX(6px);box-shadow:0 4px 16px rgba(26,158,240,.08)}
+
+.faq-item{border:1.5px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;background:#fff}
+.faq-item input[type=checkbox]{display:none}
+.faq-label{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;font-size:14px;font-weight:700;color:var(--black);gap:12px;user-select:none}
+.faq-label:hover{color:var(--blue)}
+.faq-arrow{display:flex;flex-shrink:0;transition:transform .25s}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 20px;font-size:13.5px;color:var(--gray-600);line-height:1.75}
+.faq-item input:checked~.faq-label .faq-arrow{transform:rotate(180deg)}
+.faq-item input:checked~.faq-label{color:var(--blue)}
+.faq-item input:checked~.faq-body{max-height:300px;padding:0 20px 16px}
+
+.float-1{animation:float 4s ease-in-out infinite}
+.float-2{animation:float2 5s ease-in-out infinite .7s}
+.float-3{animation:float 3.5s ease-in-out infinite 1.3s}
+
+@media(max-width:1024px){
+  .la-hero-inner{grid-template-columns:1fr;gap:40px}
+  .la-feat{grid-template-columns:1fr;gap:40px;padding:52px 0}
+  .la-vbox{min-height:260px}
+}
+@media(max-width:768px){.la-hero{padding:48px 20px 56px}section{padding:48px 20px}}
+
+/* Nav responsive — hide phone on medium screens so Connexion is always visible */
+@media(max-width:1100px){.nav-tel{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- LOGO — hauteur fixe, pas de compression -->
+    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+      <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
+    </a>
+
+    <!-- MENU PRINCIPAL -->
+                <ul class="nav-menu" id="nav-menu">
+      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
+      <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
+            <li class="has-drop">
+        <a href="#">Nos Produits</a>
+        <div class="drop">
+          <a href="CO.deleky-simulateur-paie-v2.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">CI Payroll Simulation</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-simulateur-immo.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Home Loan Calculator</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-plan-amortissement.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Amortization Plan</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+        </div>
+      </li>
+<li class="has-drop">
+        <a href="CO.deleky-ressources.html#res-docs">Ressources</a>
+        <div class="drop">
+          <a href="CO.deleky-ressources.html#res-docs" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            Documents Utiles
+          </a>
+          <a href="CO.deleky-ressources.html#res-calc" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></div>
+            Calculateurs
+          </a>
+
+          <a href="CO.deleky-ressources.html#res-part" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Partenariat
+          </a>
+        </div>
+      </li>
+      <li class="has-drop">
+        <a href="CO.deleky-publications.html">Publications</a>
+        <div class="drop">
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg></div>
+            Blog & Articles
+          </a>
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+            Événements
+          </a>
+        </div>
+      </li>
+      <li><a href="CO.deleky-joinus.html" onclick="closeNav()">Nous Rejoindre</a></li>
+      <li><a href="CO.deleky-contact.html" onclick="closeNav()">Contact</a></li>
+    </ul>
+
+    <!-- DROITE : TEL + LANG + LOGIN + CTA -->
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+
+      <a href="tel:+22507000588" class="nav-tel">+225&nbsp;07&nbsp;00&nbsp;05&nbsp;88</a>
+
+      <!-- Switcher FR / EN -->
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('fr',this)">FR</button>
+        <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+      </div>
+
+      <a href="CO.deleky-login (7).html" class="nav-login">Connexion</a>
+
+    </div>
+  </div>
+</nav>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-badge">NEWS</div>
+  <div class="ticker-content">
+    <div class="ticker-track">
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- URGENCE -->
+<div style="background:#DC2626;padding:10px 32px;text-align:center;border-bottom:1px solid rgba(0,0,0,.1)">
+  <span style="font-size:13px;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+    <span>Chaque mois de retard supplémentaire aggrave votre situation fiscale —</span>
+    <strong>agissez maintenant avant le prochain contrôle</strong>
+    <a  href="CO.deleky-contact.html" style="color:#fff;font-weight:700;cursor:pointer;text-decoration:underline;margin-left:4px">Régulariser maintenant →</a>
+  </span>
+</div>
+
+<!-- HERO -->
+<div class="la-hero">
+  <div class="la-hero-inner">
+    <div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">
+        <a  href="CO.deleky-home.html" style="font-size:12px;color:var(--gray-400);cursor:pointer">Accueil</a>
+        <span style="color:var(--gray-300)">›</span>
+        <span style="font-size:12px;color:var(--gray-400)">Solutions</span>
+        <span style="color:var(--gray-300)">›</span>
+        <span style="font-size:12px;color:var(--black);font-weight:600">Comptabilité en Retard</span>
+      </div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:#FEF2F2;color:#DC2626;font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;animation:glow 2.5s infinite">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#DC2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+        Situation à régulariser · UEMOA · OHADA
+      </div>
+      <h1 style="font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--navy);letter-spacing:-.025em;line-height:1.1;margin-bottom:16px">
+        Comptabilité en retard ?<br>
+        <span style="color:var(--blue)">On régularise tout, ensemble</span>
+      </h1>
+      <p style="font-size:16px;color:var(--gray-600);line-height:1.85;max-width:530px;margin-bottom:28px">
+        Années manquantes, déclarations non déposées, amendes fiscales — nous reconstituons votre comptabilité, régularisons vos obligations et négocions les pénalités avec l'administration.
+      </p>
+      <div style="background:#FFF8F8;border:1.5px solid rgba(220,38,38,.2);border-radius:12px;padding:14px 18px;margin-bottom:26px;display:flex;align-items:flex-start;gap:10px;max-width:530px">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#DC2626" stroke-width="2" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span style="font-size:13px;color:#7F1D1D;line-height:1.7">En Côte d'Ivoire, les pénalités de retard peuvent atteindre <strong>25% du montant dû</strong> + <strong>1% par mois</strong> de retard supplémentaire. Plus vous attendez, plus la facture augmente.</span>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px">
+        <button onclick="navigate('contact')" style="display:inline-flex;align-items:center;gap:8px;background:#DC2626;color:#fff;font-size:14px;font-weight:700;padding:13px 24px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;transition:all .25s;box-shadow:0 4px 14px rgba(220,38,38,.4)" onmouseover="this.style.background='var(--navy)'" onmouseout="this.style.background='#DC2626'"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg> Régulariser ma situation</button>
+        <button onclick="document.getElementById('processus-la').scrollIntoView({behavior:'smooth'})" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-size:14px;font-weight:600;padding:13px 20px;border-radius:10px;border:1.5px solid var(--blue);cursor:pointer;font-family:inherit;transition:all .2s" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--blue)'"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Voir comment ça marche</button>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Jusqu'à 3 ans régularisés</span></div><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Négociation des pénalités</span></div><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Zone UEMOA / OHADA</span></div><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Diagnostic offert</span></div></div>
+    </div>
+
+    <!-- Stats + visual -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:15px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+  <div style="width:42px;height:42px;background:var(--blue-pale);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>
+  </div>
+  <div><div style="font-size:22px;font-weight:900;color:var(--navy);line-height:1">3 ans</div>
+  <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Max. régularisables</div></div>
+</div><div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:15px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+  <div style="width:42px;height:42px;background:#FEF3C7;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#D97706" stroke-width="2"><polyline points="12 8 12 12 14 14"/></svg>
+  </div>
+  <div><div style="font-size:22px;font-weight:900;color:var(--navy);line-height:1">2–8 sem.</div>
+  <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Délai reconstitution</div></div>
+</div><div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:15px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+  <div style="width:42px;height:42px;background:#F0FDF4;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16A34A" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+  </div>
+  <div><div style="font-size:22px;font-weight:900;color:var(--navy);line-height:1">8 pays</div>
+  <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Zone UEMOA couverte</div></div>
+</div><div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:15px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+  <div style="width:42px;height:42px;background:#FEF2F2;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#DC2626" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  </div>
+  <div><div style="font-size:22px;font-weight:900;color:var(--navy);line-height:1">0</div>
+  <div style="font-size:11px;color:var(--gray-500);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Amende supplémentaire</div></div>
+</div>
+      <!-- Visual urgence flottant -->
+      <div class="float-1" style="background:var(--navy);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;margin-top:4px">
+        <div style="width:44px;height:44px;background:rgba(220,38,38,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:glow 2s infinite">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F87171" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:2px">Intervention possible</div>
+          <div style="font-size:14px;font-weight:800;color:#fff">Même en cas de contrôle en cours</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.5)">CI · SN · BF · ML · Zone UEMOA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RISQUES -->
+<section style="background:var(--gray-50);padding:72px 32px">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:40px">
+      <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Ce que vous risquez</div>
+      <h2 style="font-size:clamp(22px,3vw,38px);font-weight:800;color:var(--black);letter-spacing:-.02em;margin-bottom:12px">
+        Chaque mois de retard<br><span style="color:#DC2626">aggrave votre situation</span>
+      </h2>
+      <p style="font-size:15px;color:var(--gray-600);max-width:540px;margin:0 auto;line-height:1.75">Une comptabilité en retard n'est pas juste un problème administratif — c'est un risque financier et opérationnel réel.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:960px;margin:0 auto">
+      <div class="reveal d1" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#DC2626';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#FEF2F2;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#DC2626" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Amendes fiscales</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Chaque déclaration manquante génère des pénalités qui s'accumulent mois après mois.</div>
+  </div>
+</div>
+<div class="reveal d2" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#D97706';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#FEF3C7;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#D97706" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Redressement fiscal</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Un contrôle fiscal sur des exercices non déclarés peut entraîner des rappels d'impôt majorés.</div>
+  </div>
+</div>
+<div class="reveal d3" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#7C3AED';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#F5F3FF;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Blocage bancaire</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Sans bilans à jour, les banques refusent vos demandes de crédit ou de garantie.</div>
+  </div>
+</div>
+<div class="reveal d4" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#0891B2';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#EFF6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#0891B2" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Perte de marchés</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Les appels d'offres publics exigent des états financiers certifiés et à jour.</div>
+  </div>
+</div>
+<div class="reveal d5" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#DC2626';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#FEF2F2;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#DC2626" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Blocage CNPS</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Les retards de déclaration sociale exposent vos salariés et bloquent les attestations.</div>
+  </div>
+</div>
+<div class="reveal d6" style="background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .3s"
+  onmouseover="this.style.borderColor='#16A34A';this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.07)'"
+  onmouseout="this.style.borderColor='var(--gray-200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+  <div style="width:40px;height:40px;background:#F0FDF4;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#16A34A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px">Fermeture administrative</div>
+    <div style="font-size:12px;color:var(--gray-500);line-height:1.6">Certaines administrations peuvent exiger la preuve de conformité pour renouveler vos autorisations.</div>
+  </div>
+</div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:28px">
+      <button onclick="navigate('contact')" style="display:inline-flex;align-items:center;gap:8px;background:#DC2626;color:#fff;font-size:14px;font-weight:700;padding:13px 28px;border-radius:100px;border:none;cursor:pointer;font-family:inherit;transition:all .25s;box-shadow:0 4px 14px rgba(220,38,38,.35)" onmouseover="this.style.background='var(--navy)'" onmouseout="this.style.background='#DC2626'"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Stopper ces risques maintenant</button>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES VISUELLES -->
+<section style="background:#fff;padding:0 32px">
+  <div class="container">
+
+    <!-- Feature 1 : Reconstitution -->
+    <div class="la-feat">
+      <div class="reveal left">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#DC2626" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg> Reconstitution comptable
+        </div>
+        <h2 style="font-size:clamp(24px,3.2vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px">
+          On reconstruit votre<br><span style="color:var(--blue)">historique comptable</span>
+        </h2>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.9;margin-bottom:24px">Même si vous n'avez plus toutes vos pièces, notre équipe sait comment reconstituer votre comptabilité à partir de vos relevés bancaires, factures disponibles et déclarations partielles.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--gray-50);border-radius:10px;border-left:3px solid var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--black)">Jusqu'à 3 exercices reconstitués</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--gray-50);border-radius:10px;border-left:3px solid var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--black)">À partir de vos relevés bancaires seuls</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--gray-50);border-radius:10px;border-left:3px solid var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg><span style="font-size:13.5px;font-weight:600;color:var(--black)">Liasse fiscale et bilan produits pour chaque année</span></div>
+        </div>
+      </div>
+
+      <div class="reveal right d2">
+        <div class="la-vbox">
+          <div style="width:100%;max-width:380px;position:relative">
+
+            <!-- Timeline exercices -->
+            <div style="background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 20px rgba(0,0,0,.07);margin-bottom:12px">
+              <div style="font-size:12px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Exercices à régulariser</div>
+              <div class="deadline-item" style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--blue-pale);border-radius:10px;border:1px solid rgba(26,158,240,.2);margin-bottom:8px"><div style="width:36px;height:36px;background:var(--blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><polyline points="12 8 12 12 14 14"/></svg></div><div style="flex:1"><div style="font-size:12.5px;font-weight:700;color:var(--black)">Exercice 2022</div><div style="font-size:11px;color:var(--blue);font-weight:600">En cours de reconstitution...</div></div><div style="font-size:11px;font-weight:800;color:var(--blue);background:rgba(26,158,240,.1);padding:2px 8px;border-radius:100px">En cours</div></div><div class="deadline-item" style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#F0FDF4;border-radius:10px;border:1px solid rgba(34,197,94,.2);margin-bottom:8px"><div style="width:36px;height:36px;background:#F0FDF4;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#16A34A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div style="flex:1"><div style="font-size:12.5px;font-weight:700;color:var(--black)">Exercice 2023</div><div style="font-size:11px;color:#16A34A;font-weight:600">Déclarations déposées ✓</div></div><div style="font-size:11px;font-weight:800;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 8px;border-radius:100px">Régularisé</div></div><div class="deadline-item" style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#F0FDF4;border-radius:10px;border:1px solid rgba(34,197,94,.2);margin-bottom:8px"><div style="width:36px;height:36px;background:#F0FDF4;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#16A34A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div style="flex:1"><div style="font-size:12.5px;font-weight:700;color:var(--black)">Exercice 2024</div><div style="font-size:11px;color:#16A34A;font-weight:600">Déclarations déposées ✓</div></div><div style="font-size:11px;font-weight:800;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 8px;border-radius:100px">Régularisé</div></div><div class="deadline-item" style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--blue-pale);border-radius:10px;border:1px solid rgba(26,158,240,.2);margin-bottom:8px"><div style="width:36px;height:36px;background:var(--blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div style="flex:1"><div style="font-size:12.5px;font-weight:700;color:var(--black)">Exercice 2025 (actuel)</div><div style="font-size:11px;color:var(--blue);font-weight:600">Gestion courante reprise</div></div><div style="font-size:11px;font-weight:800;color:var(--blue);background:rgba(26,158,240,.1);padding:2px 8px;border-radius:100px">Actif</div></div>
+            </div>
+
+            <!-- Badge amendes -->
+            <div class="float-2" style="background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 6px 24px rgba(0,0,0,.1);display:flex;align-items:center;gap:12px;border:1px solid rgba(34,197,94,.2)">
+              <div style="width:38px;height:38px;background:#F0FDF4;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16A34A" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:1px">Pénalités négociées</div>
+                <div style="font-size:15px;font-weight:900;color:#16A34A">-65% obtenu</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2 : Négociation pénalités -->
+    <div class="la-feat" style="direction:rtl">
+      <div class="reveal right" style="direction:ltr">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#FEF3C7;color:#D97706;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#D97706" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Négociation fiscale
+        </div>
+        <h2 style="font-size:clamp(24px,3.2vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px">
+          On négocie les pénalités<br><span style="color:#D97706">à votre place</span>
+        </h2>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.9;margin-bottom:24px">Notre équipe engage les démarches auprès de la DGI pour obtenir des remises gracieuses sur vos amendes et vous proposer des échéanciers de paiement adaptés à votre trésorerie.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)"><div style="font-size:20px;font-weight:900;color:#D97706;margin-bottom:4px">Remise gracieuse</div><div style="font-size:11.5px;color:var(--gray-500)">Réduction sur pénalités</div></div><div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)"><div style="font-size:20px;font-weight:900;color:#D97706;margin-bottom:4px">Échéancier</div><div style="font-size:11.5px;color:var(--gray-500)">Paiement étalé</div></div><div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)"><div style="font-size:20px;font-weight:900;color:#D97706;margin-bottom:4px">Quitus fiscal</div><div style="font-size:11.5px;color:var(--gray-500)">Attestation de conformité</div></div><div style="background:var(--gray-50);border-radius:10px;padding:14px;border:1px solid var(--gray-200)"><div style="font-size:20px;font-weight:900;color:#D97706;margin-bottom:4px">Échanges DGI</div><div style="font-size:11.5px;color:var(--gray-500)">Gérés par nos soins</div></div>
+        </div>
+      </div>
+
+      <div class="reveal left d2" style="direction:ltr">
+        <div class="la-vbox blue">
+          <div style="width:100%;max-width:370px">
+            <!-- Chat DGI -->
+            <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07)">
+              <div style="background:linear-gradient(135deg,var(--navy),#1A4A7A);padding:14px 18px;display:flex;align-items:center;gap:12px">
+                <div style="width:38px;height:38px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#fff">Deleky's → DGI Abidjan</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.55)">Demande de remise gracieuse · Dossier en cours</div>
+                </div>
+              </div>
+              <div style="padding:14px 16px;background:#F9FAFB;display:flex;flex-direction:column;gap:10px">
+                <div class="msg-anim" style="background:#fff;border-radius:12px 12px 12px 4px;padding:10px 14px;max-width:85%;box-shadow:0 1px 6px rgba(0,0,0,.05)">
+                  <div style="font-size:12px;color:var(--black);line-height:1.55">Bonjour, nous représentons la société X. Suite à la régularisation complète des exercices 2022–2024, nous sollicitons une remise sur les pénalités de retard.</div>
+                  <div style="font-size:10px;color:var(--gray-400);margin-top:4px">Deleky's — 10h24</div>
+                </div>
+                <div class="msg-anim" style="background:var(--blue);border-radius:12px 12px 4px 12px;padding:10px 14px;max-width:80%;align-self:flex-end">
+                  <div style="font-size:12px;color:#fff;line-height:1.55">Dossier reçu. Remise accordée à hauteur de 65%. Échéancier sur 6 mois validé. ✅</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,.55);margin-top:4px">DGI — 14h37</div>
+                </div>
+                <div class="msg-anim" style="background:#fff;border-radius:12px 12px 12px 4px;padding:10px 14px;max-width:85%;box-shadow:0 1px 6px rgba(0,0,0,.05)">
+                  <div style="font-size:12px;color:var(--black);line-height:1.55">Excellent. Nous vous transmettrons le quitus fiscal dès règlement. Merci. 🎉</div>
+                  <div style="font-size:10px;color:var(--gray-400);margin-top:4px">Deleky's — 14h45</div>
+                </div>
+              </div>
+            </div>
+            <!-- Badge résultat -->
+            <div class="float-3" style="background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px;margin-top:10px;border:1px solid rgba(34,197,94,.2)">
+              <div style="width:34px;height:34px;background:#F0FDF4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--black)">Quitus fiscal obtenu</div>
+                <div style="font-size:11px;color:var(--gray-400)">Situation régularisée · Attestation délivrée</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background:var(--gray-50);padding:72px 32px">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Ce que nous faisons pour vous</div>
+      <h2 style="font-size:clamp(22px,3vw,38px);font-weight:800;color:var(--black);letter-spacing:-.02em">
+        Une prise en charge <span style="color:var(--blue)">de A à Z</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="reveal d1" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='var(--blue)';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:var(--blue-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="var(--blue)" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Diagnostic comptable complet</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Analyse de votre situation : années manquantes, déclarations absentes, pièces disponibles et état des relations avec l'administration fiscale.</p>
+</div>
+<div class="reveal d2" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='#0F3460';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:#0F3460;transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:#EEF2FF;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#0F3460" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Reconstitution des exercices</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Reconstruction de votre comptabilité sur 1, 2 ou 3 exercices selon les pièces disponibles — factures, relevés, contrats.</p>
+</div>
+<div class="reveal d3" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='#16A34A';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:#16A34A;transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:#F0FDF4;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#16A34A" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Déclarations fiscales rattrapées</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Dépôt de toutes les déclarations manquantes — TVA, IS/BIC, patente, CNPS — dans l'ordre et dans les règles.</p>
+</div>
+<div class="reveal d4" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='#D97706';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:#D97706;transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:#FEF3C7;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#D97706" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Négociation des pénalités</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Démarches auprès de l'administration fiscale pour obtenir des remises ou des échéanciers de paiement sur les amendes.</p>
+</div>
+<div class="reveal d5" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='#7C3AED';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:#7C3AED;transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:#F5F3FF;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#7C3AED" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Mise en conformité sociale</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Régularisation CNPS, déclarations sociales manquantes et mise en ordre des bulletins de paie.</p>
+</div>
+<div class="reveal d6" style="background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:26px;transition:all .4s;position:relative;overflow:hidden;cursor:default"
+  onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 14px 36px rgba(0,0,0,.09)';this.style.borderColor='var(--blue)';this.querySelector('.svc-top').style.transform='scaleX(1)'"
+  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--gray-200)';this.querySelector('.svc-top').style.transform='scaleX(0)'">
+  <div class="svc-top" style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s ease"></div>
+  <div style="width:50px;height:50px;background:var(--blue-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s" class="svc-ico">
+    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="var(--blue)" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+  </div>
+  <h3 style="font-size:14.5px;font-weight:800;color:var(--black);margin-bottom:8px">Reprise en gestion courante</h3>
+  <p style="font-size:13px;color:var(--gray-500);line-height:1.7">Une fois la régularisation terminée, nous assurons votre comptabilité mensuelle pour ne plus jamais prendre de retard.</p>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus-la" style="background:#fff;padding:72px 32px">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Notre approche</div>
+      <h2 style="font-size:clamp(22px,3vw,38px);font-weight:800;color:var(--black);letter-spacing:-.02em">
+        5 étapes pour <span style="color:var(--blue)">retrouver la conformité</span>
+      </h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:780px;margin:0 auto">
+      <div class="la-step reveal d1">
+  <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Étape 1</div>
+    <div style="font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px">Diagnostic</div>
+    <div style="font-size:13px;color:var(--gray-500);line-height:1.65">Nous analysons vos années manquantes, les pièces disponibles et les risques fiscaux actuels.</div>
+  </div>
+</div>
+<div class="la-step reveal d2">
+  <div style="width:48px;height:48px;border-radius:50%;background:#D97706;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#D97706;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Étape 2</div>
+    <div style="font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px">Collecte des pièces</div>
+    <div style="font-size:13px;color:var(--gray-500);line-height:1.65">Vous nous transmettez relevés, factures et contrats. Nous organisons et structurons tout.</div>
+  </div>
+</div>
+<div class="la-step reveal d3">
+  <div style="width:48px;height:48px;border-radius:50%;background:#16A34A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#16A34A;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Étape 3</div>
+    <div style="font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px">Reconstitution & déclarations</div>
+    <div style="font-size:13px;color:var(--gray-500);line-height:1.65">Nous reconstruisons votre comptabilité et déposons toutes les déclarations manquantes.</div>
+  </div>
+</div>
+<div class="la-step reveal d4">
+  <div style="width:48px;height:48px;border-radius:50%;background:#7C3AED;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Étape 4</div>
+    <div style="font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px">Négociation & clôture</div>
+    <div style="font-size:13px;color:var(--gray-500);line-height:1.65">Nous gérons les échanges avec l'administration et obtenons le quitus fiscal.</div>
+  </div>
+</div>
+<div class="la-step reveal d5">
+  <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+  </div>
+  <div>
+    <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Étape 5</div>
+    <div style="font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px">Gestion courante</div>
+    <div style="font-size:13px;color:var(--gray-500);line-height:1.65">Votre comptabilité repart sur de bonnes bases. Nous prenons le relais chaque mois.</div>
+  </div>
+</div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:32px">
+      <button onclick="navigate('contact')" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-size:15px;font-weight:700;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;font-family:inherit;transition:all .25s;box-shadow:0 4px 20px rgba(26,158,240,.35)" onmouseover="this.style.background='var(--navy)';this.style.transform='scale(1.03)'" onmouseout="this.style.background='var(--blue)';this.style.transform='scale(1)'"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Démarrer ma régularisation</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--gray-50);padding:64px 32px">
+  <div class="container" style="max-width:800px">
+    <div class="reveal" style="text-align:center;margin-bottom:36px">
+      <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">FAQ</div>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--black);letter-spacing:-.02em">Questions <span style="color:var(--blue)">fréquentes</span></h2>
+    </div>
+    <div class="faq-item">
+<input type="checkbox" id="faq-la-0">
+<label class="faq-label" for="faq-la-0"><span>Combien d'années en retard pouvez-vous régulariser ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">Nous pouvons reconstituer et régulariser jusqu'à 3 exercices comptables en retard, sous réserve de disposer des pièces justificatives nécessaires (relevés bancaires, factures, contrats). Au-delà de 3 ans, une analyse au cas par cas est nécessaire.</div>
+</div><div class="faq-item">
+<input type="checkbox" id="faq-la-1">
+<label class="faq-label" for="faq-la-1"><span>Quelles pièces dois-je fournir pour commencer ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">Les pièces essentielles sont : vos relevés bancaires professionnels, vos factures clients et fournisseurs, vos contrats en cours, vos anciens bulletins de paie si vous avez des salariés, et tout courrier reçu de l'administration fiscale ou de la CNPS.</div>
+</div><div class="faq-item">
+<input type="checkbox" id="faq-la-2">
+<label class="faq-label" for="faq-la-2"><span>Pouvez-vous négocier les pénalités avec l'administration ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">Oui. Nous engageons les démarches auprès de la Direction Générale des Impôts (DGI) pour demander des remises gracieuses sur les pénalités de retard et négocier des échéanciers de paiement. Les résultats dépendent de votre situation et de votre historique fiscal.</div>
+</div><div class="faq-item">
+<input type="checkbox" id="faq-la-3">
+<label class="faq-label" for="faq-la-3"><span>Combien de temps prend la régularisation ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">En fonction du nombre d'années à régulariser et du volume de pièces, la reconstitution comptable prend entre 2 et 8 semaines. Le dépôt des déclarations et les échanges avec l'administration peuvent prendre 4 à 12 semaines supplémentaires.</div>
+</div><div class="faq-item">
+<input type="checkbox" id="faq-la-4">
+<label class="faq-label" for="faq-la-4"><span>Intervenez-vous dans d'autres pays que la Côte d'Ivoire ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">Oui. Nous régularisons les situations comptables et fiscales en Côte d'Ivoire, au Sénégal, au Burkina Faso et au Mali. Chaque pays a ses propres délais de prescription et procédures — nous les maîtrisons.</div>
+</div><div class="faq-item">
+<input type="checkbox" id="faq-la-5">
+<label class="faq-label" for="faq-la-5"><span>Que se passe-t-il si je reçois un avis de contrôle fiscal pendant la régularisation ?</span>
+<span class="faq-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></label>
+<div class="faq-body">Nous intervenons immédiatement comme interlocuteur entre vous et l'administration fiscale. Notre équipe gère les échanges, prépare les réponses et défend vos intérêts tout au long du contrôle.</div>
+</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="background:linear-gradient(135deg,var(--navy) 0%,#1A4A7A 100%);padding:80px 32px;text-align:center">
+  <div style="max-width:620px;margin:auto">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.3);border-radius:100px;padding:5px 16px;margin-bottom:20px">
+      <span style="font-size:11px;font-weight:700;color:#FCA5A5;text-transform:uppercase;letter-spacing:.08em">Ne laissez pas la situation s'aggraver</span>
+    </div>
+    <h2 style="font-size:clamp(26px,3.5vw,44px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15">
+      Régularisez votre situation<br><span style="color:#45B8F5">avant le prochain contrôle fiscal</span>
+    </h2>
+    <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:500px;margin:0 auto 32px;line-height:1.8">Diagnostic gratuit et confidentiel. Nous analysons votre situation et vous proposons un plan de régularisation en 48h.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button onclick="navigate('contact')" style="display:inline-flex;align-items:center;gap:8px;background:#DC2626;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(220,38,38,.5);transition:all .25s" onmouseover="this.style.background='#B91C1C'" onmouseout="this.style.background='#DC2626'"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg> Demander mon diagnostic gratuit</button>
+      <a href="tel:+22507000588" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;font-size:15px;font-weight:600;padding:14px 24px;border-radius:10px;border:1.5px solid rgba(255,255,255,.25);text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.7)'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)'"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg> +225 07 00 05 88</a>
+    </div>
+    <div style="display:flex;gap:24px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.6)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diagnostic gratuit 48h</div><div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.6)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Confidentiel</div><div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.6)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Zone UEMOA</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div>
+      <div style="display:inline-block;background:#ffffff;padding:10px 16px;border-radius:12px;margin-bottom:16px">
+        <img src="logo.jpg" style="height:38px;width:auto;display:block">
+      </div>
+      <p class="footer-tagline">Comptabilité · Fiscalité · Gestion d'Entreprise<br>Abidjan, Côte d'Ivoire</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white" stroke="none"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div>
+      <div class="footer-col-h">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-creation-entreprise.html">Création d'Entreprise</a></li>
+        <li><a href="CO.deleky-petites-entreprises.html">Petites Entreprises</a></li>
+        <li><a href="CO.deleky-entreprises (3).html" target="_blank">Entreprises</a></li>
+        <li><a href="CO.deleky-comptabilite-en-retard.html" target="_blank">Comptabilité en Retard</a></li>
+        <li><a href="CO.deleky-gestion-de-paie.html" target="_blank">Gestion de Paie</a></li>
+        <li><a href="CO.deleky-juridique-ag.html" target="_blank">Juridique &amp; AG</a></li>
+        <li><a href="CO.deleky-entreprises (3).html-plan" target="_blank">Business Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- Formes Juridiques -->
+    <div>
+      <div class="footer-col-h">Formes Juridiques</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-tableau-comparatif.html">Tableau Comparatif</a></li>
+        <li><a href="CO.deleky-creation-sarl.html">SARL</a></li>
+        <li><a href="CO.deleky-creation-sa.html">SA</a></li>
+        <li><a href="CO.deleky-creation-sas.html">SAS</a></li>
+        <li><a href="CO.deleky-creation-snc.html">SNC</a></li>
+        <li><a href="CO.deleky-creation-gie.html">GIE</a></li>
+        <li><a href="CO.deleky-creation-sci.html">SCI</a></li>
+      </ul>
+    </div>
+
+    <!-- Nos Produits -->
+    <div>
+      <div class="footer-col-h">Nos Produits</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-simulateur-paie-v2.html">CI Payroll Simulation</a></li>
+        <li><a href="CO.deleky-simulateur-immo.html">Home Loan Calculator</a></li>
+        <li><a href="CO.deleky-plan-amortissement.html">Amortization Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- À Propos -->
+    <div>
+      <div class="footer-col-h">À Propos</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Le Cabinet</a></li>
+        <li><a href="CO.deleky-publications.html">Blog &amp; Articles</a></li>
+        <li><a href="CO.deleky-publications.html">Événements</a></li>
+        <li><a href="CO.deleky-ressources.html">Témoignages</a></li>
+        <li><a href="CO.deleky-joinus.html">Nous Rejoindre</a></li>
+        <li><a href="CO.deleky-ressources.html">Partenariat</a></li>
+        <li><a href="CO.deleky-ressources.html">Simulateur Paie</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deleky's SARL — Tous droits réservés</span>
+    <div class="footer-bottom-links">
+      <a href="#">Conditions Générales</a>
+      <a href="#">Mentions Légales</a>
+      <a href="#">Protection des Données</a>
+      <a href="CO.deleky-contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<!-- FLOATING BUTTONS -->
+<div class="float-wrap">
+  <button class="float-btn float-ph" title="Appeler" onclick="window.location.href='tel:+22507000588'">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </button>
+  <button class="float-btn float-wa" title="WhatsApp" onclick="window.location.href='https://wa.me/2251111111119'">
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/lang.js"></script>
+<script>
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    e.target.querySelectorAll('.deadline-item').forEach((item, i) => {
+      setTimeout(() => { item.style.opacity='1'; item.style.transform='translateX(0)'; }, i*220);
+    });
+    e.target.querySelectorAll('.msg-anim').forEach((msg, i) => {
+      setTimeout(() => { msg.style.opacity='1'; msg.style.transform='translateY(0)'; }, i*450 + 300);
+    });
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('.la-vbox').forEach(el => obs.observe(el.parentElement?.parentElement || el));
+
+document.querySelectorAll('.deadline-item').forEach(item => {
+  item.style.opacity='0'; item.style.transform='translateX(-14px)'; item.style.transition='all .5s ease';
+});
+document.querySelectorAll('.msg-anim').forEach(msg => {
+  msg.style.opacity='0'; msg.style.transform='translateY(12px)'; msg.style.transition='all .45s ease';
+});
+
+function navigate(p){const routes={home:'CO.deleky-home.html',cabinet:'CO_deleky-cabinet-v2.html',missions:'CO.deleky-missions.html',ressources:'CO.deleky-ressources.html',blog:'CO.deleky-publications.html',publications:'CO.deleky-publications.html',joinus:'CO.deleky-joinus.html',login:'CO.deleky-login (7).html',contact:'CO.deleky-contact.html','simulateur-paie':'CO.deleky-simulateur-paie.html'};window.location.href=routes[p]||routes.home;}
+function toggleNav(){document.getElementById('nav-menu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
+function switchLang(l,b){document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.ticker-track').forEach(t=>{
+    if(!t.dataset.dup){t.innerHTML+=t.innerHTML;t.dataset.dup='1'}
+  });
+});
+</script>
+</body>
+</html>

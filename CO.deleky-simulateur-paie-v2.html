@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulateur de Paie Côte d'Ivoire — Deleky's SARL</title>
+<meta name="description" content="Calculez votre bulletin de paie CI : ITS 2024, CNPS, CMU, RICF. Outil gratuit conforme à la législation ivoirienne. Deleky's SARL — Abidjan.">
+<style>
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+:root{
+  --blue:#1A9EF0;
+  --blue-dark:#1480CC;
+  --blue-pale:#EBF6FE;
+  --navy:#0F3460;
+  --white:#FFFFFF;
+  --gray-50:#F9FAFB;
+  --gray-100:#F3F4F6;
+  --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;
+  --gray-600:#4B5563;
+  --gray-800:#1F2937;
+  --black:#111827;
+  --green:#22C55E;
+  --green-pale:#F0FDF4;
+  --orange:#F97316;
+  --orange-pale:#FFF7ED;
+  --r:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--white);color:var(--black);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--gray-100);
+  border-radius:8px;padding:3px;flex-shrink:0}
+.lang-btn{font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;
+  border:none;background:transparent;cursor:pointer;color:var(--gray-400);
+  font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.lang-btn:hover:not(.active){color:var(--gray-600)}
+
+.ticker-badge{background:#E53E3E;color:#fff;font-size:11px;font-weight:800;
+  padding:0 18px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  min-width:90px;z-index:1}
+.ticker-content{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 16px}
+
+/* ── PROMO BANNER ──────────────────────────────────────── */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;
+  font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.promo a{color:var(--blue);font-weight:700;text-decoration:underline}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav{background:var(--white);border-bottom:1px solid var(--gray-200);
+  position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.logo-wrap img{height:52px;width:auto;display:block}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;flex-shrink:0}
+.nav-menu a{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 9px;border-radius:8px;transition:all .2s;display:block;white-space:nowrap;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.nav-menu a:hover{color:var(--black);background:var(--gray-100)}
+.nav-menu .has-drop{position:relative}
+.nav-menu .has-drop>a::after{content:'▾';font-size:10px;margin-left:4px;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100%+4px);left:0;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);
+  padding:8px;min-width:220px;box-shadow:var(--shadow-lg);z-index:100}
+.has-drop:hover .drop{display:block}
+.drop a{font-size:13px;color:var(--gray-600);padding:10px 14px;border-radius:8px;
+  display:flex;align-items:center;gap:10px;transition:all .2s}
+.drop a:hover{background:var(--gray-50);color:var(--black)}
+.drop-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drop-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.nav-tel{font-size:13px;font-weight:600;color:var(--gray-600);white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 12px;border-radius:8px;border:1px solid var(--gray-200);transition:all .2s;white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login:hover{border-color:var(--blue);color:var(--blue)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:8px;border:none;background:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s}
+
+/* ── TICKER ────────────────────────────────────────────── */
+.ticker{background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:stretch;overflow:hidden;height:40px;position:sticky;top:72px;z-index:190}
+.ticker-track{display:flex;gap:64px;animation:tick 45s linear infinite;white-space:nowrap;align-items:center}
+.t-item{font-size:13px;color:var(--gray-600);flex-shrink:0}
+.t-item strong{color:var(--blue);font-weight:700}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{background:var(--white);padding:72px 32px 80px}
+.hero-inner{max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-pale);color:var(--blue);
+  font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;
+  letter-spacing:.04em;margin-bottom:20px}
+.hero-eyebrow svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2}
+h1.hero-title{font-size:clamp(36px,4.5vw,56px);font-weight:800;line-height:1.1;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:20px}
+h1.hero-title span{color:var(--blue)}
+.hero-desc{font-size:17px;color:var(--gray-600);line-height:1.75;
+  max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.btn-primary{background:var(--blue);color:#fff;font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;border:2px solid var(--blue);
+  display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-primary svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.btn-secondary{background:var(--white);color:var(--black);font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;
+  border:2px solid var(--gray-200);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-trust-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.stars{color:#F59E0B;font-size:16px;letter-spacing:1px}
+.hero-trust-sep{color:var(--gray-200);font-size:20px}
+.hero-trust-clients{font-size:13px;color:var(--gray-400)}
+.hero-trust-clients strong{color:var(--gray-600);font-weight:700}
+
+/* Hero visual */
+.hero-visual{position:relative;padding:0 0 20px 24px}
+.hero-card-main{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-lg)}
+.hero-card-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--gray-400);margin-bottom:12px}
+.hero-card-title{font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.hero-card-val{font-size:38px;font-weight:800;color:var(--blue);line-height:1;margin-bottom:4px}
+.hero-card-sub{font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+.hero-card-sub svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+.hero-mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.hero-mini{background:var(--gray-50);border-radius:var(--r);padding:16px}
+.hero-mini-n{font-size:24px;font-weight:800;color:var(--black)}
+.hero-mini-l{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hero-badge{position:absolute;top:-16px;right:-16px;background:var(--blue);
+  color:#fff;border-radius:var(--r-lg);padding:14px 18px;text-align:center;
+  box-shadow:var(--shadow-md)}
+.hero-badge-n{font-size:28px;font-weight:800;line-height:1}
+.hero-badge-l{font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.8;margin-top:2px}
+
+/* ── SOCIAL PROOF BAR ──────────────────────────────────── */
+.proof-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);padding:20px 32px}
+.proof-bar-inner{max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600)}
+.proof-item svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+.proof-item strong{color:var(--black);font-weight:700}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+section{padding:80px 32px}
+.container{max-width:1200px;margin:auto}
+.section-tag{font-size:13px;font-weight:700;color:var(--blue);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--black);
+  line-height:1.2;letter-spacing:-.02em}
+.section-title span{color:var(--blue)}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.75;
+  max-width:560px;margin-top:12px}
+.section-header{margin-bottom:52px}
+.sh-center{text-align:center}
+.sh-center .section-desc{margin:12px auto 0}
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how{background:var(--white)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.how-card{background:var(--gray-50);border-radius:var(--r-lg);padding:36px 28px;
+  position:relative;overflow:hidden;transition:all .3s}
+.how-card:hover{background:var(--blue-pale);transform:translateY(-4px)}
+.how-num{font-size:56px;font-weight:900;color:var(--gray-200);line-height:1;
+  margin-bottom:20px;letter-spacing:-.04em;transition:color .3s}
+.how-card:hover .how-num{color:rgba(26,158,240,.2)}
+.how-icon{width:48px;height:48px;background:var(--blue);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.how-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2}
+.how-title{font-size:17px;font-weight:800;color:var(--black);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.svc-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:32px;transition:all .3s;cursor:pointer}
+.svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-card.featured{border-color:var(--blue);background:var(--blue-pale)}
+.svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc-icon{width:52px;height:52px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center}
+.svc-card.featured .svc-icon{background:var(--blue)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.svc-card.featured .svc-icon svg{stroke:#fff}
+.svc-badge{font-size:11px;font-weight:700;background:var(--blue);color:#fff;
+  padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.svc-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.svc-features li{font-size:13px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:3}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-size:13px;font-weight:700;margin-top:20px;text-transform:uppercase;letter-spacing:.04em}
+.svc-link svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.stats{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--r-lg);overflow:hidden}
+.stat-item{background:var(--navy);padding:40px 32px;text-align:center}
+.stat-n{font-size:48px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.stat-n span{color:var(--blue)}
+.stat-l{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WHO WE SERVE ──────────────────────────────────────── */
+.serve{background:var(--white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.serve-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--gray-200);
+  transition:all .3s;cursor:pointer}
+.serve-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.serve-img{height:200px;overflow:hidden;position:relative}
+.serve-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.serve-card:hover .serve-img img{transform:scale(1.05)}
+.serve-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,52,96,.7))}
+.serve-body{padding:24px}
+.serve-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.serve-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+.serve-tag{display:inline-block;font-size:11px;font-weight:700;
+  background:var(--blue-pale);color:var(--blue);padding:4px 10px;border-radius:100px;
+  margin-right:4px;margin-bottom:4px}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testimonials{background:var(--gray-50)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:28px;transition:box-shadow .3s}
+.testi-card:hover{box-shadow:var(--shadow-md)}
+.testi-stars{color:#F59E0B;font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;
+  margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--black)}
+.testi-role{font-size:12px;color:var(--gray-400)}
+
+/* ── CTA BAND ──────────────────────────────────────────── */
+.cta-band{background:var(--blue);padding:72px 32px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;
+  margin-bottom:12px;letter-spacing:-.02em}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--blue);font-size:15px;font-weight:800;
+  padding:14px 32px;border-radius:var(--r);display:inline-block;transition:all .25s}
+.btn-white:hover{background:var(--gray-50);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);border:2px solid rgba(255,255,255,.4);
+  display:inline-block;transition:all .25s;margin-left:12px}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── QUOTE FORM ─────────────────────────────────────────── */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.quote-left-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--black);
+  margin-bottom:12px;letter-spacing:-.02em}
+.quote-left-desc{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+.trust-list{display:flex;flex-direction:column;gap:12px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-icon{width:22px;height:22px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.trust-icon svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.trust-text{font-size:14px;color:var(--gray-600)}
+.trust-text strong{color:var(--black);font-weight:700}
+.form-box{background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px}
+.form-box-title{font-size:20px;font-weight:800;color:var(--black);margin-bottom:4px}
+.form-box-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.f-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:var(--ff);color:var(--black);background:#fff;
+  outline:none;transition:border-color .2s;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);cursor:pointer;
+  transition:background .2s;margin-top:4px}
+.f-btn:hover{background:var(--blue-dark)}
+
+/* ── NEWSLETTER ─────────────────────────────────────────── */
+.newsletter{background:var(--navy);padding:64px 32px;text-align:center}
+.newsletter h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-.02em}
+.newsletter p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:28px}
+.nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.nl-input{flex:1;padding:13px 18px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-family:var(--ff);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 24px;font-size:14px;font-weight:700;font-family:var(--ff);
+  cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--blue-dark)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
+.footer-top{max-width:1200px;margin:auto;padding:64px 32px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{height:40px;margin-bottom:14px}
+.footer-tagline{font-size:13px;line-height:1.7;margin-bottom:20px;color:rgba(255,255,255,.45)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.footer-col-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.9);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.8)}
+
+/* ── FLOATING BUTTONS ───────────────────────────────────── */
+.float-wrap{position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.float-btn{width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:var(--blue)}
+.float-ph{background:var(--navy)}
+.float-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── PRODUCTS ──────────────────────────────────────────── */
+.products{background:var(--gray-50)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prod-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;transition:all .3s}
+.prod-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.prod-top{padding:32px 32px 24px;display:flex;align-items:flex-start;gap:16px}
+.prod-icon{width:56px;height:56px;border-radius:var(--r);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.prod-name{font-size:19px;font-weight:800;color:var(--black);margin-bottom:6px}
+.prod-sub{font-size:13px;color:var(--blue);font-weight:600}
+.prod-body{padding:0 32px 32px}
+.prod-desc{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prod-features li{font-size:13px;color:var(--gray-600);
+  display:flex;align-items:center;gap:8px}
+.prod-btn{display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 20px;border-radius:var(--r);transition:background .2s;border:none;cursor:pointer;font-family:var(--ff)}
+.prod-btn:hover{background:var(--blue)}
+.prod-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:40px}
+  
+  .prod-grid{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .nav-menu.open{display:flex;flex-direction:column;position:absolute;
+    top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);
+    padding:12px 16px;box-shadow:var(--shadow-md)}
+  .nav-menu.open .drop{display:none}
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  section{padding:56px 20px}
+  .hero{padding:48px 20px 56px}
+  .hero-inner{gap:32px}
+  h1.hero-title{font-size:32px}
+  .how-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  .proof-bar-inner{gap:20px}
+  .nl-form{flex-direction:column}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  .hero-badge{display:none}
+  .form-row{grid-template-columns:1fr}
+  .cta-band .btn-outline-white{margin-left:0;margin-top:10px;display:block}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .serve-grid,.prod-grid{grid-template-columns:1fr}
+}
+
+/* ── CSS PAGE ──
+:root{
+  --blue:#1A9EF0;--blue-dark:#1480CC;--blue-pale:#EBF6FE;
+  --navy:#0F3460;--white:#fff;
+  --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;--gray-600:#4B5563;--gray-800:#1F2937;
+  --black:#111827;--green:#16A34A;--green-pale:#DCFCE7;
+  --orange:#EA580C;--orange-pale:#FFEDD5;
+  --r:10px;--r-lg:16px;--r-xl:22px;
+  --shadow:0 4px 16px rgba(0,0,0,.08);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--gray-50);color:var(--black);line-height:1.6}
+
+/* ── LAYOUT ── */
+.page-wrapper{max-width:1280px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-400);margin-bottom:28px;flex-wrap:wrap}
+.breadcrumb a{color:var(--gray-400);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--blue)}
+.breadcrumb-sep{color:var(--gray-200)}
+.page-hero{margin-bottom:40px}
+.page-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.page-tag::before{content:'';width:20px;height:2px;background:var(--blue);border-radius:2px;display:inline-block}
+.page-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--black);line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+.page-title span{color:var(--blue)}
+.page-intro{font-size:16px;color:var(--gray-600);line-height:1.75;max-width:680px}
+.main-grid{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+
+/* ══════════════ SIMULATEUR ══════════════ */
+.calc-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--gray-200);box-shadow:var(--shadow);overflow:hidden;margin-bottom:32px}
+.calc-header{background:linear-gradient(135deg,var(--navy) 0%,#1a4a8a 100%);padding:28px 32px;display:flex;align-items:center;gap:16px}
+.calc-header-icon{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.calc-header-icon svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
+.calc-header-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:3px}
+.calc-header-sub{font-size:13px;color:rgba(255,255,255,.6)}
+.calc-body{padding:32px}
+
+/* Tabs employé / employeur */
+.calc-tabs{display:flex;background:var(--gray-100);border-radius:var(--r);padding:4px;gap:4px;margin-bottom:28px}
+.calc-tab{flex:1;padding:10px;border-radius:7px;border:none;background:transparent;font-family:var(--ff);font-size:13px;font-weight:600;color:var(--gray-600);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.calc-tab svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.calc-tab.active{background:var(--white);color:var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+/* Sections formulaire */
+.form-section{margin-bottom:24px}
+.form-section-title{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.form-section-title::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-full{grid-column:1/-1}
+.field-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:block}
+.field-hint{font-size:11px;color:var(--gray-400);margin-top:4px;line-height:1.4}
+.input-wrap{position:relative}
+.input-wrap input,.input-wrap select{
+  width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-family:var(--ff);font-size:14px;color:var(--black);background:var(--white);
+  transition:border-color .2s,box-shadow .2s;-moz-appearance:textfield;
+}
+.input-wrap input::-webkit-outer-spin-button,.input-wrap input::-webkit-inner-spin-button{-webkit-appearance:none}
+.input-wrap input:focus,.input-wrap select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,158,240,.12)}
+.input-prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--gray-400);pointer-events:none}
+.input-suffix{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--gray-400);pointer-events:none}
+.has-prefix input{padding-left:30px}
+.has-suffix input{padding-right:42px}
+
+/* Slider */
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:linear-gradient(to right,var(--blue) 0%,var(--blue) var(--pct,0%),var(--gray-200) var(--pct,0%),var(--gray-200) 100%);outline:none;cursor:pointer;margin-top:8px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 2px 6px rgba(26,158,240,.4);cursor:pointer}
+.slider-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--gray-400);margin-top:4px}
+
+/* Bouton */
+.calc-btn{width:100%;padding:15px;border-radius:var(--r-lg);border:none;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;font-family:var(--ff);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s;box-shadow:0 4px 16px rgba(26,158,240,.35);margin-top:8px}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,158,240,.45)}
+.calc-btn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ══════════════ RÉSULTATS ══════════════ */
+.results{display:none;margin-top:28px;animation:fade-in .4s ease}
+.results.show{display:block}
+@keyframes fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* 3 cartes clés */
+.results-top{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.res-card{background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:18px 16px;text-align:center;transition:all .3s}
+.res-card:hover{border-color:var(--blue);background:var(--blue-pale)}
+.res-card.featured{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-color:transparent;box-shadow:0 6px 20px rgba(26,158,240,.35)}
+.res-label{font-size:10px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.res-card.featured .res-label{color:rgba(255,255,255,.7)}
+.res-value{font-size:20px;font-weight:800;color:var(--black);line-height:1}
+.res-card.featured .res-value{color:#fff;font-size:22px}
+.res-unit{font-size:11px;color:var(--gray-400);margin-top:4px}
+.res-card.featured .res-unit{color:rgba(255,255,255,.6)}
+
+/* Jauge taux de prélèvement */
+.taux-wrap{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.taux-gauge{flex:1}
+.taux-label{font-size:12px;font-weight:700;color:var(--gray-800);margin-bottom:8px;display:flex;justify-content:space-between}
+.taux-bar-bg{height:10px;background:var(--gray-200);border-radius:5px;overflow:hidden}
+.taux-bar-fill{height:10px;border-radius:5px;background:linear-gradient(to right,var(--green),var(--blue),#f59e0b,var(--orange));transition:width .8s ease}
+.taux-scale{display:flex;justify-content:space-between;font-size:9px;color:var(--gray-400);margin-top:3px}
+.taux-comment{font-size:12px;color:var(--gray-600);font-weight:600;flex-shrink:0;text-align:right;min-width:80px}
+
+/* Bulletin de paie */
+.bulletin{border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;margin-bottom:16px}
+.bulletin-header{background:var(--navy);padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.bul-entreprise{font-size:16px;font-weight:800;color:#fff}
+.bul-ville{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.bul-periode{font-size:12px;font-weight:700;color:var(--blue);background:rgba(26,158,240,.15);padding:4px 10px;border-radius:6px;text-align:center}
+.bul-employe{background:rgba(255,255,255,.05);padding:14px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(255,255,255,.08)}
+.bul-field{font-size:11px}
+.bul-field-label{color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;font-size:10px;margin-bottom:2px}
+.bul-field-val{color:#fff;font-weight:700}
+
+/* Table bulletin */
+.bul-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.bul-table thead th{background:var(--gray-800);color:#fff;padding:9px 14px;text-align:right;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.bul-table thead th:first-child{text-align:left}
+.bul-table .section-head td{background:var(--navy);color:rgba(255,255,255,.8);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:8px 14px;border-bottom:none}
+.bul-table tbody tr{border-bottom:1px solid var(--gray-100);transition:background .15s}
+.bul-table tbody tr:hover{background:var(--blue-pale)}
+.bul-table td{padding:8px 14px;text-align:right;color:var(--gray-600)}
+.bul-table td:first-child{text-align:left;color:var(--gray-800)}
+.bul-table .subtotal td{font-weight:800;color:var(--black);background:var(--gray-50);border-top:2px solid var(--gray-200)}
+.bul-table .subtotal td:first-child{color:var(--navy)}
+.bul-table .net-row td{font-size:15px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue-dark));padding:12px 14px}
+
+/* Patronale */
+.patronale-title{font-size:12px;font-weight:700;color:var(--gray-600);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* Bouton imprimer */
+.print-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:1.5px solid var(--blue);border-radius:var(--r-lg);background:transparent;color:var(--blue);font-family:var(--ff);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:12px}
+.print-btn:hover{background:var(--blue);color:#fff}
+.print-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ══════════════ ARTICLE ══════════════ */
+.article-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--gray-200);box-shadow:var(--shadow);padding:36px}
+.article-toc{background:var(--gray-50);border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;margin-bottom:32px}
+.article-toc-title{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.article-toc a{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600);text-decoration:none;padding:4px 0;transition:color .2s}
+.article-toc a:hover{color:var(--blue)}
+.article-toc a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.article-section{margin-bottom:36px}
+.article-section:last-child{margin-bottom:0}
+.article-h2{font-size:20px;font-weight:800;color:var(--black);margin-bottom:12px;padding-top:8px;display:flex;align-items:center;gap:10px}
+.article-h2::before{content:'';width:3px;height:22px;background:var(--blue);border-radius:2px;flex-shrink:0}
+.article-h3{font-size:15px;font-weight:700;color:var(--gray-800);margin:16px 0 8px}
+.article-p{font-size:14.5px;color:var(--gray-600);line-height:1.8;margin-bottom:12px}
+.tip-box{display:flex;gap:12px;background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);border-radius:var(--r-lg);padding:16px;margin:16px 0}
+.tip-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.tip-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.tip-text{font-size:13.5px;color:var(--gray-700);line-height:1.7}
+.tip-text strong{color:var(--navy)}
+.comp-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.comp-table th{background:var(--gray-800);color:#fff;padding:10px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em}
+.comp-table td{padding:10px 14px;border-bottom:1px solid var(--gray-100);color:var(--gray-600)}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:nth-child(even) td{background:var(--gray-50)}
+.tranche-bar{display:inline-block;height:8px;border-radius:4px;background:var(--blue);vertical-align:middle;margin-right:6px}
+
+/* ══════════════ SIDEBAR ══════════════ */
+.sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:90px}
+.qa-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--gray-200);box-shadow:var(--shadow);overflow:hidden}
+.qa-header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);padding:20px}
+.qa-header-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.qa-header-sub{font-size:12px;color:rgba(255,255,255,.65)}
+.qa-body{padding:20px}
+.qa-step{display:none}
+.qa-step.active{display:block;animation:fade-in .3s ease}
+.qa-question{font-size:14px;font-weight:700;color:var(--black);margin-bottom:14px;line-height:1.4}
+.qa-step-num{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.qa-options{display:flex;flex-direction:column;gap:8px}
+.qa-option{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);font-family:var(--ff);font-size:13px;color:var(--gray-700);background:var(--white);cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:10px}
+.qa-option:hover,.qa-option.selected{border-color:var(--blue);background:var(--blue-pale);color:var(--blue);font-weight:600}
+.qa-progress{height:3px;background:var(--gray-100);border-radius:3px;margin-bottom:16px}
+.qa-progress-bar{height:3px;background:var(--blue);border-radius:3px;transition:width .4s ease}
+.qa-nav{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.qa-back{background:none;border:none;font-family:var(--ff);font-size:12px;color:var(--gray-400);cursor:pointer;padding:4px;transition:color .2s}
+.qa-back:hover{color:var(--gray-700)}
+.qa-next{background:var(--blue);color:#fff;border:none;font-family:var(--ff);font-size:13px;font-weight:700;padding:9px 18px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.qa-next:hover{background:var(--blue-dark)}
+.qa-next svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5}
+.qa-result{display:none}
+.qa-result.show{display:block;animation:fade-in .4s ease}
+.qa-result-icon{width:52px;height:52px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.qa-result-icon svg{width:26px;height:26px;stroke:var(--blue);fill:none;stroke-width:2}
+.qa-result-title{font-size:15px;font-weight:800;color:var(--black);text-align:center;margin-bottom:8px}
+.qa-result-text{font-size:13px;color:var(--gray-600);text-align:center;line-height:1.65;margin-bottom:16px}
+.qa-result-advice{background:var(--blue-pale);border-radius:var(--r);padding:14px;font-size:13px;color:var(--navy);font-weight:600;line-height:1.5;margin-bottom:16px;border-left:3px solid var(--blue)}
+.qa-cta{display:block;width:100%;padding:12px;text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;text-decoration:none;border-radius:var(--r);font-size:13px;font-weight:700;transition:all .3s;box-shadow:0 4px 14px rgba(26,158,240,.3)}
+.qa-cta:hover{transform:translateY(-2px)}
+.qa-restart{display:block;text-align:center;font-size:12px;color:var(--gray-400);margin-top:10px;cursor:pointer;background:none;border:none;font-family:var(--ff);transition:color .2s;width:100%}
+.qa-restart:hover{color:var(--blue)}
+.contact-card{background:linear-gradient(135deg,var(--navy) 0%,#1a4a8a 100%);border-radius:var(--r-xl);padding:24px}
+.contact-card-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px}
+.contact-card-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:18px;line-height:1.5}
+.contact-item{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.contact-item-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item-icon svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+.contact-item-text{font-size:13px;color:rgba(255,255,255,.75)}
+.contact-item-text strong{color:#fff;display:block}
+.contact-cta{display:block;width:100%;padding:12px;text-align:center;background:var(--blue);color:#fff;text-decoration:none;border-radius:var(--r);font-size:13px;font-weight:700;margin-top:16px;transition:all .2s}
+.contact-cta:hover{background:var(--blue-dark)}
+.dl-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--gray-200);padding:20px}
+.dl-card-title{font-size:13px;font-weight:700;color:var(--black);margin-bottom:14px}
+.dl-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--r);border:1px solid var(--gray-100);margin-bottom:8px;transition:all .2s;cursor:pointer}
+.dl-item:hover{border-color:var(--blue);background:var(--blue-pale)}
+.dl-item:last-child{margin-bottom:0}
+.dl-icon{width:34px;height:34px;border-radius:8px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dl-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.dl-name{font-size:12.5px;font-weight:600;color:var(--gray-800)}
+.dl-meta{font-size:11px;color:var(--gray-400)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.main-grid{grid-template-columns:1fr}.sidebar{position:static}}
+@media(max-width:640px){
+  .page-wrapper{padding:20px 16px 60px}
+  .fields-grid{grid-template-columns:1fr}
+  .field-full{grid-column:auto}
+  .results-top{grid-template-columns:1fr}
+  .calc-body,.article-card{padding:20px}
+  .bul-employe{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .page-wrapper{padding:0}.main-grid{display:block}
+  .calc-card,.sidebar,.breadcrumb,.page-hero,.article-card{display:none!important}
+  .bulletin{display:block!important;border:2px solid var(--navy)}
+  .print-btn{display:none!important}
+}
+/* Nav responsive — hide phone on medium screens so Connexion is always visible */
+@media(max-width:1100px){.nav-tel{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+      <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
+    </a>
+                <ul class="nav-menu" id="nav-menu">
+      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
+      <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
+            <li class="has-drop">
+        <a href="#">Nos Produits</a>
+        <div class="drop">
+          <a href="CO.deleky-simulateur-paie-v2.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">CI Payroll Simulation</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-simulateur-immo.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Home Loan Calculator</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-plan-amortissement.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Amortization Plan</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+        </div>
+      </li>
+<li class="has-drop">
+        <a href="CO.deleky-ressources.html#res-docs">Ressources</a>
+        <div class="drop">
+          <a href="CO.deleky-ressources.html#res-docs" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            Documents Utiles
+          </a>
+          <a href="CO.deleky-ressources.html#res-calc" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></div>
+            Calculateurs
+          </a>
+
+          <a href="CO.deleky-ressources.html#res-part" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Partenariat
+          </a>
+        </div>
+      </li>
+      <li class="has-drop">
+        <a href="CO.deleky-publications.html">Publications</a>
+        <div class="drop">
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg></div>
+            Blog & Articles
+          </a>
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+            Événements
+          </a>
+        </div>
+      </li>
+      <li><a href="CO.deleky-joinus.html" onclick="closeNav()">Nous Rejoindre</a></li>
+      <li><a href="CO.deleky-contact.html" onclick="closeNav()">Contact</a></li>
+    </ul>
+
+    <!-- DROITE : TEL + LANG + LOGIN + CTA -->
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+
+      <a href="tel:+22507000588" class="nav-tel">+225&nbsp;07&nbsp;00&nbsp;05&nbsp;88</a>
+
+      <!-- Switcher FR / EN -->
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('fr',this)">FR</button>
+        <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+      </div>
+
+      <a href="CO.deleky-login (7).html" class="nav-login">Connexion</a>
+
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-badge">NEWS</div>
+  <div class="ticker-content">
+    <div class="ticker-track">
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrapper">
+
+  <!-- Breadcrumb -->
+
+  <!-- Hero -->
+  <div class="page-hero">
+    <div class="page-tag">Outil Gratuit · Législation 2024–2025</div>
+    <h1 class="page-title">Simulateur de <span>Bulletin de Paie CI</span></h1>
+    <p class="page-intro">Calculez instantanément l'ITS 2024, les cotisations CNPS, la CMU et le RICF. Conforme à l'Ordonnance n°2023-719 et aux barèmes CNPS 2025. Résultat en quelques secondes.</p>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- ══ COLONNE GAUCHE ══ -->
+    <div>
+      <div class="calc-card">
+        <div class="calc-header">
+          <div class="calc-header-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          </div>
+          <div>
+            <div class="calc-header-title">Simulateur de Paie — Côte d'Ivoire</div>
+            <div class="calc-header-sub">ITS 2024 · CNPS 2025 · CMU · RICF · Charges patronales</div>
+          </div>
+        </div>
+
+        <div class="calc-body">
+          <!-- Tabs -->
+          <div class="calc-tabs">
+            <button class="calc-tab active" onclick="switchView('sal',this)">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Vue Salarié
+            </button>
+            <button class="calc-tab" onclick="switchView('pat',this)">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vue Employeur
+            </button>
+            <button class="calc-tab" onclick="switchView('bul',this)">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Bulletin complet
+            </button>
+          </div>
+
+          <!-- SECTION 1 : Identité (optionnel) -->
+          <div class="form-section">
+            <div class="form-section-title">Informations du bulletin (optionnel)</div>
+            <div class="fields-grid">
+              <div>
+                <label class="field-label">Entreprise</label>
+                <div class="input-wrap"><input type="text" id="s-entreprise" placeholder="Deleky's SARL"></div>
+              </div>
+              <div>
+                <label class="field-label">Période</label>
+                <div class="input-wrap"><input type="text" id="s-periode" placeholder="Mai 2025"></div>
+              </div>
+              <div>
+                <label class="field-label">Nom du salarié</label>
+                <div class="input-wrap"><input type="text" id="s-nom" placeholder="Koné Adjoua Marie"></div>
+              </div>
+              <div>
+                <label class="field-label">Poste</label>
+                <div class="input-wrap"><input type="text" id="s-poste" placeholder="Responsable Paie CI"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2 : Salaire -->
+          <div class="form-section">
+            <div class="form-section-title">Éléments de salaire</div>
+            <div class="fields-grid">
+              <div class="field-full">
+                <label class="field-label">Salaire de base *</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-base" value="350000" min="0" step="5000" oninput="syncSl('s-base','sl-base');autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+                <input type="range" id="sl-base" min="75000" max="5000000" step="5000" value="350000"
+                  oninput="syncIn('s-base',this);autoCalc()" style="--pct:5.6%">
+                <div class="slider-labels"><span>75 000</span><span>5 000 000 FCFA</span></div>
+                <div class="field-hint">SMIG CI : 75 000 FCFA/mois</div>
+              </div>
+              <div>
+                <label class="field-label">Prime de rendement</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-prime-rend" value="0" min="0" step="5000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Indemnité de logement</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-logement" value="0" min="0" step="5000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Prime de transport</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-transport" value="30000" min="0" step="1000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+                <div class="field-hint">Non imposable ITS/CNPS</div>
+              </div>
+              <div>
+                <label class="field-label">Sursalaire</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-autres" value="0" min="0" step="5000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Prime d'ancienneté</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-anciennete" value="0" min="0" step="1000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Primes diverses</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-primes-div" value="0" min="0" step="5000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Gratifications</label>
+                <div class="input-wrap has-suffix">
+                  <input type="number" id="s-gratif" value="0" min="0" step="5000" oninput="autoCalc()">
+                  <span class="input-suffix">FCFA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3 : Situation familiale -->
+          <div class="form-section">
+            <div class="form-section-title">Situation familiale (RICF)</div>
+            <div class="fields-grid">
+              <div>
+                <label class="field-label">Situation maritale</label>
+                <div class="input-wrap">
+                  <select id="s-marital" onchange="updateEnfantsMax();autoCalc()">
+                    <option value="0">Célibataire / Divorcé(e)</option>
+                    <option value="1">Marié(e)</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="field-label">Nombre d'enfants</label>
+                <div class="input-wrap">
+                  <select id="s-enfants" onchange="autoCalc()">
+                    <option value="0">0 enfant</option>
+                    <option value="1">1 enfant</option>
+                    <option value="2" selected>2 enfants</option>
+                    <option value="3">3 enfants</option>
+                    <option value="4">4 enfants</option>
+                    <option value="5">5 enfants</option>
+                    <option value="6">6 enfants</option>
+                    <option value="7">7 enfants (max)</option>
+                  </select>
+                </div>
+                <div class="field-hint">Maximum 7 enfants pris en compte</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 4 : Risque AT -->
+          <div class="form-section">
+            <div class="form-section-title">Accidents du travail (employeur)</div>
+            <div class="fields-grid">
+              <div class="field-full">
+                <label class="field-label">Catégorie de risque AT</label>
+                <div class="input-wrap">
+                  <select id="s-at" onchange="autoCalc()">
+                    <option value="2">2% — Secteur tertiaire / Bureau</option>
+                    <option value="3" selected>3% — Industrie légère / Commerce</option>
+                    <option value="4">4% — Industrie lourde / BTP</option>
+                    <option value="5">5% — Risque élevé / Mines</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="simulate()">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+            Générer le bulletin de paie
+          </button>
+
+          <!-- ══ RÉSULTATS ══ -->
+          <div class="results" id="results">
+
+            <!-- Vue salarié -->
+            <div id="view-sal">
+              <div class="results-top">
+                <div class="res-card featured">
+                  <div class="res-label">Net à payer</div>
+                  <div class="res-value" id="sc-net">—</div>
+                  <div class="res-unit">FCFA</div>
+                </div>
+                <div class="res-card">
+                  <div class="res-label">Brut imposable</div>
+                  <div class="res-value" id="sc-brut">—</div>
+                  <div class="res-unit">FCFA</div>
+                </div>
+                <div class="res-card">
+                  <div class="res-label">Coût employeur</div>
+                  <div class="res-value" id="sc-cout">—</div>
+                  <div class="res-unit">FCFA</div>
+                </div>
+              </div>
+
+              <!-- Jauge taux de prélèvement -->
+              <div class="taux-wrap">
+                <div class="taux-gauge">
+                  <div class="taux-label">
+                    <span>Taux de prélèvement global</span>
+                    <strong id="taux-pct" style="color:var(--blue)">—</strong>
+                  </div>
+                  <div class="taux-bar-bg">
+                    <div class="taux-bar-fill" id="taux-bar" style="width:0%"></div>
+                  </div>
+                  <div class="taux-scale"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%+</span></div>
+                </div>
+                <div class="taux-comment" id="taux-comment">—</div>
+              </div>
+
+              <!-- Détail salarial simplifié -->
+              <div class="bulletin">
+                <table class="bul-table">
+                  <thead>
+                    <tr><th style="text-align:left">Élément</th><th>Base</th><th>Retenue</th><th>Gain</th></tr>
+                  </thead>
+                  <tbody id="bul-sal-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Vue employeur -->
+            <div id="view-pat" style="display:none">
+              <div class="bulletin">
+                <table class="bul-table">
+                  <thead>
+                    <tr><th style="text-align:left">Charge patronale</th><th>Base</th><th>Taux</th><th>Montant</th></tr>
+                  </thead>
+                  <tbody id="bul-pat-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Vue bulletin complet -->
+            <div id="view-bul" style="display:none">
+              <div class="bulletin">
+                <div class="bulletin-header">
+                  <div>
+                    <div class="bul-entreprise" id="bul-entreprise">—</div>
+                    <div class="bul-ville" id="bul-ville">Abidjan, Côte d'Ivoire</div>
+                  </div>
+                  <div class="bul-periode" id="bul-periode">—</div>
+                </div>
+                <div class="bul-employe">
+                  <div class="bul-field"><div class="bul-field-label">Salarié</div><div class="bul-field-val" id="bul-nom">—</div></div>
+                  <div class="bul-field"><div class="bul-field-label">Poste</div><div class="bul-field-val" id="bul-poste">—</div></div>
+                  <div class="bul-field"><div class="bul-field-label">Référence</div><div class="bul-field-val" id="bul-ref">—</div></div>
+                </div>
+                <table class="bul-table">
+                  <thead><tr><th style="text-align:left">Désignation</th><th>Base</th><th>Retenue</th><th>Gain</th></tr></thead>
+                  <tbody id="bul-full-body"></tbody>
+                </table>
+              </div>
+              <button class="print-btn" onclick="window.print()">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Imprimer / Télécharger PDF
+              </button>
+            </div>
+
+          </div><!-- /.results -->
+        </div><!-- /.calc-body -->
+      </div><!-- /.calc-card -->
+
+      <!-- ARTICLE -->
+      <div class="article-card">
+        <div class="article-toc">
+          <div class="article-toc-title">Sommaire</div>
+          <a href="#sec-its">Le barème ITS 2024 — Ord. n°2023-719</a>
+          <a href="#sec-cnps">Les cotisations CNPS 2025</a>
+          <a href="#sec-ricf">Le RICF : réduction pour charges de famille</a>
+          <a href="#sec-cmu">La CMU : Couverture Maladie Universelle</a>
+          <a href="#sec-transport">Transport : le cas particulier</a>
+          <a href="#sec-cout">Le coût total employeur</a>
+        </div>
+
+        <div class="article-section" id="sec-its">
+          <h2 class="article-h2">Le barème ITS 2024 — Ordonnance n°2023-719</h2>
+          <p class="article-p">L'Impôt sur les Traitements et Salaires (ITS) est calculé selon un barème progressif à 6 tranches, réformé par l'Ordonnance n°2023-719 du 2 octobre 2023, applicable depuis janvier 2024. Cette réforme a supprimé l'IGR et simplifié la fiscalité des salariés.</p>
+          <table class="comp-table">
+            <thead><tr><th>Tranche du revenu mensuel</th><th>Taux</th><th>Visualisation</th></tr></thead>
+            <tbody>
+              <tr><td>De 0 à 75 000 FCFA</td><td><strong>0%</strong></td><td><span class="tranche-bar" style="width:0px;background:var(--green)"></span>Exonéré</td></tr>
+              <tr><td>De 75 001 à 240 000 FCFA</td><td><strong style="color:var(--blue)">16%</strong></td><td><span class="tranche-bar" style="width:32px"></span></td></tr>
+              <tr><td>De 240 001 à 800 000 FCFA</td><td><strong style="color:var(--blue)">21%</strong></td><td><span class="tranche-bar" style="width:42px"></span></td></tr>
+              <tr><td>De 800 001 à 2 400 000 FCFA</td><td><strong style="color:#f59e0b">24%</strong></td><td><span class="tranche-bar" style="width:48px;background:#f59e0b"></span></td></tr>
+              <tr><td>De 2 400 001 à 8 000 000 FCFA</td><td><strong style="color:var(--orange)">28%</strong></td><td><span class="tranche-bar" style="width:56px;background:var(--orange)"></span></td></tr>
+              <tr><td>Au-delà de 8 000 000 FCFA</td><td><strong style="color:#dc2626">32%</strong></td><td><span class="tranche-bar" style="width:64px;background:#dc2626"></span></td></tr>
+            </tbody>
+          </table>
+          <div class="tip-box">
+            <div class="tip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div class="tip-text"><strong>Important :</strong> Le taux s'applique uniquement à la tranche concernée, pas au salaire total. Un salarié à 300 000 FCFA de brut ne paie pas 21% sur tout son salaire — il paie 0% sur les 75 000 premiers, 16% de 75 001 à 240 000, et 21% sur le reste.</div>
+          </div>
+        </div>
+
+        <div class="article-section" id="sec-cnps">
+          <h2 class="article-h2">Les cotisations CNPS 2025</h2>
+          <p class="article-p">La Caisse Nationale de Prévoyance Sociale (CNPS) collecte les cotisations de retraite, les accidents du travail et les prestations familiales. Les taux 2025 sont :</p>
+          <table class="comp-table">
+            <thead><tr><th>Cotisation</th><th>Part salariale</th><th>Part patronale</th><th>Base de calcul</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Retraite / Pensions</strong></td><td>6,3%</td><td>7,7%</td><td>Brut plafonné à 3 375 000 FCFA</td></tr>
+              <tr><td><strong>Maternité</strong></td><td>—</td><td>0,75%</td><td>Brut plafonné à 70 000 FCFA</td></tr>
+              <tr><td><strong>Prestations familiales</strong></td><td>—</td><td>5%</td><td>Brut plafonné à 70 000 FCFA</td></tr>
+              <tr><td><strong>Accidents du travail</strong></td><td>—</td><td>2% à 5%</td><td>Brut plafonné à 70 000 FCFA</td></tr>
+            </tbody>
+          </table>
+          <div class="tip-box">
+            <div class="tip-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tip-text"><strong>Plafond CNPS retraite 2025 :</strong> 3 375 000 FCFA/mois. Au-delà de ce montant, la cotisation de retraite est calculée sur 3 375 000 FCFA uniquement. Le plafond pour les autres cotisations est de 70 000 FCFA.</div>
+          </div>
+        </div>
+
+        <div class="article-section" id="sec-ricf">
+          <h2 class="article-h2">Le RICF : Réduction pour Charges de Famille</h2>
+          <p class="article-p">Le RICF est une réduction directe appliquée sur l'ITS brut calculé. Elle dépend de la situation maritale et du nombre d'enfants à charge selon un système de <strong>parts fiscales</strong>.</p>
+          <table class="comp-table">
+            <thead><tr><th>Situation</th><th>Parts</th><th>Réduction RICF</th></tr></thead>
+            <tbody>
+              <tr><td>Célibataire, 0 enfant</td><td>1</td><td>0 FCFA</td></tr>
+              <tr><td>Célibataire, 1 enfant</td><td>2</td><td>11 000 FCFA</td></tr>
+              <tr><td>Célibataire, 2 enfants</td><td>2,5</td><td>16 500 FCFA</td></tr>
+              <tr><td>Marié(e), 0 enfant</td><td>2</td><td>11 000 FCFA</td></tr>
+              <tr><td>Marié(e), 2 enfants</td><td>3</td><td>22 000 FCFA</td></tr>
+              <tr><td>Marié(e), 5 enfants</td><td>4,5</td><td>38 500 FCFA</td></tr>
+              <tr><td>Maximum (5 parts)</td><td>5</td><td>44 000 FCFA</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="article-section" id="sec-cmu">
+          <h2 class="article-h2">La CMU : Couverture Maladie Universelle</h2>
+          <p class="article-p">La CMU est une cotisation fixe de <strong>500 FCFA par personne couverte par mois</strong>, partagée à parts égales entre le salarié et l'employeur. Elle couvre le salarié, son conjoint et ses enfants à charge.</p>
+          <p class="article-p">Exemple : un salarié marié avec 2 enfants = 4 personnes × 500 FCFA = 2 000 FCFA de CMU salariale + 2 000 FCFA de CMU patronale.</p>
+        </div>
+
+        <div class="article-section" id="sec-transport">
+          <h2 class="article-h2">La prime de transport : un cas particulier</h2>
+          <p class="article-p">La prime de transport est <strong>exclue du brut imposable</strong> — elle n'entre pas dans la base de calcul de l'ITS ni des cotisations CNPS. Elle est cependant ajoutée au net versé au salarié.</p>
+          <div class="tip-box">
+            <div class="tip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div class="tip-text"><strong>Formule du net versé :</strong> Net = Brut imposable − CNPS salarié − CMU salarié − ITS net + Prime de transport</div>
+          </div>
+        </div>
+
+        <div class="article-section" id="sec-cout">
+          <h2 class="article-h2">Le coût total pour l'employeur</h2>
+          <p class="article-p">Le coût réel d'un salarié pour l'employeur inclut le brut, la prime de transport, et l'ensemble des charges patronales : CNPS retraite (7,7%), maternité (0,75%), prestations familiales (5%), accidents du travail (2–5%), CMU patronale, Contribution Nationale (1,5%), Taxe d'Apprentissage (0,4%) et Taxe à la Formation Professionnelle (0,6%).</p>
+          <p class="article-p">En pratique, <strong>le coût employeur est généralement 25 à 35% supérieur au salaire brut</strong> selon le secteur d'activité et la situation familiale du salarié.</p>
+        </div>
+
+      </div><!-- /.article-card -->
+    </div><!-- /col gauche -->
+
+    <!-- ══ SIDEBAR ══ -->
+    <div class="sidebar">
+
+      <!-- QUESTIONNAIRE -->
+      <div class="qa-card">
+        <div class="qa-header">
+          <div class="qa-header-title">🎯 Quelle est votre situation ?</div>
+          <div class="qa-header-sub">3 questions · Analyse personnalisée</div>
+        </div>
+        <div class="qa-body">
+          <div class="qa-progress"><div class="qa-progress-bar" id="qa-bar" style="width:0%"></div></div>
+
+          <!-- Step 1 -->
+          <div class="qa-step active" id="qa-step-1">
+            <div class="qa-step-num">Question 1 / 3</div>
+            <div class="qa-question">Vous êtes :</div>
+            <div class="qa-options">
+              <button class="qa-option" onclick="selectOpt(this,'profil','salarie')">👤 Salarié — je veux vérifier mon bulletin</button>
+              <button class="qa-option" onclick="selectOpt(this,'profil','employeur')">🏢 Employeur — je calcule mes charges</button>
+              <button class="qa-option" onclick="selectOpt(this,'profil','rh')">📋 Responsable RH / Paie</button>
+            </div>
+            <div class="qa-nav"><span></span>
+              <button class="qa-next" onclick="nextStep(2)">Suivant <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="qa-step" id="qa-step-2">
+            <div class="qa-step-num">Question 2 / 3</div>
+            <div class="qa-question">Votre niveau de salaire brut mensuel ?</div>
+            <div class="qa-options">
+              <button class="qa-option" onclick="selectOpt(this,'salaire','bas')">Moins de 240 000 FCFA</button>
+              <button class="qa-option" onclick="selectOpt(this,'salaire','moyen')">240 000 à 800 000 FCFA</button>
+              <button class="qa-option" onclick="selectOpt(this,'salaire','haut')">Plus de 800 000 FCFA</button>
+            </div>
+            <div class="qa-nav">
+              <button class="qa-back" onclick="prevStep(1)">← Retour</button>
+              <button class="qa-next" onclick="nextStep(3)">Suivant <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="qa-step" id="qa-step-3">
+            <div class="qa-step-num">Question 3 / 3</div>
+            <div class="qa-question">Votre situation familiale ?</div>
+            <div class="qa-options">
+              <button class="qa-option" onclick="selectOpt(this,'famille','seul')">Célibataire sans enfant</button>
+              <button class="qa-option" onclick="selectOpt(this,'famille','enfants')">Célibataire avec enfants</button>
+              <button class="qa-option" onclick="selectOpt(this,'famille','marie')">Marié(e)</button>
+            </div>
+            <div class="qa-nav">
+              <button class="qa-back" onclick="prevStep(2)">← Retour</button>
+              <button class="qa-next" onclick="showQaResult()" style="background:var(--green)">Voir mon analyse <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Résultat -->
+          <div class="qa-result" id="qa-result">
+            <div class="qa-result-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="qa-result-title" id="qa-res-title">Résultat</div>
+            <div class="qa-result-text" id="qa-res-text"></div>
+            <div class="qa-result-advice" id="qa-res-advice"></div>
+            <a href="CO.deleky-contact.html" class="qa-cta">Consulter un expert Deleky's →</a>
+            <button class="qa-restart" onclick="restartQa()">↺ Recommencer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="contact-card">
+        <div class="contact-card-title">Audit de paie pour votre entreprise</div>
+        <div class="contact-card-sub">Nos experts vérifient vos bulletins, régularisent les écarts et sécurisent votre conformité CNPS/DGI.</div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13 19.79 19.79 0 01.22 6.18 2 2 0 012.18 4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 11.1a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="contact-item-text"><strong>+225 07 00 05 88</strong>Lun–Ven 8h–18h</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-item-text"><strong>paie@delekys.ci</strong>Réponse sous 24h</div>
+        </div>
+        <a href="CO.deleky-contact.html" class="contact-cta">Demander un audit de paie →</a>
+      </div>
+
+      <!-- TÉLÉCHARGEMENTS -->
+      <div class="dl-card">
+        <div class="dl-card-title">📎 Documents utiles</div>
+        <div class="dl-item">
+          <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="dl-name">Barème ITS 2024 complet</div><div class="dl-meta">PDF · Gratuit</div></div>
+        </div>
+        <div class="dl-item">
+          <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="dl-name">Tableau CNPS 2025</div><div class="dl-meta">PDF · Gratuit</div></div>
+        </div>
+        <div class="dl-item">
+          <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="dl-name">Modèle bulletin de paie Excel</div><div class="dl-meta">XLSX · Modifiable · Gratuit</div></div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /.main-grid -->
+</div><!-- /.page-wrapper -->
+
+<script>
+/* ══════════════════════════════════════════
+   UTILITAIRES
+══════════════════════════════════════════ */
+const fmt = n => Math.round(n).toLocaleString('fr-CI');
+const g   = id => document.getElementById(id);
+const gv  = id => g(id) ? g(id).value : '';
+const st  = (id,v) => { if(g(id)) g(id).textContent = v; };
+
+function syncSl(inputId, sliderId){
+  const v = parseFloat(g(inputId).value)||0;
+  const sl = g(sliderId);
+  sl.value = Math.min(Math.max(v, parseFloat(sl.min)), parseFloat(sl.max));
+  updateSlBg(sl);
+}
+function syncIn(inputId, slEl){
+  g(inputId).value = slEl.value;
+  updateSlBg(slEl);
+}
+function updateSlBg(sl){
+  const p=((parseFloat(sl.value)-parseFloat(sl.min))/(parseFloat(sl.max)-parseFloat(sl.min))*100).toFixed(1)+'%';
+  sl.style.setProperty('--pct',p);
+}
+function autoCalc(){ /* pas de calcul auto — bouton explicite */ }
+
+/* ══════════════════════════════════════════
+   CALCULS FISCAUX CI
+══════════════════════════════════════════ */
+function calcITS(brut){
+  const tr=[{min:0,max:75000,taux:0},{min:75000,max:240000,taux:.16},{min:240000,max:800000,taux:.21},
+    {min:800000,max:2400000,taux:.24},{min:2400000,max:8000000,taux:.28},{min:8000000,max:999999999,taux:.32}];
+  let its=0;
+  for(let i=0;i<tr.length;i++){
+    if(brut<=tr[i].min) break;
+    its+=(Math.min(brut,tr[i].max)-tr[i].min)*tr[i].taux;
+  }
+  return its;
+}
+
+function calcRICF(marie,enfants){
+  let parts;
+  if(marie==1){ parts=2+enfants*.5; }
+  else{ parts=1+enfants*.5; }
+  parts=Math.min(Math.round(Math.min(parts,5)*10)/10,5);
+  const tbl={"1":0,"1.5":5500,"2":11000,"2.5":16500,"3":22000,"3.5":27500,"4":33000,"4.5":38500,"5":44000};
+  return tbl[String(parts)]!==undefined?tbl[String(parts)]:44000;
+}
+
+function updateEnfantsMax(){
+  const marie=parseInt(gv('s-marital'));
+  const sel=g('s-enfants');
+  const cur=parseInt(sel.value);
+  sel.innerHTML='';
+  for(let i=0;i<=7;i++){
+    const o=document.createElement('option');
+    o.value=i; o.textContent=i===0?'0 enfant':i+' enfant'+(i>1?'s':'');
+    if(i===cur) o.selected=true;
+    sel.appendChild(o);
+  }
+}
+
+/* ══════════════════════════════════════════
+   SIMULATION PRINCIPALE
+══════════════════════════════════════════ */
+let currentView='sal';
+
+function row(lib,base,ret,gain){
+  return `<tr><td>${lib}</td><td>${base}</td><td style="color:#be123c">${ret||''}</td><td style="color:var(--blue)">${gain||''}</td></tr>`;
+}
+function subtotal(lib,val,isRetenue){
+  const col=isRetenue?'color:#be123c':'color:var(--blue)';
+  return `<tr class="subtotal"><td colspan="3">${lib}</td><td style="${col}">${val} FCFA</td></tr>`;
+}
+function sectionHead(lib){
+  return `<tr class="section-head"><td colspan="4">${lib}</td></tr>`;
+}
+function patRow(lib,base,val){
+  return `<tr><td>${lib}</td><td>${base}</td><td></td><td style="color:var(--orange)">${fmt(val)} FCFA</td></tr>`;
+}
+
+function simulate(){
+  const base      = parseFloat(gv('s-base'))||0;
+  const primeRend = parseFloat(gv('s-prime-rend'))||0;
+  const logement  = parseFloat(gv('s-logement'))||0;
+  const transport = parseFloat(gv('s-transport'))||0;
+  const autres    = parseFloat(gv('s-autres'))||0;
+  const anciennete= parseFloat(gv('s-anciennete'))||0;
+  const primesDiv = parseFloat(gv('s-primes-div'))||0;
+  const gratif    = parseFloat(gv('s-gratif'))||0;
+  const marie     = parseInt(gv('s-marital'));
+  const enfants   = Math.min(parseInt(gv('s-enfants')),7);
+  const atPct     = parseFloat(gv('s-at'))/100;
+  const nom       = gv('s-nom')||'—';
+  const poste     = gv('s-poste')||'—';
+  const entreprise= gv('s-entreprise')||"Deleky's SARL";
+  const periode   = gv('s-periode')||'—';
+
+  // ── Calculs ──────────────────────────────────────────
+  const brut          = base+primeRend+logement+autres+anciennete+primesDiv+gratif;
+  const assiettePen   = Math.min(brut,3375000);
+  const assietteAut   = Math.min(brut,70000);
+  const personnes     = 1+marie+enfants;
+  const cnpsSalPen    = assiettePen*0.063;
+  const cmuSal        = personnes*500;
+  const totalSal      = cnpsSalPen+cmuSal;
+  const itsBrut       = calcITS(brut);
+  const ricf          = calcRICF(marie,enfants);
+  const itsNet        = Math.max(0,itsBrut-ricf);
+  const net           = brut-cnpsSalPen-cmuSal-itsNet+transport;
+  const cnpsPatPen    = assiettePen*0.077;
+  const cnpsMat       = assietteAut*0.0075;
+  const cnpsPreFam    = assietteAut*0.05;
+  const cnpsAt        = assietteAut*atPct;
+  const cmuPat        = personnes*500;
+  const cn            = brut*0.015;
+  const ta            = brut*0.004;
+  const tfp           = brut*0.006;
+  const totalPat      = cnpsPatPen+cnpsMat+cnpsPreFam+cnpsAt+cmuPat+cn+ta+tfp;
+  const coutTotal     = brut+transport+totalPat;
+  const taux          = brut>0?(totalSal+itsNet)/brut:0;
+
+  // ── Affichage chiffres clés ───────────────────────────
+  st('sc-net',  fmt(net));
+  st('sc-brut', fmt(brut));
+  st('sc-cout', fmt(coutTotal));
+
+  // Jauge taux
+  const tauxPct=(taux*100).toFixed(1);
+  st('taux-pct', tauxPct+'%');
+  const barW=Math.min(taux*100/40*100,100);
+  if(g('taux-bar')) g('taux-bar').style.width=barW+'%';
+  const comment=taux<.15?'✅ Faible':taux<.25?'🟡 Moyen':taux<.35?'🟠 Élevé':'🔴 Très élevé';
+  st('taux-comment',comment);
+
+  // ── Bulletin salarié simplifié ────────────────────────
+  const situFam=marie?'Marié(e)':'Célibataire';
+  const atLibs={2:'Tertiaire',3:'Ind. légère',4:'Ind. lourde',5:'Risque élevé'};
+  let salHtml='';
+  salHtml+=sectionHead('ÉLÉMENTS DE SALAIRE');
+  salHtml+=row('Salaire de base','Mensuel','',fmt(base)+' F');
+  if(primeRend>0) salHtml+=row('Prime de rendement','Mensuel','',fmt(primeRend)+' F');
+  if(logement>0)  salHtml+=row('Indemnité de logement','Mensuel','',fmt(logement)+' F');
+  if(transport>0) salHtml+=row('Prime de transport','Non imposable','',fmt(transport)+' F');
+  if(autres>0)    salHtml+=row('Sursalaire','Imposable','',fmt(autres)+' F');
+  if(anciennete>0)salHtml+=row("Prime d'ancienneté",'Imposable','',fmt(anciennete)+' F');
+  if(primesDiv>0) salHtml+=row('Primes diverses','Imposable','',fmt(primesDiv)+' F');
+  salHtml+=subtotal('SALAIRE BRUT IMPOSABLE',fmt(brut),false);
+  salHtml+=sectionHead('COTISATIONS SALARIALES');
+  salHtml+=row('CNPS Retraite (6,3%)','Plaf. '+fmt(assiettePen)+' F',fmt(cnpsSalPen)+' F','');
+  salHtml+=row('CMU ('+personnes+' pers. × 500 F)','Famille',''+fmt(cmuSal)+' F','');
+  salHtml+=subtotal('TOTAL COTISATIONS SALARIALES',fmt(totalSal),true);
+  salHtml+=sectionHead('IMPÔT SUR LES TRAITEMENTS ET SALAIRES (ITS 2024)');
+  salHtml+=row('ITS Brut — Barème 6 tranches','0%·16%·21%·24%·28%·32%',fmt(itsBrut)+' F','');
+  salHtml+=row('RICF — Réduction Charges Famille',situFam+' · '+enfants+' enfant(s)','− '+fmt(ricf)+' F','');
+  salHtml+=subtotal('ITS NET À RETENIR',fmt(itsNet),true);
+  salHtml+=`<tr class="net-row"><td>NET À PAYER AU SALARIÉ</td><td colspan="2">Brut − Cotisations − ITS + Transport</td><td>${fmt(net)} FCFA</td></tr>`;
+  if(g('bul-sal-body')) g('bul-sal-body').innerHTML=salHtml;
+
+  // ── Bulletin patronal ─────────────────────────────────
+  const atLibKey=parseFloat(gv('s-at'));
+  let patHtml='';
+  patHtml+=sectionHead('CHARGES PATRONALES CNPS');
+  patHtml+=patRow('CNPS Retraite (7,7%)','Plaf. '+fmt(assiettePen)+' F',cnpsPatPen);
+  patHtml+=patRow('CNPS Maternité (0,75%)','Plaf. '+fmt(assietteAut)+' F',cnpsMat);
+  patHtml+=patRow('CNPS Prestations Familiales (5%)','Plaf. '+fmt(assietteAut)+' F',cnpsPreFam);
+  patHtml+=patRow('CNPS Accidents Travail ('+gv('s-at')+'%)','Plaf. '+fmt(assietteAut)+' F',cnpsAt);
+  patHtml+=patRow('CMU patronale ('+personnes+' pers.)',''+personnes+' × 500 F',cmuPat);
+  patHtml+=sectionHead('AUTRES CHARGES PATRONALES');
+  patHtml+=patRow('Contribution Nationale (1,5%)','Brut '+fmt(brut)+' F',cn);
+  patHtml+=patRow("Taxe d'Apprentissage (0,4%)",'Brut '+fmt(brut)+' F',ta);
+  patHtml+=patRow('Taxe Formation Professionnelle (0,6%)','Brut '+fmt(brut)+' F',tfp);
+  patHtml+=`<tr class="subtotal"><td colspan="3">TOTAL CHARGES PATRONALES</td><td style="color:var(--orange)">${fmt(totalPat)} FCFA</td></tr>`;
+  patHtml+=`<tr class="net-row"><td>COÛT TOTAL EMPLOYEUR</td><td colspan="2">Brut + Transport + Charges pat.</td><td>${fmt(coutTotal)} FCFA</td></tr>`;
+  if(g('bul-pat-body')) g('bul-pat-body').innerHTML=patHtml;
+
+  // ── Bulletin complet ──────────────────────────────────
+  st('bul-entreprise',entreprise);
+  st('bul-ville','Abidjan, Côte d\'Ivoire');
+  st('bul-periode',periode);
+  st('bul-nom',nom);
+  st('bul-poste',poste);
+  st('bul-ref','Réf. '+new Date().getFullYear()+'-'+String(new Date().getMonth()+1).padStart(2,'0'));
+  if(g('bul-full-body')) g('bul-full-body').innerHTML=salHtml;
+
+  // ── Afficher les résultats ────────────────────────────
+  g('results').classList.add('show');
+  renderView(currentView);
+  g('results').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ══════════════════════════════════════════
+   TABS VUE
+══════════════════════════════════════════ */
+function switchView(view, btn){
+  document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  currentView=view;
+  renderView(view);
+}
+function renderView(view){
+  ['sal','pat','bul'].forEach(v=>{
+    const el=g('view-'+v);
+    if(el) el.style.display=v===view?'block':'none';
+  });
+}
+
+/* ══════════════════════════════════════════
+   QUESTIONNAIRE
+══════════════════════════════════════════ */
+const qaA={};
+function selectOpt(btn,key,val){
+  btn.closest('.qa-options').querySelectorAll('.qa-option').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected'); qaA[key]=val;
+}
+function nextStep(n){
+  document.querySelectorAll('.qa-step').forEach(s=>s.classList.remove('active'));
+  const el=g('qa-step-'+n); if(el) el.classList.add('active');
+  g('qa-bar').style.width=((n-1)/3*100)+'%';
+}
+function prevStep(n){ nextStep(n); }
+
+function showQaResult(){
+  document.querySelectorAll('.qa-step').forEach(s=>s.classList.remove('active'));
+  g('qa-bar').style.width='100%';
+  const profil=qaA['profil']||'salarie';
+  const salaire=qaA['salaire']||'moyen';
+  const famille=qaA['famille']||'seul';
+  let title,text,advice;
+  if(profil==='salarie' && salaire==='haut'){
+    title='Salarié cadre — ITS significatif 📊';
+    text='À ce niveau de salaire, vous êtes dans les tranches à 24–28% de l\'ITS.';
+    advice='Pensez à vérifier votre RICF — une situation familiale bien déclarée peut réduire votre ITS de 11 000 à 44 000 FCFA par mois.';
+  } else if(profil==='employeur'){
+    title='Vision employeur — Charges à anticiper 🏢';
+    text='Le coût réel de vos salariés dépasse le brut de 25 à 35% selon le secteur d\'activité.';
+    advice='Utilisez l\'onglet "Vue Employeur" pour calculer vos charges CNPS, CMU et taxes patronales exactement.';
+  } else if(profil==='rh'){
+    title='Gestionnaire de paie — Outil complet ✅';
+    text='Ce simulateur couvre l\'intégralité des composantes du bulletin CI.';
+    advice='Pour un audit complet de votre processus de paie ou une régularisation CNPS, nos experts Deleky\'s peuvent intervenir sur site.';
+  } else if(famille==='marie'){
+    title='Situation maritale — RICF optimisé 👨‍👩‍👧';
+    text='Le mariage vous donne droit à au moins 2 parts fiscales soit 11 000 FCFA de RICF minimum.';
+    advice='Avec des enfants, votre RICF peut monter jusqu\'à 44 000 FCFA/mois de réduction sur votre ITS. Vérifiez que votre employeur le calcule correctement.';
+  } else if(salaire==='bas'){
+    title='Tranche basse — Peu d\'ITS 🟢';
+    text='En dessous de 240 000 FCFA de brut, le taux ITS reste limité à 16% sur la tranche au-dessus de 75 000 FCFA.';
+    advice='L\'essentiel de vos prélèvements vient de la CNPS (6,3%) et non de l\'ITS. Vérifiez que votre transport est bien exclu de la base imposable.';
+  } else {
+    title='Profil standard ✅';
+    text='Votre situation correspond au profil le plus fréquent en Côte d\'Ivoire.';
+    advice='Lancez la simulation avec votre salaire réel pour obtenir votre bulletin complet et vérifier que tous les prélèvements sont corrects.';
+  }
+  st('qa-res-title',title); st('qa-res-text',text); st('qa-res-advice',advice);
+  g('qa-result').classList.add('show');
+}
+function restartQa(){
+  g('qa-result').classList.remove('show');
+  document.querySelectorAll('.qa-option').forEach(b=>b.classList.remove('selected'));
+  Object.keys(qaA).forEach(k=>delete qaA[k]);
+  nextStep(1);
+  g('qa-bar').style.width='0%';
+}
+
+/* Init */
+document.querySelectorAll('input[type=range]').forEach(sl=>updateSlBg(sl));
+renderView('sal');
+</script>
+
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div>
+      <div style="display:inline-block;background:#ffffff;padding:10px 16px;border-radius:12px;margin-bottom:16px">
+        <img src="logo.jpg" style="height:38px;width:auto;display:block">
+      </div>
+      <p class="footer-tagline">Comptabilité · Fiscalité · Gestion d'Entreprise<br>Abidjan, Côte d'Ivoire</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white" stroke="none"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div>
+      <div class="footer-col-h">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-missions.html">Gestion de Paie</a></li>
+        <li><a href="CO.deleky-missions.html">Comptabilité &amp; Finance</a></li>
+        <li><a href="CO.deleky-missions.html">Création d'Entreprise</a></li>
+        <li><a href="CO.deleky-missions.html">Audit &amp; Risques</a></li>
+        <li><a href="CO.deleky-missions.html">Formation</a></li>
+        <li><a href="CO.deleky-missions.html">Comptabilité en Retard</a></li>
+      </ul>
+    </div>
+
+    <!-- Formes Juridiques -->
+    <div>
+      <div class="footer-col-h">Formes Juridiques</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Tableau Comparatif</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">SARL</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">SA</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">SAS</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">SNC</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">GIE</a></li>
+        <li><a href="CO_deleky-cabinet-v2.html">SCI</a></li>
+      </ul>
+    </div>
+
+    <!-- Nos Produits -->
+    <div>
+      <div class="footer-col-h">Nos Produits</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-simulateur-paie-v2.html">CI Payroll Simulation</a></li>
+        <li><a href="CO.deleky-simulateur-immo.html">Home Loan Calculator</a></li>
+        <li><a href="CO.deleky-plan-amortissement.html">Amortization Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- À Propos -->
+    <div>
+      <div class="footer-col-h">À Propos</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Le Cabinet</a></li>
+        <li><a href="CO.deleky-publications.html">Blog &amp; Articles</a></li>
+        <li><a href="CO.deleky-publications.html">Événements</a></li>
+        <li><a href="CO.deleky-ressources.html">Témoignages</a></li>
+        <li><a href="CO.deleky-joinus.html">Nous Rejoindre</a></li>
+        <li><a href="CO.deleky-ressources.html">Partenariat</a></li>
+        <li><a href="CO.deleky-ressources.html">Simulateur Paie</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deleky's SARL — Tous droits réservés</span>
+    <div class="footer-bottom-links">
+      <a href="#">Conditions Générales</a>
+      <a href="#">Mentions Légales</a>
+      <a href="#">Protection des Données</a>
+      <a href="CO.deleky-contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+
+function toggleNav(){document.getElementById("nav-menu").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open")}
+function closeNav(){document.getElementById("nav-menu").classList.remove("open");document.getElementById("hamburger").classList.remove("open")}
+function switchLang(l,b){document.querySelectorAll(".lang-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active")}
+</script>
+</body>
+</html>

@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ressources — Deleky's SARL</title>
+<style>
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Maiandra GD',Georgia,serif;background:#fff;color:#111827;
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%} a{text-decoration:none;color:inherit}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@font-face{font-family:'Maiandra GD';src:local('Maiandra GD'),local('MaiandraGD'),local('Maiandra');}
+:root{
+  --blue:#1A9EF0;
+  --blue-dark:#1480CC;
+  --blue-pale:#EBF6FE;
+  --navy:#0F3460;
+  --white:#FFFFFF;
+  --gray-50:#F9FAFB;
+  --gray-100:#F3F4F6;
+  --gray-200:#E5E7EB;
+  --gray-400:#9CA3AF;
+  --gray-600:#4B5563;
+  --gray-800:#1F2937;
+  --black:#111827;
+  --green:#22C55E;
+  --green-pale:#F0FDF4;
+  --orange:#F97316;
+  --orange-pale:#FFF7ED;
+  --r:12px;
+  --r-lg:20px;
+  --r-xl:28px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.10);
+  --ff:'Maiandra GD',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--white);color:var(--black);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LANGUAGE SWITCHER ──────────────────────────────────── */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--gray-100);
+  border-radius:8px;padding:3px;flex-shrink:0}
+.lang-btn{font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;
+  border:none;background:transparent;cursor:pointer;color:var(--gray-400);
+  font-family:var(--ff);transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.lang-btn:hover:not(.active){color:var(--gray-600)}
+
+.ticker-badge{background:#E53E3E;color:#fff;font-size:11px;font-weight:800;
+  padding:0 18px;display:flex;align-items:center;justify-content:center;
+  letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  min-width:90px;z-index:1}
+.ticker-content{flex:1;overflow:hidden;display:flex;align-items:center;padding:0 16px}
+
+/* ── PROMO BANNER ──────────────────────────────────────── */
+.promo{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;
+  font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.promo a{color:var(--blue);font-weight:700;text-decoration:underline}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav{background:var(--white);border-bottom:1px solid var(--gray-200);
+  position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.logo-wrap img{height:52px;width:auto;display:block}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;flex-shrink:0}
+.nav-menu a{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 9px;border-radius:8px;transition:all .2s;display:block;white-space:nowrap;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.nav-menu a:hover{color:var(--black);background:var(--gray-100)}
+.nav-menu .has-drop{position:relative}
+.nav-menu .has-drop>a::after{content:'▾';font-size:10px;margin-left:4px;opacity:.6}
+.drop{display:none;position:absolute;top:calc(100%+4px);left:0;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--r);
+  padding:8px;min-width:220px;box-shadow:var(--shadow-lg);z-index:100}
+.has-drop:hover .drop{display:block}
+.drop a{font-size:13px;color:var(--gray-600);padding:10px 14px;border-radius:8px;
+  display:flex;align-items:center;gap:10px;transition:all .2s}
+.drop a:hover{background:var(--gray-50);color:var(--black)}
+.drop-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drop-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2}
+.nav-tel{font-size:13px;font-weight:600;color:var(--gray-600);white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login{font-size:13px;font-weight:600;color:var(--gray-600);padding:8px 12px;border-radius:8px;border:1px solid var(--gray-200);transition:all .2s;white-space:nowrap;flex-shrink:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav-login:hover{border-color:var(--blue);color:var(--blue)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:8px;border:none;background:transparent}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s}
+
+/* ── TICKER ────────────────────────────────────────────── */
+.ticker{background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:stretch;overflow:hidden;height:40px;position:sticky;top:72px;z-index:190}
+.ticker-track{display:flex;gap:64px;animation:tick 45s linear infinite;white-space:nowrap;align-items:center}
+.t-item{font-size:13px;color:var(--gray-600);flex-shrink:0}
+.t-item strong{color:var(--blue);font-weight:700}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{background:var(--white);padding:72px 32px 80px}
+.hero-inner{max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-pale);color:var(--blue);
+  font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;
+  letter-spacing:.04em;margin-bottom:20px}
+.hero-eyebrow svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2}
+h1.hero-title{font-size:clamp(36px,4.5vw,56px);font-weight:800;line-height:1.1;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:20px}
+h1.hero-title span{color:var(--blue)}
+.hero-desc{font-size:17px;color:var(--gray-600);line-height:1.75;
+  max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:36px}
+.btn-primary{background:var(--blue);color:#fff;font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;border:2px solid var(--blue);
+  display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-primary svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.btn-secondary{background:var(--white);color:var(--black);font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);transition:all .25s;
+  border:2px solid var(--gray-200);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-trust-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.stars{color:#F59E0B;font-size:16px;letter-spacing:1px}
+.hero-trust-sep{color:var(--gray-200);font-size:20px}
+.hero-trust-clients{font-size:13px;color:var(--gray-400)}
+.hero-trust-clients strong{color:var(--gray-600);font-weight:700}
+
+/* Hero visual */
+.hero-visual{position:relative;padding:0 0 20px 24px}
+.hero-card-main{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-lg)}
+.hero-card-label{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--gray-400);margin-bottom:12px}
+.hero-card-title{font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.hero-card-val{font-size:38px;font-weight:800;color:var(--blue);line-height:1;margin-bottom:4px}
+.hero-card-sub{font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+.hero-card-sub svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5}
+.hero-mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.hero-mini{background:var(--gray-50);border-radius:var(--r);padding:16px}
+.hero-mini-n{font-size:24px;font-weight:800;color:var(--black)}
+.hero-mini-l{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.hero-badge{position:absolute;top:-16px;right:-16px;background:var(--blue);
+  color:#fff;border-radius:var(--r-lg);padding:14px 18px;text-align:center;
+  box-shadow:var(--shadow-md)}
+.hero-badge-n{font-size:28px;font-weight:800;line-height:1}
+.hero-badge-l{font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.8;margin-top:2px}
+
+/* ── SOCIAL PROOF BAR ──────────────────────────────────── */
+.proof-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);padding:20px 32px}
+.proof-bar-inner{max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600)}
+.proof-item svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0}
+.proof-item strong{color:var(--black);font-weight:700}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+section{padding:80px 32px}
+.container{max-width:1200px;margin:auto}
+.section-tag{font-size:13px;font-weight:700;color:var(--blue);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--black);
+  line-height:1.2;letter-spacing:-.02em}
+.section-title span{color:var(--blue)}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.75;
+  max-width:560px;margin-top:12px}
+.section-header{margin-bottom:52px}
+.sh-center{text-align:center}
+.sh-center .section-desc{margin:12px auto 0}
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how{background:var(--white)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.how-card{background:var(--gray-50);border-radius:var(--r-lg);padding:36px 28px;
+  position:relative;overflow:hidden;transition:all .3s}
+.how-card:hover{background:var(--blue-pale);transform:translateY(-4px)}
+.how-num{font-size:56px;font-weight:900;color:var(--gray-200);line-height:1;
+  margin-bottom:20px;letter-spacing:-.04em;transition:color .3s}
+.how-card:hover .how-num{color:rgba(26,158,240,.2)}
+.how-icon{width:48px;height:48px;background:var(--blue);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.how-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2}
+.how-title{font-size:17px;font-weight:800;color:var(--black);margin-bottom:8px}
+.how-desc{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.svc-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:32px;transition:all .3s;cursor:pointer}
+.svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-card.featured{border-color:var(--blue);background:var(--blue-pale)}
+.svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.svc-icon{width:52px;height:52px;border-radius:var(--r);background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center}
+.svc-card.featured .svc-icon{background:var(--blue)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.svc-card.featured .svc-icon svg{stroke:#fff}
+.svc-badge{font-size:11px;font-weight:700;background:var(--blue);color:#fff;
+  padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.svc-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.svc-features li{font-size:13px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-check svg{width:10px;height:10px;stroke:var(--green);fill:none;stroke-width:3}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);
+  font-size:13px;font-weight:700;margin-top:20px;text-transform:uppercase;letter-spacing:.04em}
+.svc-link svg{width:14px;height:14px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.stats{background:var(--navy)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--r-lg);overflow:hidden}
+.stat-item{background:var(--navy);padding:40px 32px;text-align:center}
+.stat-n{font-size:48px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.stat-n span{color:var(--blue)}
+.stat-l{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WHO WE SERVE ──────────────────────────────────────── */
+.serve{background:var(--white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.serve-card{border-radius:var(--r-lg);overflow:hidden;border:2px solid var(--gray-200);
+  transition:all .3s;cursor:pointer}
+.serve-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.serve-img{height:200px;overflow:hidden;position:relative}
+.serve-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.serve-card:hover .serve-img img{transform:scale(1.05)}
+.serve-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,52,96,.7))}
+.serve-body{padding:24px}
+.serve-title{font-size:18px;font-weight:800;color:var(--black);margin-bottom:8px}
+.serve-desc{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+.serve-tag{display:inline-block;font-size:11px;font-weight:700;
+  background:var(--blue-pale);color:var(--blue);padding:4px 10px;border-radius:100px;
+  margin-right:4px;margin-bottom:4px}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testimonials{background:var(--gray-50)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:28px;transition:box-shadow .3s}
+.testi-card:hover{box-shadow:var(--shadow-md)}
+.testi-stars{color:#F59E0B;font-size:18px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;
+  margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--black)}
+.testi-role{font-size:12px;color:var(--gray-400)}
+
+/* ── CTA BAND ──────────────────────────────────────────── */
+.cta-band{background:var(--blue);padding:72px 32px;text-align:center}
+.cta-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;
+  margin-bottom:12px;letter-spacing:-.02em}
+.cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--blue);font-size:15px;font-weight:800;
+  padding:14px 32px;border-radius:var(--r);display:inline-block;transition:all .25s}
+.btn-white:hover{background:var(--gray-50);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:var(--r);border:2px solid rgba(255,255,255,.4);
+  display:inline-block;transition:all .25s;margin-left:12px}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── QUOTE FORM ─────────────────────────────────────────── */
+.quote{background:var(--white)}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.quote-left-title{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--black);
+  margin-bottom:12px;letter-spacing:-.02em}
+.quote-left-desc{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+.trust-list{display:flex;flex-direction:column;gap:12px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-icon{width:22px;height:22px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.trust-icon svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.trust-text{font-size:14px;color:var(--gray-600)}
+.trust-text strong{color:var(--black);font-weight:700}
+.form-box{background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:36px}
+.form-box-title{font-size:20px;font-weight:800;color:var(--black);margin-bottom:4px}
+.form-box-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.f-label{font-size:12px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:var(--ff);color:var(--black);background:#fff;
+  outline:none;transition:border-color .2s;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);cursor:pointer;
+  transition:background .2s;margin-top:4px}
+.f-btn:hover{background:var(--blue-dark)}
+
+/* ── NEWSLETTER ─────────────────────────────────────────── */
+.newsletter{background:var(--navy);padding:64px 32px;text-align:center}
+.newsletter h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;
+  margin-bottom:10px;letter-spacing:-.02em}
+.newsletter p{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:28px}
+.nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.nl-input{flex:1;padding:13px 18px;border:1.5px solid rgba(255,255,255,.15);
+  border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-family:var(--ff);outline:none;transition:border-color .2s}
+.nl-input::placeholder{color:rgba(255,255,255,.35)}
+.nl-input:focus{border-color:var(--blue)}
+.nl-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 24px;font-size:14px;font-weight:700;font-family:var(--ff);
+  cursor:pointer;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--blue-dark)}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--gray-800);color:rgba(255,255,255,.6)}
+.footer-top{max-width:1200px;margin:auto;padding:64px 32px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{height:40px;margin-bottom:14px}
+.footer-tagline{font-size:13px;line-height:1.7;margin-bottom:20px;color:rgba(255,255,255,.45)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.footer-col-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.9);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.8)}
+
+/* ── FLOATING BUTTONS ───────────────────────────────────── */
+.float-wrap{position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.float-btn{width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:var(--blue)}
+.float-ph{background:var(--navy)}
+.float-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── PRODUCTS ──────────────────────────────────────────── */
+.products{background:var(--gray-50)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prod-card{background:var(--white);border:2px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;transition:all .3s}
+.prod-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.prod-top{padding:32px 32px 24px;display:flex;align-items:flex-start;gap:16px}
+.prod-icon{width:56px;height:56px;border-radius:var(--r);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prod-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.prod-name{font-size:19px;font-weight:800;color:var(--black);margin-bottom:6px}
+.prod-sub{font-size:13px;color:var(--blue);font-weight:600}
+.prod-body{padding:0 32px 32px}
+.prod-desc{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:20px}
+.prod-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prod-features li{font-size:13px;color:var(--gray-600);
+  display:flex;align-items:center;gap:8px}
+.prod-btn{display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 20px;border-radius:var(--r);transition:background .2s;border:none;cursor:pointer;font-family:var(--ff)}
+.prod-btn:hover{background:var(--blue)}
+.prod-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:40px}
+  
+  .prod-grid{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .nav-menu.open{display:flex;flex-direction:column;position:absolute;
+    top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);
+    padding:12px 16px;box-shadow:var(--shadow-md)}
+  .nav-menu.open .drop{display:none}
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  section{padding:56px 20px}
+  .hero{padding:48px 20px 56px}
+  .hero-inner{gap:32px}
+  h1.hero-title{font-size:32px}
+  .how-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 20px}
+  .proof-bar-inner{gap:20px}
+  .nl-form{flex-direction:column}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  .hero-badge{display:none}
+  .form-row{grid-template-columns:1fr}
+  .cta-band .btn-outline-white{margin-left:0;margin-top:10px;display:block}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .serve-grid,.prod-grid{grid-template-columns:1fr}
+}
+
+/* ── RESSOURCES PAGE ─────────────────────────────── */
+
+/* Hero */
+.res-hero{background:var(--gray-50);border-bottom:1px solid var(--gray-200);padding:52px 32px 60px}
+.res-hero-inner{max-width:1200px;margin:auto}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--gray-400);margin-bottom:16px}
+.breadcrumb a{color:var(--gray-400);cursor:pointer;transition:color .2s}
+.breadcrumb a:hover{color:var(--blue)}
+
+/* Sub-nav */
+.res-subnav{background:#fff;border-bottom:2px solid var(--gray-200);
+  position:sticky;top:112px;z-index:180;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.res-subnav-inner{max-width:1200px;margin:auto;padding:0 32px;
+  display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.res-subnav-inner::-webkit-scrollbar{display:none}
+.res-tab{padding:16px 24px;font-size:13.5px;font-weight:600;cursor:pointer;
+  white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-2px;
+  transition:all .2s;color:var(--gray-500);display:flex;align-items:center;gap:9px}
+.res-tab svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
+.res-tab:hover{color:var(--black)}
+.res-tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:700}
+
+/* Sections */
+.res-section{display:none;animation:resFade .3s ease}
+.res-section.active{display:block}
+@keyframes resFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── DOCUMENTS ── */
+.doc-search-bar{position:relative;max-width:480px}
+.doc-search-bar svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;stroke:var(--gray-400);fill:none;stroke-width:2}
+.doc-search-bar input{width:100%;padding:11px 14px 11px 42px;
+  border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:inherit;color:var(--black);outline:none;
+  transition:border-color .2s;background:#fff}
+.doc-search-bar input:focus{border-color:var(--blue)}
+
+.doc-filters{display:flex;gap:8px;flex-wrap:wrap}
+.doc-filter{padding:7px 16px;border:1.5px solid var(--gray-200);border-radius:100px;
+  font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;
+  color:var(--gray-500);background:#fff;font-family:inherit}
+.doc-filter.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.doc-filter:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+
+.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;overflow:hidden}
+.doc-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+  padding:18px;display:flex;gap:12px;align-items:flex-start;
+  transition:all .3s;cursor:pointer;overflow:hidden;min-width:0}
+.doc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.doc-icon{width:40px;height:40px;border-radius:var(--r);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center}
+.doc-icon.pdf{background:#FEE2E2}
+.doc-icon.pdf svg{stroke:#DC2626}
+.doc-icon.word{background:#DBEAFE}
+.doc-icon.word svg{stroke:#2563EB}
+.doc-icon.excel{background:#D1FAE5}
+.doc-icon.excel svg{stroke:#059669}
+.doc-icon svg{width:20px;height:20px;fill:none;stroke-width:2}
+.doc-info{flex:1;min-width:0;overflow:hidden}
+.doc-title{font-size:13px;font-weight:700;color:var(--black);
+  margin-bottom:4px;white-space:normal;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  line-height:1.4;min-height:2.8em}
+.doc-meta{font-size:11px;color:var(--gray-400);margin-bottom:10px}
+.doc-cats{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.doc-cat{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;
+  background:var(--blue-pale);color:var(--blue);text-transform:uppercase;letter-spacing:.05em}
+.doc-dl{display:inline-flex;align-items:center;gap:5px;font-size:12px;
+  font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.04em}
+.doc-dl:hover{color:var(--navy)}
+.doc-dl svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5}
+
+/* ── CALCULATEURS ── */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.calc-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden}
+.calc-head{padding:28px 28px 24px}
+.calc-head.navy{background:var(--navy)}
+.calc-head.blue{background:var(--blue)}
+.calc-head-icon{width:48px;height:48px;background:rgba(255,255,255,.15);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.calc-head-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8}
+.calc-head-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:5px;
+  font-family:'Maiandra GD',Georgia,serif}
+.calc-head-sub{font-size:12px;color:rgba(255,255,255,.65)}
+.calc-body{padding:24px 28px 28px}
+.calc-row{display:flex;justify-content:space-between;align-items:center;
+  gap:16px;margin-bottom:12px}
+.calc-label{font-size:13px;font-weight:600;color:var(--gray-600);flex:1}
+.calc-input{padding:9px 12px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:13.5px;font-family:inherit;color:var(--black);width:160px;
+  text-align:right;outline:none;transition:border-color .2s;background:#fff}
+.calc-input:focus{border-color:var(--blue)}
+.calc-select{padding:9px 12px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:13px;font-family:inherit;color:var(--black);width:160px;
+  outline:none;background:#fff;cursor:pointer}
+.calc-divider{border:none;border-top:1px solid var(--gray-100);margin:12px 0}
+.calc-result{background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);
+  border-radius:var(--r);padding:14px 18px}
+.calc-result-row{display:flex;justify-content:space-between;align-items:center;
+  font-size:13.5px;padding:4px 0}
+.calc-result-row.total{font-size:17px;font-weight:800;color:var(--navy);
+  border-top:1px solid rgba(26,158,240,.25);margin-top:8px;padding-top:10px}
+.calc-result-label{color:var(--gray-600)}
+.calc-result-val{font-weight:700;color:var(--navy)}
+.calc-result-val.blue{color:var(--blue)}
+.calc-result-val.red{color:#DC2626}
+.calc-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;
+  transition:background .2s;margin-top:14px;display:flex;align-items:center;
+  justify-content:center;gap:8px}
+.calc-btn:hover{background:var(--navy)}
+.calc-btn svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+.calc-note{font-size:11px;color:var(--gray-400);text-align:center;margin-top:8px;line-height:1.5}
+
+/* Loan table */
+.loan-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.loan-sum-card{background:var(--gray-50);border-radius:var(--r);padding:12px;text-align:center}
+.loan-sum-val{font-size:17px;font-weight:800;color:var(--navy)}
+.loan-sum-lbl{font-size:10px;font-weight:700;color:var(--gray-400);
+  text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.amort-table{width:100%;border-collapse:collapse;font-size:12px;
+  max-height:260px;display:block;overflow-y:auto;margin-top:12px}
+.amort-table th{background:var(--navy);color:#fff;padding:7px 10px;
+  text-align:left;position:sticky;top:0;font-size:11px}
+.amort-table td{padding:6px 10px;border-bottom:1px solid var(--gray-100)}
+.amort-table tr:hover td{background:var(--gray-50)}
+
+/* ── PARTENARIAT ── */
+.part-hero{background:var(--gray-50);border:1.5px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:40px 48px;display:grid;
+  grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:40px}
+.part-hero img{width:100%;height:280px;object-fit:cover;border-radius:var(--r-xl)}
+.part-benefits{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px}
+.part-benefit{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+  padding:20px;display:flex;gap:14px;align-items:flex-start;transition:all .25s}
+.part-benefit:hover{border-color:var(--blue);box-shadow:var(--shadow-sm)}
+.part-benefit-icon{width:38px;height:38px;background:var(--blue-pale);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.part-benefit-icon svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:2}
+.part-benefit-title{font-size:13.5px;font-weight:800;color:var(--black);margin-bottom:4px}
+.part-benefit-desc{font-size:12.5px;color:var(--gray-600);line-height:1.6}
+.part-types{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+.part-type{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);
+  padding:24px 20px;text-align:center;transition:all .3s;cursor:pointer}
+.part-type:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.part-type.selected{border-color:var(--blue);background:var(--blue-pale)}
+.part-type-icon{width:52px;height:52px;background:var(--gray-50);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:all .3s}
+.part-type.selected .part-type-icon{background:var(--blue)}
+.part-type-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.part-type.selected .part-type-icon svg{stroke:#fff}
+.part-type-title{font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px}
+.part-type-desc{font-size:12.5px;color:var(--gray-600);line-height:1.6}
+
+/* Form */
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f-group{display:flex;flex-direction:column;gap:5px}
+.f-label{font-size:11.5px;font-weight:700;color:var(--gray-600);
+  text-transform:uppercase;letter-spacing:.05em}
+.f-input{padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);
+  font-size:14px;font-family:inherit;color:var(--black);outline:none;
+  transition:border-color .2s;background:#fff;width:100%}
+.f-input:focus{border-color:var(--blue)}
+.f-btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+  padding:13px 28px;font-size:14px;font-weight:700;font-family:inherit;
+  cursor:pointer;transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.f-btn:hover{background:var(--navy)}
+.f-btn svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+
+/* Responsive */
+@media(max-width:1024px){
+  .doc-grid{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .part-hero{grid-template-columns:1fr;gap:28px}
+  .part-benefits{grid-template-columns:1fr}
+  .part-types{grid-template-columns:1fr 1fr}
+  .res-subnav-inner{padding:0 16px}
+}
+@media(max-width:768px){
+  .res-hero{padding:40px 20px 48px}
+  .doc-grid{grid-template-columns:1fr}
+  .calc-row{flex-direction:column;align-items:flex-start}
+  .calc-input,.calc-select{width:100%}
+  .loan-summary{grid-template-columns:1fr}
+  .part-types{grid-template-columns:1fr}
+  .form-grid-2{grid-template-columns:1fr}
+  section{padding:48px 20px}
+  .res-subnav{top:108px}
+}
+
+/* ════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+   Inclusion : ajouter ce bloc dans <head>
+   Déclenchement : window.delekyPopup.show()
+════════════════════════════════════════════════ */
+
+/* Overlay */
+#dlk-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: dlkOverlayIn .3s ease;
+}
+#dlk-popup-overlay.open { display: flex; }
+@keyframes dlkOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Modal */
+#dlk-popup-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.12);
+  animation: dlkModalIn .35s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+@keyframes dlkModalIn {
+  from { opacity: 0; transform: scale(.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── GAUCHE : IMAGE / PUB ── */
+#dlk-popup-left {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  background: var(--navy, #0F3460);
+  /* ► L'image de fond est contrôlée via JS / admin */
+  background-size: cover;
+  background-position: center;
+}
+#dlk-popup-left-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+#dlk-popup-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(15,52,96,.4) 0%,
+    rgba(15,52,96,.75) 100%
+  );
+  z-index: 1;
+}
+#dlk-popup-left-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Badge réponse */
+#dlk-popup-badge {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  z-index: 3;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 100px 0 0 100px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.4);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#dlk-popup-badge svg { flex-shrink: 0; }
+
+/* Headline sur image */
+#dlk-popup-headline {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+#dlk-popup-headline span { color: #45B8F5; }
+#dlk-popup-subline {
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* Proof bar */
+#dlk-popup-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+  font-weight: 600;
+}
+#dlk-popup-proof svg { flex-shrink: 0; }
+
+/* ── DROITE : FORMULAIRE ── */
+#dlk-popup-right {
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Bouton fermer */
+#dlk-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: all .2s;
+}
+#dlk-popup-close:hover { background: #fff; transform: scale(1.1); }
+#dlk-popup-close svg { stroke: #374151; fill: none; stroke-width: 2.5; }
+
+/* Logo popup */
+#dlk-popup-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+#dlk-popup-logo img { height: 30px; width: auto; }
+#dlk-popup-logo-name {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--navy, #0F3460);
+  letter-spacing: -.01em;
+}
+
+/* Titre / sous-titre formulaire */
+#dlk-popup-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+#dlk-popup-subtitle {
+  font-size: 13.5px;
+  color: #6B7280;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+/* Inputs */
+.dlk-f-group { margin-bottom: 13px; }
+.dlk-f-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4B5563;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+}
+.dlk-f-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fff;
+}
+.dlk-f-input:hover  { border-color: #D1D5DB; }
+.dlk-f-input:focus  { border-color: var(--blue,#1A9EF0); box-shadow: 0 0 0 3px rgba(26,158,240,.1); }
+.dlk-f-input.error  { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,.08); }
+.dlk-f-select { appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%239CA3AF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;
+}
+
+/* Téléphone avec indicatif */
+.dlk-phone-wrap { display: flex; gap: 8px; }
+.dlk-phone-code {
+  display: flex; align-items: center; gap: 6px;
+  padding: 11px 12px; border: 1.5px solid #E5E7EB; border-radius: 10px;
+  background: #F9FAFB; font-size: 14px; font-weight: 700; color: #374151;
+  white-space: nowrap; flex-shrink: 0; min-width: 76px;
+}
+.dlk-phone-code img { width: 18px; height: 13px; object-fit: cover; border-radius: 2px; }
+
+/* Bouton CTA */
+#dlk-popup-cta {
+  width: 100%;
+  background: var(--blue, #1A9EF0);
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 4px 14px rgba(26,158,240,.35);
+  margin-top: 4px;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+#dlk-popup-cta:hover { background: var(--navy,#0F3460); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(15,52,96,.35); }
+#dlk-popup-cta:active { transform: translateY(0); }
+
+/* Réassurance sous CTA */
+#dlk-popup-reassure {
+  text-align: center;
+  font-size: 12px;
+  color: #9CA3AF;
+}
+#dlk-popup-reassure strong { color: var(--blue, #1A9EF0); }
+
+/* État succès */
+#dlk-popup-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+  animation: dlkFadeUp .35s ease;
+}
+@keyframes dlkFadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* Privacy */
+.dlk-privacy {
+  font-size: 11px; color: #9CA3AF; text-align: center;
+  margin-top: 8px; line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  #dlk-popup-modal {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    border-radius: 16px;
+  }
+  #dlk-popup-left { display: none; }
+  #dlk-popup-right { padding: 28px 24px; }
+  #dlk-popup-close { top: 12px; right: 12px; }
+}
+
+/* Anti-scroll quand popup ouvert */
+body.dlk-popup-open { overflow: hidden; }
+
+/* Nav responsive — hide phone on medium screens so Connexion is always visible */
+@media(max-width:1100px){.nav-tel{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- LOGO — hauteur fixe, pas de compression -->
+    <a href="CO.deleky-home.html" class="logo-wrap" style="flex-shrink:0">
+      <img src="logo.jpg" alt="Deleky's SARL" style="height:52px;width:auto;display:block">
+    </a>
+
+    <!-- MENU PRINCIPAL -->
+                <ul class="nav-menu" id="nav-menu">
+      <li><a href="CO.deleky-home.html" onclick="closeNav()">Accueil</a></li>
+      <li><a href="CO_deleky-cabinet-v2.html" onclick="closeNav()">Le Cabinet</a></li>
+      <li><a href="CO.deleky-missions.html" onclick="closeNav()">Missions</a></li>
+            <li class="has-drop">
+        <a href="#">Nos Produits</a>
+        <div class="drop">
+          <a href="CO.deleky-simulateur-paie-v2.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">CI Payroll Simulation</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-simulateur-immo.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Home Loan Calculator</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+          <a href="CO.deleky-plan-amortissement.html" onclick="closeNav()">
+            <div class="drop-icon" style="background:var(--blue)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div style="font-weight:700;font-size:13px;color:var(--blue)">Amortization Plan</div>
+              <div style="font-size:11px;color:var(--gray-400)">Calculateur gratuit</div>
+            </div>
+          </a>
+        </div>
+      </li>
+<li class="has-drop">
+        <a href="CO.deleky-ressources.html#res-docs">Ressources</a>
+        <div class="drop">
+          <a href="CO.deleky-ressources.html#res-docs" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            Documents Utiles
+          </a>
+          <a href="CO.deleky-ressources.html#res-calc" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></div>
+            Calculateurs
+          </a>
+
+          <a href="CO.deleky-ressources.html#res-part" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            Partenariat
+          </a>
+        </div>
+      </li>
+      <li class="has-drop">
+        <a href="CO.deleky-publications.html">Publications</a>
+        <div class="drop">
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/></svg></div>
+            Blog & Articles
+          </a>
+          <a href="CO.deleky-publications.html" onclick="closeNav()">
+            <div class="drop-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+            Événements
+          </a>
+        </div>
+      </li>
+      <li><a href="CO.deleky-joinus.html" onclick="closeNav()">Nous Rejoindre</a></li>
+      <li><a href="CO.deleky-contact.html" onclick="closeNav()">Contact</a></li>
+    </ul>
+
+    <!-- DROITE : TEL + LANG + LOGIN + CTA -->
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+
+      <a href="tel:+22507000588" class="nav-tel">+225&nbsp;07&nbsp;00&nbsp;05&nbsp;88</a>
+
+      <!-- Switcher FR / EN -->
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('fr',this)">FR</button>
+        <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+      </div>
+
+      <a href="CO.deleky-login (7).html" class="nav-login">Connexion</a>
+
+    </div>
+  </div>
+</nav>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-badge">NEWS</div>
+  <div class="ticker-content">
+    <div class="ticker-track">
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+      <span class="t-item"><strong>Nouveau —</strong> La Réforme ITS 2024 : ce que vous devez savoir · Lire l'article</span>
+      <span class="t-item"><strong>Service en ligne —</strong> Gérez votre paie en toute conformité · Consulter</span>
+      <span class="t-item"><strong>Rappel —</strong> Primes de fin d'année (PFA) : la période approche · Notre guide</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="res-hero">
+  <div class="res-hero-inner">
+    <div class="breadcrumb">
+      <a href="CO.deleky-home.html">Accueil</a>
+      <span style="color:var(--gray-200)">›</span>
+      <span style="color:var(--black);font-weight:600">Ressources</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:7px;background:var(--blue-pale);
+          color:var(--blue);font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;
+          letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Ressources & Outils
+        </div>
+        <h1 style="font-size:clamp(26px,3.5vw,42px);font-weight:800;color:var(--black);
+          letter-spacing:-.02em;line-height:1.12;margin-bottom:12px">
+          Des Outils pour Structurer,<br>Piloter et <span style="color:var(--blue)">Sécuriser Votre Activité</span>
+        </h1>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.8;max-width:560px">
+          Accédez à des ressources pratiques, des modèles professionnels et des outils d'analyse pour améliorer votre gestion, optimiser vos décisions et garantir votre conformité. Ces outils peuvent être utilisés de manière autonome ou avec l'accompagnement de nos équipes.
+        </p>
+      </div>
+      <!-- Quick stats -->
+      <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0">
+        <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+          padding:14px 20px;text-align:center;min-width:140px">
+          <div style="font-size:26px;font-weight:900;color:var(--blue);
+            letter-spacing:-.03em;line-height:1">20+</div>
+          <div style="font-size:10px;font-weight:700;color:var(--gray-400);
+            text-transform:uppercase;letter-spacing:.07em;margin-top:3px">Modèles Validés</div>
+        </div><div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+          padding:14px 20px;text-align:center;min-width:140px">
+          <div style="font-size:26px;font-weight:900;color:var(--blue);
+            letter-spacing:-.03em;line-height:1">4</div>
+          <div style="font-size:10px;font-weight:700;color:var(--gray-400);
+            text-transform:uppercase;letter-spacing:.07em;margin-top:3px">Simulateurs</div>
+        </div><div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);
+          padding:14px 20px;text-align:center;min-width:140px">
+          <div style="font-size:26px;font-weight:900;color:var(--blue);
+            letter-spacing:-.03em;line-height:1">3</div>
+          <div style="font-size:10px;font-weight:700;color:var(--gray-400);
+            text-transform:uppercase;letter-spacing:.07em;margin-top:3px">Programmes Partenaires</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUB-NAV -->
+<div class="res-subnav">
+  <div class="res-subnav-inner">
+    <div class="res-tab active" data-tab="docs" data-fr="Documents & Modèles" data-en="Documents & Templates" onclick="showResTab('docs',this)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Documents &amp; Modèles
+    </div>
+    <div class="res-tab" data-tab="calc" data-fr="Simulation & Analyse" data-en="Simulation & Analysis" onclick="showResTab('calc',this)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+      Simulation &amp; Analyse
+    </div>
+    <div class="res-tab" data-tab="part" data-fr="Opportunités & Collaboration" data-en="Opportunities & Partnership" onclick="showResTab('part',this)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      Opportunités &amp; Collaboration
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ONGLET 1 — DOCUMENTS UTILES
+════════════════════════════════════════════ -->
+<div class="res-section active" id="res-docs">
+  <section style="background:var(--gray-50)">
+    <div class="container">
+
+      <!-- Intro documents -->
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid var(--blue);
+        border-radius:var(--r);padding:16px 22px;margin-bottom:24px;
+        display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px">
+            Modèles professionnels utilisés en mission
+          </div>
+          <div style="font-size:13px;color:var(--gray-600);line-height:1.6">
+            Ces documents sont conformes à la réglementation ivoirienne et aux exigences SYSCOHADA.
+            Ils peuvent être utilisés directement ou adaptés avec l'accompagnement de nos experts.
+          </div>
+        </div>
+        <button class="f-btn" onclick="navigate('contact')" style="white-space:nowrap;flex-shrink:0">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Demander un modèle personnalisé
+        </button>
+      </div>
+
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:24px">
+        <!-- Search -->
+        <div class="doc-search-bar" style="flex:1;min-width:240px">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Rechercher un document..." oninput="filterDocs(this.value)">
+        </div>
+        <!-- Filters -->
+        <div class="doc-filters">
+          <button class="doc-filter active" onclick="filterCat('all',this)">Tous</button>
+          <button class="doc-filter" onclick="filterCat('fiscal',this)">Fiscal</button>
+          <button class="doc-filter" onclick="filterCat('juridique',this)">Juridique</button>
+          <button class="doc-filter" onclick="filterCat('paie',this)">Paie & RH</button>
+          <button class="doc-filter" onclick="filterCat('comptable',this)">Comptable</button>
+          <button class="doc-filter" onclick="filterCat('rh',this)">RH</button>
+        </div>
+      </div>
+
+      <div class="doc-grid" id="doc-grid">
+        <div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide Déclaration ITS 2024 — Étape par Étape</div>
+          <div class="doc-meta">Fiscal · Jan 2024 · 2.4 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Fiscal</span><span class="doc-cat">ITS</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Calendrier Fiscal CI 2024 — Toutes les Échéances</div>
+          <div class="doc-meta">Fiscal · Jan 2024 · 1.1 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Fiscal</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Calculateur TVA CI — Vérification des Déclarations</div>
+          <div class="doc-meta">Fiscal · Mar 2024 · 890 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Fiscal</span><span class="doc-cat">TVA</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide IRVM & IMF 2024 — Calcul & Optimisation</div>
+          <div class="doc-meta">Fiscal · Feb 2024 · 1.8 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Fiscal</span><span class="doc-cat">IRVM</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Statuts SARL Conformes — Prêt à Déposer</div>
+          <div class="doc-meta">Juridique · 2024 · 156 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Juridique</span><span class="doc-cat">SARL</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Statuts SAS Conformes — Prêt à Déposer</div>
+          <div class="doc-meta">Juridique · 2024 · 148 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Juridique</span><span class="doc-cat">SAS</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Modèle PV d'Assemblée Générale Conforme</div>
+          <div class="doc-meta">Juridique · 2024 · 95 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Juridique</span><span class="doc-cat">PV</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide Création d'Entreprise CI — De A à Z</div>
+          <div class="doc-meta">Juridique · 2024 · 3.2 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Juridique</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Tableau de Bord Paie Mensuel — Suivi & Contrôle</div>
+          <div class="doc-meta">Paie · 2024 · 1.2 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Paie</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide Calcul ITS Salaires CI 2024</div>
+          <div class="doc-meta">Paie · Jan 2024 · 2.1 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Paie</span><span class="doc-cat">ITS</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Contrat CDI — Conforme Droit Ivoirien</div>
+          <div class="doc-meta">Paie · 2024 · 88 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Paie</span><span class="doc-cat">RH</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Cotisations CNPS 2024 — Grille Officielle</div>
+          <div class="doc-meta">Paie · Jan 2024 · 450 KB</div>
+          <div class="doc-cats"><span class="doc-cat">Paie</span><span class="doc-cat">CNPS</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Plan Comptable SYSCOHADA Révisé</div>
+          <div class="doc-meta">Comptable · 2024 · 2.8 MB</div>
+          <div class="doc-cats"><span class="doc-cat">SYSCOHADA</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide Clôture Comptable Annuelle</div>
+          <div class="doc-meta">Comptable · Dec 2023 · 1.9 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Comptable</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Tableau de Bord Financier — KPIs Dirigeant</div>
+          <div class="doc-meta">Comptable · 2024 · 1.4 MB</div>
+          <div class="doc-cats"><span class="doc-cat">Comptable</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">SYSCOHADA vs IFRS — Comparatif Complet</div>
+          <div class="doc-meta">Comptable · 2024 · 980 KB</div>
+          <div class="doc-cats"><span class="doc-cat">SYSCOHADA</span><span class="doc-cat">IFRS</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Règlement Intérieur — Conforme & Prêt à Signer</div>
+          <div class="doc-meta">RH · 2024 · 112 KB</div>
+          <div class="doc-cats"><span class="doc-cat">RH</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon excel"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Suivi des Congés — Outil RH Simple</div>
+          <div class="doc-meta">RH · 2024 · 380 KB</div>
+          <div class="doc-cats"><span class="doc-cat">RH</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon word"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Avertissement Disciplinaire — Modèle Conforme</div>
+          <div class="doc-meta">RH · 2024 · 64 KB</div>
+          <div class="doc-cats"><span class="doc-cat">RH</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+<div class="doc-card">
+        <div class="doc-icon pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="doc-info">
+          <div class="doc-title">Guide Bilan Social Annuel CI</div>
+          <div class="doc-meta">RH · 2024 · 1.5 MB</div>
+          <div class="doc-cats"><span class="doc-cat">RH</span><span class="doc-cat">BSA</span></div>
+          <a href="#" class="doc-dl" onclick="dlDoc(this)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+      </div>
+
+      <!-- Request CTA -->
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);
+        padding:28px 32px;margin-top:28px;display:flex;align-items:center;
+        justify-content:space-between;gap:24px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:15px;font-weight:800;color:var(--black);margin-bottom:5px">
+            Ces modèles ne couvrent pas votre besoin ?
+          </div>
+          <div style="font-size:13px;color:var(--gray-600)">
+            Nos experts conçoivent des documents sur mesure, adaptés à votre secteur, votre forme juridique et votre situation spécifique.
+          </div>
+        </div>
+        <button class="f-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Faire une demande
+        </button>
+      </div>
+    </div>
+  
+      <!-- Flow → Action -->
+      <div style="background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);
+        border-radius:var(--r-lg);padding:18px 24px;margin-top:24px;
+        display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px;flex:1">
+          <div style="display:flex;gap:0;align-items:center">
+            <div style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px">1. Utilisez l'outil</div>
+            <div style="width:24px;height:1px;background:var(--blue);opacity:.4"></div>
+            <div style="background:#fff;color:var(--blue);font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px;border:1px solid rgba(26,158,240,.3)">2. Analysez les résultats</div>
+            <div style="width:24px;height:1px;background:var(--blue);opacity:.4"></div>
+            <div style="background:#fff;color:var(--navy);font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px;border:1px solid var(--gray-200)">3. Passez à l'action</div>
+          </div>
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:9px 18px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:7px;
+          transition:background .2s"
+          onmouseover="this.style.background='var(--navy)'"
+          onmouseout="this.style.background='var(--blue)'">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Échanger avec un Expert
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ONGLET 2 — CALCULATEURS
+════════════════════════════════════════════ -->
+<div class="res-section" id="res-calc">
+  <section style="background:var(--gray-50)">
+    <div class="container">
+
+      <!-- Intro calculateurs -->
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-left:3px solid var(--blue);
+        border-radius:var(--r);padding:16px 22px;margin-bottom:28px;
+        display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px">
+            Simulez vos décisions avant de les prendre
+          </div>
+          <div style="font-size:13px;color:var(--gray-600);line-height:1.6">
+            Ces outils donnent une estimation indicative pour orienter vos décisions. Pour une analyse
+            personnalisée et des recommandations actionnables, nos experts sont disponibles.
+          </div>
+        </div>
+        <button class="f-btn" onclick="navigate('contact')" style="white-space:nowrap;flex-shrink:0">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Faire analyser ma situation
+        </button>
+      </div>
+
+      <div class="calc-grid">
+
+        <!-- SIMULATEUR PAIE CI -->
+        <div class="calc-card">
+          <div class="calc-head navy">
+            <div class="calc-head-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
+            </div>
+            <div class="calc-head-title">Simulation de Paie &amp; Charges Sociales</div>
+            <div class="calc-head-sub">Anticipez le coût réel d'un recrutement · ITS · CNPS · Salaire net · CI 2024</div>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row">
+              <label class="calc-label">Salaire Brut (FCFA)</label>
+              <input class="calc-input" id="salaire-brut" type="number" value="500000" oninput="calcPayroll()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Catégorie</label>
+              <select class="calc-select" id="categorie" onchange="calcPayroll()">
+                <option value="1">Cat. 1 — Manœuvre</option>
+                <option value="2">Cat. 2 — OS</option>
+                <option value="3" selected>Cat. 3 — Employé</option>
+                <option value="4">Cat. 4 — Technicien</option>
+                <option value="5">Cat. 5 — Agent Maîtrise</option>
+                <option value="6">Cat. 6 — Cadre</option>
+              </select>
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Nombre d'enfants</label>
+              <input class="calc-input" id="nb-enfants" type="number" value="0" min="0" max="10" oninput="calcPayroll()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Situation familiale</label>
+              <select class="calc-select" id="situation" onchange="calcPayroll()">
+                <option value="celibataire">Célibataire</option>
+                <option value="marie">Marié(e)</option>
+              </select>
+            </div>
+            <hr class="calc-divider">
+            <div class="calc-result" id="payroll-result">
+              <div class="calc-result-row"><span class="calc-result-label">Salaire Brut</span><span class="calc-result-val" id="r-brut">500 000 FCFA</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">CNPS salarié (6.3%)</span><span class="calc-result-val red" id="r-cnps">-31 500 FCFA</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">ITS</span><span class="calc-result-val red" id="r-its">— FCFA</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">Allocation familiale</span><span class="calc-result-val blue" id="r-af">+0 FCFA</span></div>
+              <div class="calc-result-row total"><span class="calc-result-label">💰 Salaire Net</span><span class="calc-result-val blue" id="r-net">— FCFA</span></div>
+              <div class="calc-result-row" style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(26,158,240,.3)">
+                <span class="calc-result-label" style="font-size:12px">Charge patronale CNPS (13%)</span>
+                <span class="calc-result-val red" style="font-size:12px" id="r-patron">65 000 FCFA</span>
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcPayroll()">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              Calculer
+            </button>
+            <p class="calc-note">Estimation indicative · Législation CI 2024 · Pour optimiser votre masse salariale, <a href="CO.deleky-contact.html" style="color:var(--blue);font-weight:700">parlez à un expert</a>.</p>
+          </div>
+        </div>
+
+        <!-- PRÊT IMMOBILIER -->
+        <div class="calc-card">
+          <div class="calc-head blue">
+            <div class="calc-head-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="calc-head-title">Simulation de Financement Immobilier</div>
+            <div class="calc-head-sub">Mesurez l'impact sur votre trésorerie · Mensualités · Coût total · Amortissement</div>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row">
+              <label class="calc-label">Montant du prêt (FCFA)</label>
+              <input class="calc-input" id="loan-amount" type="number" value="15000000" oninput="calcLoan()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Taux annuel (%)</label>
+              <input class="calc-input" id="loan-rate" type="number" value="8.5" step="0.1" oninput="calcLoan()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Durée (années)</label>
+              <input class="calc-input" id="loan-duration" type="number" value="15" min="1" max="30" oninput="calcLoan()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Apport personnel (FCFA)</label>
+              <input class="calc-input" id="loan-apport" type="number" value="3000000" oninput="calcLoan()">
+            </div>
+            <hr class="calc-divider">
+            <div class="loan-summary">
+              <div class="loan-sum-card"><div class="loan-sum-val" id="l-mensualite">—</div><div class="loan-sum-lbl">Mensualité (FCFA)</div></div>
+              <div class="loan-sum-card"><div class="loan-sum-val" id="l-total-int">—</div><div class="loan-sum-lbl">Total Intérêts</div></div>
+              <div class="loan-sum-card"><div class="loan-sum-val" id="l-cout-total">—</div><div class="loan-sum-lbl">Coût Total</div></div>
+            </div>
+            <button class="calc-btn" onclick="calcLoan();document.getElementById('amort-wrap').style.display='block'">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Calculer & Voir l'Amortissement
+            </button>
+            <div id="amort-wrap" style="display:none">
+              <table class="amort-table" id="loan-table">
+                <thead><tr><th>#</th><th>Mensualité</th><th>Capital</th><th>Intérêts</th><th>Restant</th></tr></thead>
+                <tbody id="loan-tbody"></tbody>
+              </table>
+            </div>
+            <p class="calc-note">Simulation indicative · Taux variables selon l'établissement · Pour une étude de financement personnalisée, <a href="CO.deleky-contact.html" style="color:var(--blue);font-weight:700">contactez-nous</a>.</p>
+          </div>
+        </div>
+
+        <!-- IS / IMPÔT SOCIÉTÉS -->
+        <div class="calc-card">
+          <div class="calc-head navy">
+            <div class="calc-head-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div class="calc-head-title">Estimation IS &amp; Optimisation Fiscale</div>
+            <div class="calc-head-sub">Estimez votre charge fiscale et identifiez les leviers d'optimisation · CI</div>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row">
+              <label class="calc-label">Résultat fiscal (FCFA)</label>
+              <input class="calc-input" id="is-resultat" type="number" value="10000000" oninput="calcIS()">
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Type de société</label>
+              <select class="calc-select" id="is-type" onchange="calcIS()">
+                <option value="normal">Régime Normal (25%)</option>
+                <option value="pme">PME (20%)</option>
+                <option value="micro">Micro-entreprise (IMF)</option>
+              </select>
+            </div>
+            <div class="calc-row">
+              <label class="calc-label">Chiffre d'affaires HT (FCFA)</label>
+              <input class="calc-input" id="is-ca" type="number" value="50000000" oninput="calcIS()">
+            </div>
+            <hr class="calc-divider">
+            <div class="calc-result">
+              <div class="calc-result-row"><span class="calc-result-label">Résultat fiscal</span><span class="calc-result-val" id="is-r-base">10 000 000 FCFA</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">Taux applicable</span><span class="calc-result-val blue" id="is-r-taux">25%</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">IS théorique</span><span class="calc-result-val red" id="is-r-theorique">—</span></div>
+              <div class="calc-result-row"><span class="calc-result-label">IMF minimum</span><span class="calc-result-val" id="is-r-imf">—</span></div>
+              <div class="calc-result-row total"><span class="calc-result-label">💰 IS à payer</span><span class="calc-result-val blue" id="is-r-final">—</span></div>
+            </div>
+            <button class="calc-btn" onclick="calcIS()">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              Calculer
+            </button>
+            <p class="calc-note">Estimation indicative · Pour réduire légalement votre charge fiscale, <a href="CO.deleky-contact.html" style="color:var(--blue);font-weight:700">demandez un audit fiscal</a>.</p>
+          </div>
+        </div>
+
+        <!-- AMORTISSEMENT COMPTABLE -->
+        <div class="calc-card">
+          <div class="calc-head blue">
+            <div class="calc-head-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="calc-head-title">Plan d'Amortissement Comptable</div>
+            <div class="calc-head-sub">Planifiez vos dotations et pilotez la valeur nette de vos immobilisations · SYSCOHADA / IFRS</div>
+          </div>
+          <div class="calc-body">
+
+            <!-- Type de bien → détermine taux + durée automatiquement -->
+            <div class="calc-row">
+              <label class="calc-label">Type de bien
+                <span style="font-size:10px;color:var(--gray-400);font-weight:400;display:block;margin-top:2px">
+                  Sélectionnez pour appliquer le taux réglementaire
+                </span>
+              </label>
+              <select class="calc-select" id="amort-bien" onchange="onBienChange()" style="width:200px;font-size:12px">
+                <option value="">— Choisir le bien —</option>
+                <optgroup label="— Immobilier —"><option value="20|5">Bâtiments industriels (5% — 20 ans)</option><option value="20|5">Bâtiments commerciaux (5% — 20 ans)</option><option value="25|4">Bâtiments administratifs (4% — 25 ans)</option><option value="10|10">Constructions légères (10% — 10 ans)</option><option value="10|10">Aménagements & installations (10% — 10 ans)</option></optgroup><optgroup label="— Matériel —"><option value="10|10">Matériel industriel lourd (10% — 10 ans)</option><option value="5|20">Outillage & équipements (20% — 5 ans)</option><option value="5|20">Matériel de bureau (20% — 5 ans)</option><option value="5|20">Matériel médical (20% — 5 ans)</option></optgroup><optgroup label="— Informatique —"><option value="3|33">Matériel informatique (33% — 3 ans)</option><option value="3|33">Logiciels (33% — 3 ans)</option><option value="5|20">Serveurs & équipements réseau (20% — 5 ans)</option></optgroup><optgroup label="— Transport —"><option value="4|25">Véhicules de tourisme (25% — 4 ans)</option><option value="5|20">Véhicules utilitaires (20% — 5 ans)</option><option value="5|20">Camions & engins de chantier (20% — 5 ans)</option><option value="3|33">Motos & deux-roues (33% — 3 ans)</option></optgroup><optgroup label="— Mobilier —"><option value="10|10">Mobilier de bureau (10% — 10 ans)</option><option value="10|10">Agencement & décoration (10% — 10 ans)</option></optgroup><optgroup label="— Incorporel —"><option value="5|20">Brevets & licences (20% — 5 ans)</option><option value="10|10">Marques déposées (10% — 10 ans)</option><option value="10|10">Fonds commercial (10% — 10 ans)</option></optgroup>
+              </select>
+            </div>
+
+            <!-- Date d'acquisition -->
+            <div class="calc-row">
+              <label class="calc-label">Date d'acquisition
+                <span style="font-size:10px;color:var(--gray-400);font-weight:400;display:block;margin-top:2px">
+                  Calcule la date de fin et le prorata
+                </span>
+              </label>
+              <input class="calc-input" id="amort-date" type="date" style="width:200px;font-size:13px" onchange="calcAmort()">
+            </div>
+
+            <!-- Valeur -->
+            <div class="calc-row">
+              <label class="calc-label">Valeur d'acquisition (FCFA)</label>
+              <input class="calc-input" id="amort-val" type="number" value="5000000" oninput="calcAmort()">
+            </div>
+
+            <!-- Durée (auto ou manuelle) -->
+            <div class="calc-row">
+              <label class="calc-label">Durée d'amortissement
+                <span style="font-size:10px;color:var(--gray-400);font-weight:400;display:block;margin-top:2px">
+                  Remplie automatiquement si bien sélectionné
+                </span>
+              </label>
+              <select class="calc-select" id="amort-duree" onchange="calcAmort()" style="width:200px">
+                <option value="3">3 ans</option>
+                <option value="4">4 ans</option>
+                <option value="5" selected>5 ans</option>
+                <option value="8">8 ans</option>
+                <option value="10">10 ans</option>
+                <option value="20">20 ans</option>
+                <option value="25">25 ans</option>
+              </select>
+            </div>
+
+            <!-- Méthode -->
+            <div class="calc-row">
+              <label class="calc-label">Méthode</label>
+              <select class="calc-select" id="amort-methode" onchange="calcAmort()" style="width:200px">
+                <option value="lineaire" selected>Linéaire (SYSCOHADA)</option>
+                <option value="degressif">Dégressif x1.5</option>
+              </select>
+            </div>
+
+            <!-- Valeur résiduelle -->
+            <div class="calc-row">
+              <label class="calc-label">Valeur résiduelle (FCFA)</label>
+              <input class="calc-input" id="amort-residuel" type="number" value="0" oninput="calcAmort()" style="width:200px">
+            </div>
+
+            <hr class="calc-divider">
+
+            <!-- Résultats -->
+            <div class="calc-result" id="amort-result-box">
+              <div class="calc-result-row">
+                <span class="calc-result-label">Type de bien</span>
+                <span class="calc-result-val blue" id="amort-bien-lbl" style="font-size:12px;text-align:right;max-width:200px">—</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Taux réglementaire</span>
+                <span class="calc-result-val blue" id="amort-taux">20%</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Dotation annuelle</span>
+                <span class="calc-result-val" id="amort-annuel">—</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Dotation mensuelle</span>
+                <span class="calc-result-val" id="amort-mensuel">—</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Date de début</span>
+                <span class="calc-result-val" id="amort-debut">—</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label" style="color:#059669;font-weight:700">📅 Date de fin</span>
+                <span class="calc-result-val" id="amort-fin" style="color:#059669;font-weight:800">—</span>
+              </div>
+              <div class="calc-result-row total">
+                <span class="calc-result-label">💰 Total amorti</span>
+                <span class="calc-result-val blue" id="amort-total">—</span>
+              </div>
+            </div>
+
+            <!-- Tableau année par année -->
+            <div id="amort-table-wrap" style="display:none;margin-top:16px">
+              <div style="font-size:11px;font-weight:700;color:var(--black);
+                text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">
+                Tableau annuel d'amortissement
+              </div>
+              <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--gray-200)">
+                <table style="width:100%;border-collapse:collapse;font-size:12px">
+                  <thead>
+                    <tr style="background:var(--navy)">
+                      <th style="padding:8px 10px;text-align:left;color:#fff;font-size:11px;white-space:nowrap">Exercice</th>
+                      <th style="padding:8px 10px;text-align:right;color:#fff;font-size:11px">VNC Début</th>
+                      <th style="padding:8px 10px;text-align:right;color:#fff;font-size:11px">Dotation</th>
+                      <th style="padding:8px 10px;text-align:right;color:#fff;font-size:11px">Cumulé</th>
+                      <th style="padding:8px 10px;text-align:right;color:#fff;font-size:11px">VNC Fin</th>
+                    </tr>
+                  </thead>
+                  <tbody id="amort-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <button class="calc-btn" onclick="calcAmort();document.getElementById('amort-table-wrap').style.display='block'">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              Calculer & Voir le Tableau
+            </button>
+            <p class="calc-note">Taux DGI CI · Conforme SYSCOHADA révisé · Prorata temporis automatique · Pour un plan comptable complet, <a href="CO.deleky-contact.html" style="color:var(--blue);font-weight:700">contactez nos experts</a>.</p>
+
+          </div>
+        </div>
+
+      </div><!-- /calc-grid -->
+
+      <!-- Conseil CTA -->
+      <div style="background:var(--navy);border-radius:var(--r-xl);padding:32px 40px;
+        margin-top:28px;display:flex;align-items:center;justify-content:space-between;
+        gap:24px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:5px">
+            Ces simulations révèlent un enjeu pour votre entreprise ?
+          </div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6)">
+            Nos experts analysent vos chiffres réels et vous proposent un plan d'action concret — fiscalité, paie, financement ou comptabilité.
+          </div>
+        </div>
+        <button class="f-btn" onclick="navigate('contact')">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Parler à un Expert
+        </button>
+      </div>
+    </div>
+  
+      <!-- Flow → Action -->
+      <div style="background:var(--blue-pale);border:1px solid rgba(26,158,240,.2);
+        border-radius:var(--r-lg);padding:18px 24px;margin-top:24px;
+        display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px;flex:1">
+          <div style="display:flex;gap:0;align-items:center">
+            <div style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px">1. Utilisez l'outil</div>
+            <div style="width:24px;height:1px;background:var(--blue);opacity:.4"></div>
+            <div style="background:#fff;color:var(--blue);font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px;border:1px solid rgba(26,158,240,.3)">2. Analysez les résultats</div>
+            <div style="width:24px;height:1px;background:var(--blue);opacity:.4"></div>
+            <div style="background:#fff;color:var(--navy);font-size:11px;font-weight:700;
+              padding:5px 12px;border-radius:100px;border:1px solid var(--gray-200)">3. Passez à l'action</div>
+          </div>
+        </div>
+        <button onclick="navigate('contact')"
+          style="background:var(--blue);color:#fff;border:none;border-radius:var(--r);
+          padding:9px 18px;font-size:13px;font-weight:700;font-family:inherit;
+          cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:7px;
+          transition:background .2s"
+          onmouseover="this.style.background='var(--navy)'"
+          onmouseout="this.style.background='var(--blue)'">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Échanger avec un Expert
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ONGLET 3 — PARTENARIAT
+════════════════════════════════════════════ -->
+<div class="res-section" id="res-part">
+  <section style="background:var(--gray-50)">
+    <div class="container">
+
+      <!-- Hero partenariat -->
+      <div class="part-hero">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;
+            letter-spacing:.08em;margin-bottom:10px">Opportunités de Collaboration</div>
+          <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--black);
+            letter-spacing:-.02em;margin-bottom:12px;line-height:1.2">
+            Développez Votre Activité<br>avec <span style="color:var(--blue)">Deleky's</span>
+          </h2>
+          <p style="font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:20px">
+            Rejoignez un écosystème structuré et accédez à des opportunités concrètes de collaboration, d'accompagnement et de développement commercial. Deleky's travaille avec des professionnels qui partagent une exigence commune : la rigueur et la valeur client.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--gray-600)">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--green);
+                display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Réseau qualifié de professionnels du chiffre et du conseil
+            </div><div style="display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--gray-600)">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--green);
+                display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Commissions attractives sur apports d'affaires
+            </div><div style="display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--gray-600)">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--green);
+                display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Co-marketing et visibilité partagée
+            </div><div style="display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--gray-600)">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--green);
+                display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Accès aux formations et événements exclusifs Deleky's
+            </div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&auto=format&fit=crop&q=80"
+          alt="Partenariat Deleky's">
+      </div>
+
+      <!-- Avantages -->
+      <div style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;
+        letter-spacing:.08em;margin-bottom:20px">Avantages du Partenariat</div>
+      <div class="part-benefits">
+        <div class="part-benefit">
+          <div class="part-benefit-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div>
+            <div class="part-benefit-title">Accès à des Clients Qualifiés</div>
+            <div class="part-benefit-desc">Accès à un flux de clients qualifiés et commissions sur chaque mission signée suite à votre recommandation.</div>
+          </div>
+        </div><div class="part-benefit">
+          <div class="part-benefit-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div>
+            <div class="part-benefit-title">Réseau Structuré d'Experts</div>
+            <div class="part-benefit-desc">Intégrez un réseau structuré d'experts — comptables, auditeurs, juristes — pour enrichir votre offre et référer en confiance.</div>
+          </div>
+        </div><div class="part-benefit">
+          <div class="part-benefit-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div>
+            <div class="part-benefit-title">Montée en Compétences</div>
+            <div class="part-benefit-desc">Formations exclusives, webinaires métier et accès aux ressources internes Deleky's pour monter en compétences.</div>
+          </div>
+        </div><div class="part-benefit">
+          <div class="part-benefit-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div>
+            <div class="part-benefit-title">Visibilité & Co-Développement</div>
+            <div class="part-benefit-desc">Logo sur nos supports, co-publication et recommandations croisées pour développer votre visibilité professionnelle.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Types de partenariat -->
+      <div style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;
+        letter-spacing:.08em;margin-bottom:20px">Types de Partenariat</div>
+      <div class="part-types">
+        <div class="part-type" id="ptype-apporteur" onclick="selectPartType('apporteur',this)">
+          <div class="part-type-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="part-type-title">Apporteur d'Affaires</div>
+          <div class="part-type-desc">Vous recommandez des clients à Deleky's. En retour, vous percevez une commission sur chaque mission signée. Aucun engagement minimum.</div>
+        </div><div class="part-type" id="ptype-strategique" onclick="selectPartType('strategique',this)">
+          <div class="part-type-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div class="part-type-title">Partenaire Stratégique</div>
+          <div class="part-type-desc">Collaboration structurée avec partage d'opportunités, co-développement de missions et accès aux ressources internes du cabinet.</div>
+        </div><div class="part-type" id="ptype-technologique" onclick="selectPartType('technologique',this)">
+          <div class="part-type-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="part-type-title">Partenaire Technologique</div>
+          <div class="part-type-desc">Votre solution s'intègre à notre offre client. Nous devenons prescripteurs de votre technologie auprès de nos 250+ entreprises clientes.</div>
+        </div>
+      </div>
+
+      <!-- Formulaire de candidature -->
+      <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-xl);padding:36px 40px">
+        <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;
+          letter-spacing:.08em;margin-bottom:8px">Candidature Partenariat</div>
+        <h3 style="font-size:22px;font-weight:800;color:var(--black);margin-bottom:5px;letter-spacing:-.02em">
+          Déposer votre Candidature Partenaire
+        </h3>
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:24px">
+          Chaque candidature est étudiée par notre équipe. Nous privilégions les collaborations à long terme, fondées sur la qualité et la complémentarité.
+        </p>
+        <input type="hidden" id="part-type-select" value="apporteur">
+        <div class="form-grid-2" style="margin-bottom:14px">
+          <div class="f-group"><label class="f-label">Prénom & Nom <span style="color:#EF4444">*</span></label>
+            <input class="f-input" placeholder="Jean Kouamé"></div>
+          <div class="f-group"><label class="f-label">Entreprise <span style="color:#EF4444">*</span></label>
+            <input class="f-input" placeholder="Ma Société SARL"></div>
+          <div class="f-group"><label class="f-label">Email professionnel <span style="color:#EF4444">*</span></label>
+            <input class="f-input" type="email" placeholder="jean@masociete.ci"></div>
+          <div class="f-group"><label class="f-label">Téléphone <span style="color:#EF4444">*</span></label>
+            <input class="f-input" type="tel" placeholder="+225 07 00 00 00"></div>
+          <div class="f-group"><label class="f-label">Secteur d'activité</label>
+            <select class="f-input">
+              <option>Conseil & Consulting</option>
+              <option>Banque & Finance</option>
+              <option>Assurance</option>
+              <option>Technologie & IT</option>
+              <option>Immobilier</option>
+              <option>Commerce & Distribution</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="f-group"><label class="f-label">Type de partenariat</label>
+            <select class="f-input" onchange="document.getElementById('part-type-select').value=this.value">
+              <option value="apporteur">Apporteur d'Affaires</option>
+              <option value="strategique">Partenaire Stratégique</option>
+              <option value="technologique">Partenaire Technologique</option>
+            </select>
+          </div>
+          <div class="f-group" style="grid-column:1/-1"><label class="f-label">Décrivez votre proposition</label>
+            <textarea class="f-input" style="min-height:100px;resize:vertical"
+              placeholder="Présentez votre activité, comment vous souhaitez collaborer..."></textarea>
+          </div>
+        </div>
+        <button class="f-btn" onclick="submitPart(this)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Envoyer ma Candidature
+        </button>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand -->
+    <div>
+      <div style="display:inline-block;background:#ffffff;padding:10px 16px;border-radius:12px;margin-bottom:16px">
+        <img src="logo.jpg" style="height:38px;width:auto;display:block">
+      </div>
+      <p class="footer-tagline">Comptabilité · Fiscalité · Gestion d'Entreprise<br>Abidjan, Côte d'Ivoire</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white" stroke="none"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Solutions -->
+    <div>
+      <div class="footer-col-h">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-creation-entreprise.html">Création d'Entreprise</a></li>
+        <li><a href="CO.deleky-petites-entreprises.html" target="_blank">Petites Entreprises</a></li>
+        <li><a href="CO.deleky-entreprises (3).html" target="_blank">Entreprises</a></li>
+        <li><a href="CO.deleky-comptabilite-en-retard.html" target="_blank">Comptabilité en Retard</a></li>
+        <li><a href="CO.deleky-gestion-de-paie.html" target="_blank">Gestion de Paie</a></li>
+        <li><a href="CO.deleky-juridique-ag.html" target="_blank">Juridique &amp; AG</a></li>
+        <li><a href="CO.deleky-entreprises (3).html-plan" target="_blank">Business Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- Formes Juridiques -->
+    <div>
+      <div class="footer-col-h">Formes Juridiques</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-tableau-comparatif.html">Tableau Comparatif</a></li>
+        <li><a href="CO.deleky-creation-sarl.html">SARL</a></li>
+        <li><a href="CO.deleky-creation-sa.html">SA</a></li>
+        <li><a href="CO.deleky-creation-sas.html">SAS</a></li>
+        <li><a href="CO.deleky-creation-snc.html">SNC</a></li>
+        <li><a href="CO.deleky-creation-gie.html">GIE</a></li>
+        <li><a href="CO.deleky-creation-sci.html">SCI</a></li>
+      </ul>
+    </div>
+
+    <!-- Nos Produits -->
+    <div>
+      <div class="footer-col-h">Nos Produits</div>
+      <ul class="footer-links">
+        <li><a href="CO.deleky-simulateur-paie-v2.html">CI Payroll Simulation</a></li>
+        <li><a href="CO.deleky-simulateur-immo.html">Home Loan Calculator</a></li>
+        <li><a href="CO.deleky-plan-amortissement.html">Amortization Plan</a></li>
+      </ul>
+    </div>
+
+    <!-- À Propos -->
+    <div>
+      <div class="footer-col-h">À Propos</div>
+      <ul class="footer-links">
+        <li><a href="CO_deleky-cabinet-v2.html">Le Cabinet</a></li>
+        <li><a href="CO.deleky-publications.html">Blog &amp; Articles</a></li>
+        <li><a href="CO.deleky-publications.html">Événements</a></li>
+        <li><a href="CO.deleky-ressources.html">Témoignages</a></li>
+        <li><a href="CO.deleky-joinus.html">Nous Rejoindre</a></li>
+        <li><a href="CO.deleky-ressources.html">Partenariat</a></li>
+        <li><a href="CO.deleky-ressources.html">Simulateur Paie</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deleky's SARL — Tous droits réservés</span>
+    <div class="footer-bottom-links">
+      <a href="#">Conditions Générales</a>
+      <a href="#">Mentions Légales</a>
+      <a href="#">Protection des Données</a>
+      <a href="CO.deleky-contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<!-- FLOATING BUTTONS -->
+<div class="float-wrap">
+  <button class="float-btn float-ph" title="Appeler" onclick="window.location.href='tel:+22507000588'">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.41a16 16 0 006.72 6.72l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </button>
+  <button class="float-btn float-wa" title="WhatsApp" onclick="window.location.href='https://wa.me/2251111111119'">
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/lang.js"></script>
+<script>
+/* ── NAV ── */
+function toggleNav(){document.getElementById('nav-menu').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
+function switchLang(l,b){
+  document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+  if(b) b.classList.add('active');
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-fr][data-en]').forEach(el=>{
+    const value = l === 'en' ? el.dataset.en : el.dataset.fr;
+    if(el.tagName==='INPUT' || el.tagName==='TEXTAREA' || el.tagName==='BUTTON') {
+      el.value = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+  localStorage.setItem('dlkLanguage', l);
+}
+function applyLangFromStorage(){
+  const lang = localStorage.getItem('dlkLanguage') || 'fr';
+  const btn = document.querySelector(`.lang-btn[onclick="switchLang('${lang}',this)"]`) || document.querySelector('.lang-btn');
+  switchLang(lang, btn);
+}
+function openResTabFromHash(){
+  const hash = window.location.hash.replace('#','');
+  if(!hash) return;
+  const valid = ['res-docs','res-calc','res-part'];
+  if(!valid.includes(hash)) return;
+  const tabKey = hash.replace('res-','');
+  const tab = document.querySelector(`.res-tab[data-tab="${tabKey}"]`);
+  if(tab) showResTab(tabKey, tab);
+}
+document.addEventListener('DOMContentLoaded', ()=>{ applyLangFromStorage(); openResTabFromHash(); });
+window.addEventListener('hashchange', openResTabFromHash);
+
+/* ── SUB-TABS ── */
+function showResTab(id, el) {
+  document.querySelectorAll('.res-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.res-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('res-'+id).classList.add('active');
+  el.classList.add('active');
+  const sn=document.querySelector('.res-subnav');
+  if(sn) window.scrollTo({top:sn.offsetTop-10,behavior:'smooth'});
+}
+
+/* ── DOCUMENTS ── */
+const _CATS = ['fiscal', 'fiscal', 'fiscal', 'fiscal', 'juridique', 'juridique', 'juridique', 'juridique', 'paie', 'paie', 'paie', 'paie', 'comptable', 'comptable', 'comptable', 'comptable', 'rh', 'rh', 'rh', 'rh'];
+let _curCat = 'all';
+function filterCat(cat, btn) {
+  _curCat = cat;
+  document.querySelectorAll('.doc-filter').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  applyDocFilter();
+}
+function filterDocs(q) { applyDocFilter(q); }
+function applyDocFilter(q) {
+  q = q || document.querySelector('.doc-search-bar input')?.value || '';
+  q = q.toLowerCase();
+  document.querySelectorAll('.doc-card').forEach((c,i)=>{
+    const mc = _curCat==='all' || _CATS[i]===_curCat;
+    const mq = !q || (c.querySelector('.doc-title')?.textContent||'').toLowerCase().includes(q);
+    c.style.display = mc&&mq ? '' : 'none';
+  });
+}
+function dlDoc(btn) {
+  const o=btn.innerHTML; btn.innerHTML='✓ Téléchargé'; btn.style.color='#22C55E';
+  setTimeout(()=>{btn.innerHTML=o;btn.style.color='';},2000);
+}
+
+/* ── PARTENARIAT ── */
+function selectPartType(key, el) {
+  document.querySelectorAll('.part-type').forEach(p=>p.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('part-type-select').value = key;
+}
+function submitPart(btn) {
+  btn.innerHTML='✓ Candidature envoyée ! Réponse sous 48h.';
+  btn.style.background='#22C55E';
+  setTimeout(()=>{
+    btn.innerHTML=`<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg> Envoyer ma Candidature`;
+    btn.style.background='';
+  },5000);
+}
+
+/* ── CALCULATORS ── */
+function fmt(n){return Math.round(n).toLocaleString('fr-FR')+' FCFA';}
+function setEl(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+
+function calcPayroll(){
+  const b=parseFloat(document.getElementById('salaire-brut')?.value)||0;
+  const en=parseInt(document.getElementById('nb-enfants')?.value)||0;
+  const cnps=b*.063,af=en*2500,base=b-cnps;
+  let its=0;
+  if(base>75000)its+=Math.min(base-75000,165000)*.16;
+  if(base>240000)its+=Math.min(base-240000,360000)*.21;
+  if(base>600000)its+=Math.min(base-600000,400000)*.245;
+  if(base>1000000)its+=(base-1000000)*.275;
+  setEl('r-brut',fmt(b));setEl('r-cnps','-'+fmt(cnps));setEl('r-its','-'+fmt(its));
+  setEl('r-af','+'+fmt(af));setEl('r-net',fmt(b-cnps-its+af));setEl('r-patron',fmt(b*.13));
+}
+
+function calcLoan(){
+  const p=parseFloat(document.getElementById('loan-amount')?.value)||0;
+  const ap=parseFloat(document.getElementById('loan-apport')?.value)||0;
+  const r=parseFloat(document.getElementById('loan-rate')?.value)||0;
+  const y=parseInt(document.getElementById('loan-duration')?.value)||1;
+  const ln=p-ap,mr=r/100/12,n=y*12;
+  const m=mr===0?ln/n:ln*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);
+  setEl('l-mensualite',Math.round(m).toLocaleString('fr-FR'));
+  setEl('l-total-int',Math.round(m*n-ln).toLocaleString('fr-FR'));
+  setEl('l-cout-total',Math.round(m*n+ap).toLocaleString('fr-FR'));
+  const tb=document.getElementById('loan-tbody');if(!tb)return;
+  tb.innerHTML='';let bal=ln;
+  for(let i=1;i<=n;i++){
+    const ip=bal*mr,cp=m-ip;bal-=cp;
+    if(i<=24||i===n){const tr=document.createElement('tr');
+      tr.innerHTML='<td>'+i+'</td><td>'+Math.round(m).toLocaleString('fr-FR')+'</td><td>'+Math.round(cp).toLocaleString('fr-FR')+'</td><td>'+Math.round(ip).toLocaleString('fr-FR')+'</td><td>'+Math.round(Math.max(0,bal)).toLocaleString('fr-FR')+'</td>';
+      tb.appendChild(tr);}
+    if(i===24&&n>25){const tr=document.createElement('tr');tr.innerHTML='<td colspan="5" style="text-align:center;color:#9CA3AF">...'+( n-25)+' mois...</td>';tb.appendChild(tr);}
+  }
+}
+
+function calcIS(){
+  const r=parseFloat(document.getElementById('is-resultat')?.value)||0;
+  const ca=parseFloat(document.getElementById('is-ca')?.value)||0;
+  const tp=document.getElementById('is-type')?.value||'normal';
+  let taux=.25,lbl='25%';
+  if(tp==='pme'){taux=.20;lbl='20%';}if(tp==='micro'){taux=.02;lbl='2% (IMF)';}
+  const isT=r*taux,imf=ca*.01;
+  setEl('is-r-base',Math.round(r).toLocaleString('fr-FR')+' FCFA');
+  setEl('is-r-taux',lbl);
+  setEl('is-r-theorique',Math.round(isT).toLocaleString('fr-FR')+' FCFA');
+  setEl('is-r-imf',Math.round(imf).toLocaleString('fr-FR')+' FCFA');
+  setEl('is-r-final',Math.round(Math.max(isT,imf)).toLocaleString('fr-FR')+' FCFA');
+}
+
+function onBienChange() {
+  const sel = document.getElementById('amort-bien');
+  if (!sel || !sel.value) { calcAmort(); return; }
+  const parts = sel.value.split('|');
+  const duree = parseInt(parts[0]);
+  const dSel = document.getElementById('amort-duree');
+  if (dSel) {
+    let found = false;
+    Array.from(dSel.options).forEach(o => {
+      if (parseInt(o.value) === duree) { o.selected = true; found = true; }
+    });
+    if (!found) {
+      const opt = document.createElement('option');
+      opt.value = duree; opt.textContent = duree + ' ans'; opt.selected = true;
+      dSel.appendChild(opt);
+    }
+  }
+  const lbl = sel.options[sel.selectedIndex]?.text || '';
+  setEl('amort-bien-lbl', lbl.split('(')[0].trim());
+  calcAmort();
+}
+
+function calcAmort() {
+  const v      = parseFloat(document.getElementById('amort-val')?.value) || 0;
+  const d      = parseInt(document.getElementById('amort-duree')?.value) || 5;
+  const met    = document.getElementById('amort-methode')?.value || 'lineaire';
+  const res    = parseFloat(document.getElementById('amort-residuel')?.value) || 0;
+  const dateStr = document.getElementById('amort-date')?.value || '';
+
+  // Taux réglementaire selon bien sélectionné, sinon calcul auto
+  const bienSel = document.getElementById('amort-bien');
+  let taux_pct = 0;
+  if (bienSel && bienSel.value) {
+    taux_pct = parseInt(bienSel.value.split('|')[1]) || 0;
+  } else {
+    taux_pct = Math.round(100 / d);
+  }
+
+  const base = v - res;
+  const taux = taux_pct / 100;
+  const annBase = met === 'lineaire' ? base * taux : base * taux * 1.5;
+
+  // Date & prorata temporis
+  let dateDebut = null;
+  let prorata = 1;
+  if (dateStr) {
+    dateDebut = new Date(dateStr);
+    const moisRestants = 12 - dateDebut.getMonth(); // getMonth() = 0-based → jan=0
+    prorata = moisRestants / 12;
+    // Date de fin
+    const dateFin = new Date(dateDebut);
+    dateFin.setFullYear(dateFin.getFullYear() + d);
+    const opts = { day:'2-digit', month:'long', year:'numeric' };
+    setEl('amort-debut', dateDebut.toLocaleDateString('fr-FR', opts));
+    setEl('amort-fin',   dateFin.toLocaleDateString('fr-FR', opts));
+  } else {
+    setEl('amort-debut', '—');
+    setEl('amort-fin',   '—');
+  }
+
+  // Affichage taux
+  const tauxLabel = taux_pct + '%' + (met === 'degressif' ? ' × 1.5 = ' + Math.round(taux_pct * 1.5) + '%' : '');
+  setEl('amort-taux',    tauxLabel);
+  setEl('amort-annuel',  Math.round(annBase).toLocaleString('fr-FR') + ' FCFA');
+  setEl('amort-mensuel', Math.round(annBase / 12).toLocaleString('fr-FR') + ' FCFA');
+  setEl('amort-total',   Math.round(base).toLocaleString('fr-FR') + ' FCFA');
+
+  // ── Tableau annuel ──────────────────────────────────────────
+  const tbody = document.getElementById('amort-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  let vnc = base;
+  let cumul = 0;
+
+  for (let i = 1; i <= d; i++) {
+    let dot;
+
+    if (met === 'lineaire') {
+      dot = annBase;
+      // Prorata 1ère année si date fournie
+      if (i === 1 && dateStr) dot = annBase * prorata;
+      // Dernière année = VNC restant
+      if (i === d) dot = vnc;
+
+    } else {
+      // Dégressif : taux dégressif vs linéaire résiduel, on prend le plus élevé
+      const tauxDeg = taux * 1.5;
+      const tauxLin = 1 / (d - i + 1);
+      const tauxFinal = Math.max(tauxDeg, tauxLin);
+      dot = vnc * tauxFinal;
+      if (i === 1 && dateStr) dot = dot * prorata;
+      if (i === d) dot = vnc;
+    }
+
+    dot = Math.max(0, Math.round(dot));
+    cumul += dot;
+    const vncFin = Math.max(0, Math.round(vnc - dot));
+    const exercice = dateDebut ? (dateDebut.getFullYear() + i - 1) : ('Année ' + i);
+
+    const tr = document.createElement('tr');
+    tr.style.borderBottom = '1px solid #F3F4F6';
+    if (i % 2 === 0) tr.style.background = '#FAFAFA';
+    if (i === d) tr.style.background = 'rgba(26,158,240,.06)';
+
+    tr.innerHTML =
+      '<td style="padding:8px 10px;font-weight:700;color:var(--navy)">' + exercice + '</td>' +
+      '<td style="padding:8px 10px;text-align:right;color:var(--gray-600)">' + Math.round(vnc).toLocaleString('fr-FR') + '</td>' +
+      '<td style="padding:8px 10px;text-align:right;color:#DC2626;font-weight:700">' + dot.toLocaleString('fr-FR') + '</td>' +
+      '<td style="padding:8px 10px;text-align:right;color:var(--gray-400)">' + cumul.toLocaleString('fr-FR') + '</td>' +
+      '<td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--navy)">' + vncFin.toLocaleString('fr-FR') + '</td>';
+
+    tbody.appendChild(tr);
+    vnc -= dot;
+    if (vnc <= 0) break;
+  }
+}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.ticker-track').forEach(t=>{
+    if(!t.dataset.dup){t.innerHTML+=t.innerHTML;t.dataset.dup='1';}
+  });
+  // Set default date = today
+  const ad = document.getElementById('amort-date');
+  if(ad) ad.value = new Date().toISOString().split('T')[0];
+  calcPayroll(); calcLoan(); calcIS(); calcAmort();
+});
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     DELEKY'S POPUP
+     Contrôlé via window.delekyPopup.show(config)
+     Config admin via deleky-admin.html
+═══════════════════════════════════════════════════ -->
+<div id="dlk-popup-overlay" onclick="dlkCloseOnOverlay(event)">
+  <div id="dlk-popup-modal" role="dialog" aria-modal="true" aria-labelledby="dlk-popup-title">
+
+    <!-- ── GAUCHE : Image / Pub ── -->
+    <div id="dlk-popup-left">
+      <!-- ► src contrôlé via admin -->
+      <img id="dlk-popup-left-img"
+        src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80"
+        alt="Expert Deleky's SARL">
+      <div id="dlk-popup-left-overlay"></div>
+
+      <!-- Badge réponse rapide -->
+      <div id="dlk-popup-badge">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="dlk-popup-badge-text">Réponse en 5 min</span>
+      </div>
+
+      <!-- Contenu sur image -->
+      <div id="dlk-popup-left-content">
+        <div id="dlk-popup-headline">
+          Besoin d'un <span>Expert Comptable</span> ?
+        </div>
+        <div id="dlk-popup-subline">
+          Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d'entreprise.
+        </div>
+        <div id="dlk-popup-proof">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          250+ entreprises nous font confiance
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DROITE : Formulaire ── -->
+    <div id="dlk-popup-right">
+
+      <!-- Bouton fermer -->
+      <button id="dlk-popup-close" onclick="delekyPopup.hide()" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Formulaire principal -->
+      <div id="dlk-popup-form-area">
+        <!-- Logo -->
+        <div id="dlk-popup-logo">
+          <img src="logo.jpg" alt="Deleky's">
+          <div>
+            <div id="dlk-popup-logo-name">Deleky's SARL</div>
+            <div style="font-size:9px;color:#9CA3AF;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-top:1px">Cabinet Comptable & Conseil</div>
+          </div>
+        </div>
+
+        <!-- Titre -->
+        <div id="dlk-popup-title">Besoin d'aide ?</div>
+        <div id="dlk-popup-subtitle">
+          Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.
+        </div>
+
+        <!-- Champs dynamiques (remplis via JS) -->
+        <div id="dlk-popup-fields">
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Prénom &amp; Nom</label>
+            <input class="dlk-f-input" id="dlk-f-nom" placeholder="Jean Kouamé"
+              oninput="this.classList.remove('error')">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Votre entreprise</label>
+            <input class="dlk-f-input" id="dlk-f-societe" placeholder="Ma Société SARL">
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Numéro de téléphone <span style="color:#EF4444">*</span></label>
+            <div class="dlk-phone-wrap">
+              <div class="dlk-phone-code">
+                🇨🇮 +225
+              </div>
+              <input class="dlk-f-input" id="dlk-f-tel" type="tel"
+                placeholder="07 00 00 00 00" style="flex:1"
+                oninput="this.classList.remove('error')">
+            </div>
+          </div>
+
+          <div class="dlk-f-group">
+            <label class="dlk-f-label">Sujet</label>
+            <select class="dlk-f-input dlk-f-select" id="dlk-f-sujet">
+              <option value="">— Votre besoin —</option>
+              <option>Comptabilité & États Financiers</option>
+              <option>Fiscalité & Déclarations</option>
+              <option>Optimisation Fiscale</option>
+              <option>Audit & Contrôle Interne</option>
+              <option>Gestion de la Paie</option>
+              <option>Création d'Entreprise</option>
+              <option>Conformité BCEAO / AML</option>
+              <option>Autre question</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <button id="dlk-popup-cta" onclick="delekyPopup.submit()">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          <span id="dlk-popup-cta-text">Me faire rappeler</span>
+        </button>
+
+        <div id="dlk-popup-reassure">
+          Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles
+        </div>
+
+        <div class="dlk-privacy">
+          En soumettant ce formulaire, vous acceptez d'être contacté par Deleky's SARL. Aucun engagement.
+        </div>
+      </div>
+
+      <!-- État succès -->
+      <div id="dlk-popup-success">
+        <div style="width:60px;height:60px;background:#F0FDF4;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-size:20px;font-weight:800;color:#111827;margin-bottom:8px">
+          Demande reçue !
+        </div>
+        <div style="font-size:14px;color:#6B7280;line-height:1.75;margin-bottom:20px">
+          Un expert Deleky's vous rappelle<br><strong style="color:#1A9EF0">dans les 5 minutes</strong>.
+        </div>
+        <div style="background:#F9FAFB;border-radius:12px;padding:14px 16px;
+          font-size:13px;color:#4B5563;margin-bottom:16px;text-align:left">
+          <div style="font-weight:700;margin-bottom:4px">En attendant :</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-contact.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Envoyer un message détaillé
+              </a>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#1A9EF0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="CO.deleky-ressources.html" onclick="delekyPopup.hide()"
+                style="color:#1A9EF0;font-weight:600;text-decoration:none">
+                Explorer nos ressources gratuites
+              </a>
+            </div>
+          </div>
+        </div>
+        <button onclick="delekyPopup.hide()"
+          style="background:none;border:1.5px solid #E5E7EB;color:#6B7280;
+          border-radius:10px;padding:10px 24px;font-size:14px;font-weight:600;
+          font-family:inherit;cursor:pointer;width:100%;transition:all .2s"
+          onmouseover="this.style.borderColor='#1A9EF0';this.style.color='#1A9EF0'"
+          onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#6B7280'">
+          Fermer
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ═══════════════════════════════════════════════════
+   DELEKY'S POPUP SYSTEM
+═══════════════════════════════════════════════════ */
+window.delekyPopup = (function() {
+
+  /* Config par défaut (surchargeée via admin) */
+  let _cfg = {
+    // Déclenchement
+    trigger:      'delay',   // 'delay' | 'exit' | 'scroll' | 'manual'
+    delay:        5000,      // ms avant affichage auto
+    scrollPct:    50,        // % de scroll pour trigger 'scroll'
+    pages:        'all',     // 'all' | ['home','contact'] — pages ciblées
+    // Contenu
+    badge:        'Réponse en 5 min',
+    headline:     'Besoin d\'un Expert Comptable ?',
+    headlineSpan: 'Expert Comptable',
+    subline:      'Nos experts répondent à toutes vos questions en comptabilité, fiscalité et gestion d\'entreprise.',
+    proof:        '250+ entreprises nous font confiance',
+    imgUrl:       'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=680&h=900&fit=crop&q=80',
+    showImg:      true,
+    title:        'Besoin d\'aide ?',
+    subtitle:     'Rappel gratuit — nos experts vous contactent pour répondre à toutes vos questions.',
+    ctaText:      'Me faire rappeler',
+    reassure:     'Nous vous rappelons <strong>dans les 5 minutes</strong> — 🔒 Données confidentielles',
+    // Affichage
+    active:       true,
+    once:         true,      // afficher une seule fois par session
+    overlayClose: true,      // clic overlay = ferme
+  };
+
+  let _shown      = false;
+  let _triggerSet = false;
+  let _timer      = null;
+
+  /* ── Appliquer la config au DOM ── */
+  function _applyConfig(cfg) {
+    _cfg = Object.assign(_cfg, cfg);
+    const $ = id => document.getElementById(id);
+    // Image
+    const img = $('dlk-popup-left-img');
+    if(img) {
+      img.src = _cfg.imgUrl || '';
+      img.style.display = _cfg.showImg ? 'block' : 'none';
+    }
+    const left = $('dlk-popup-left');
+    if(left) left.style.display = _cfg.showImg ? '' : 'none';
+    // Badge
+    const badgeText = $('dlk-popup-badge-text');
+    if(badgeText) badgeText.textContent = _cfg.badge;
+    // Headline
+    const hl = $('dlk-popup-headline');
+    if(hl) {
+      const sp = _cfg.headlineSpan;
+      hl.innerHTML = _cfg.headline.replace(sp, `<span>${sp}</span>`);
+    }
+    // Subline
+    const sl = $('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline;
+    // Proof
+    const pf = $('dlk-popup-proof');
+    if(pf) { const span = pf.querySelector('span') || document.createElement('span'); span.textContent = _cfg.proof; }
+    // Titre / sous-titre form
+    const t  = $('dlk-popup-title');    if(t)  t.textContent = _cfg.title;
+    const st = $('dlk-popup-subtitle'); if(st) st.textContent = _cfg.subtitle;
+    // CTA
+    const cta = $('dlk-popup-cta-text'); if(cta) cta.textContent = _cfg.ctaText;
+    // Réassurance
+    const rs = $('dlk-popup-reassure'); if(rs) rs.innerHTML = _cfg.reassure;
+  }
+
+  /* ── Vérifier si déjà vu ── */
+  function _alreadySeen() {
+    if(!_cfg.once) return false;
+    try { return !!sessionStorage.getItem('dlk-popup-seen'); } catch(e) { return false; }
+  }
+  function _markSeen() {
+    try { sessionStorage.setItem('dlk-popup-seen', '1'); } catch(e) {}
+  }
+
+  /* ── Afficher ── */
+  function show(cfg) {
+    if(cfg) _applyConfig(cfg);
+    if(!_cfg.active) return;
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.classList.add('open');
+    document.body.classList.add('dlk-popup-open');
+    _shown = true;
+    _markSeen();
+    // Reset form
+    _resetForm();
+  }
+
+  /* ── Cacher ── */
+  function hide() {
+    const overlay = document.getElementById('dlk-popup-overlay');
+    if(!overlay) return;
+    overlay.style.animation = 'none';
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity .25s';
+    setTimeout(() => {
+      overlay.classList.remove('open');
+      overlay.style.opacity = '';
+      overlay.style.transition = '';
+      overlay.style.animation = '';
+      document.body.classList.remove('dlk-popup-open');
+    }, 250);
+  }
+
+  /* ── Soumettre ── */
+  function submit() {
+    const tel = document.getElementById('dlk-f-tel');
+    if(!tel?.value.trim()) {
+      tel.classList.add('error');
+      tel.focus();
+      return;
+    }
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn) {
+      btn._orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7"/></svg> Envoi...';
+      btn.disabled = true;
+    }
+    setTimeout(() => {
+      document.getElementById('dlk-popup-form-area').style.display = 'none';
+      document.getElementById('dlk-popup-success').style.display   = 'block';
+      // Changer visuel gauche
+      const hl = document.getElementById('dlk-popup-headline');
+      if(hl) hl.innerHTML = 'Demande <span>envoyée !</span>';
+      const sl = document.getElementById('dlk-popup-subline');
+      if(sl) sl.textContent = 'Un expert vous rappelle dans les 5 minutes.';
+    }, 1200);
+  }
+
+  /* ── Reset form ── */
+  function _resetForm() {
+    ['dlk-f-nom','dlk-f-societe','dlk-f-tel'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.value = ''; el.classList.remove('error'); }
+    });
+    const sj = document.getElementById('dlk-f-sujet');
+    if(sj) sj.selectedIndex = 0;
+    document.getElementById('dlk-popup-form-area').style.display = '';
+    document.getElementById('dlk-popup-success').style.display   = 'none';
+    const btn = document.getElementById('dlk-popup-cta');
+    if(btn && btn._orig) { btn.innerHTML = btn._orig; btn.disabled = false; }
+    const hl = document.getElementById('dlk-popup-headline');
+    if(hl) hl.innerHTML = _cfg.headline?.replace(_cfg.headlineSpan,'<span>'+_cfg.headlineSpan+'</span>') || '';
+    const sl = document.getElementById('dlk-popup-subline');
+    if(sl) sl.textContent = _cfg.subline || '';
+  }
+
+  /* ── Setup triggers automatiques ── */
+  function _setupTrigger() {
+    if(_triggerSet || !_cfg.active) return;
+    _triggerSet = true;
+    if(_alreadySeen()) return;
+    switch(_cfg.trigger) {
+      case 'delay':
+        _timer = setTimeout(() => show(), _cfg.delay || 5000);
+        break;
+      case 'exit':
+        document.addEventListener('mouseleave', e => {
+          if(e.clientY < 0 && !_shown) show();
+        });
+        break;
+      case 'scroll':
+        window.addEventListener('scroll', function _sc() {
+          const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+          if(pct >= (_cfg.scrollPct||50) && !_shown) { show(); window.removeEventListener('scroll',_sc); }
+        });
+        break;
+      case 'manual':
+        break; // show() appelé manuellement
+    }
+  }
+
+  /* ── Init ── */
+  function init(cfg) {
+    if(cfg) _applyConfig(cfg);
+    // Charger config sauvegardée depuis admin
+    try {
+      const saved = localStorage.getItem('dlk-popup-cfg');
+      if(saved) _applyConfig(JSON.parse(saved));
+    } catch(e) {}
+    _setupTrigger();
+  }
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') hide();
+  });
+
+  return { show, hide, submit, init, config: c => _applyConfig(c) };
+})();
+
+/* Fermer sur clic overlay */
+function dlkCloseOnOverlay(e) {
+  if(e.target === document.getElementById('dlk-popup-overlay') && window.delekyPopup)
+    window.delekyPopup.hide();
+}
+
+/* Auto-init au chargement */
+document.addEventListener('DOMContentLoaded', () => {
+  window.delekyPopup.init();
+});
+
+// Auto-init
+document.addEventListener("DOMContentLoaded",()=>window.delekyPopup.init({trigger:"exit"}));
+</script>
+</body>
+</html>

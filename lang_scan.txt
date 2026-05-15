@@ -1,0 +1,1 @@
+file,has_lang_switch,has_switchLang,has_admin_fab
