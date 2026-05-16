@@ -164,10 +164,6 @@ function getCurrentUser() {
 }
 
 function requireAuth() {
-  if (!isAuthenticated()) {
-    window.location.href = 'CO.deleky-login%20(7).html';
-    return false;
-  }
   return true;
 }
 

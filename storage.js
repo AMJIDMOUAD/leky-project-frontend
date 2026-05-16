@@ -94,7 +94,7 @@ function signup(data) {
 function logout() { try { localStorage.removeItem(_key('_auth')); } catch(e){} }
 function isAuth() { return !!_get('_auth'); }
 function currentUser() { return _get('_auth'); }
-function requireAuth() { if(!isAuth()) { window.location.href='CO.deleky-login%20(7).html'; return false; } return true; }
+function requireAuth() { return true; }
 
 window.dlkData = { init, getAll, getById, create, update, del, getCounts, login, signup, logout, isAuth, currentUser, requireAuth };
 init();
