@@ -2544,6 +2544,7 @@ select.inp{cursor:pointer}
   <span id="toast-msg">Modifications sauvegardées !</span>
 </div>
 
+<script>if(localStorage.getItem('loggedIn')!=='true'){window.location.href='CO.deleky-login%20(7).html';}</script>
 <script src="storage.js"></script>
 <script src="assets/js/lang.js"></script>
 <script>
@@ -3064,7 +3065,8 @@ function renderMessages() {
 /* ── LOGOUT ────────────────────────────────────── */
 function doLogout() {
   if(window.dlkData) window.dlkData.logout();
-  window.location.href = 'CO.deleky-login (7).html';
+  localStorage.removeItem('loggedIn');
+  window.location.href = 'CO.deleky-login%20(7).html';
 }
 
 /* ══════════════════════════════════════════════
